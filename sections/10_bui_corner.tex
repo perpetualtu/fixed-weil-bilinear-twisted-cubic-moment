@@ -1,0 +1,49 @@
+\section{The limiting Bui corner}
+\label{sec:bui-corner}
+
+This section is a boundary calculation and is not used in the proof of
+\Cref{thm:main}.  Write Bui's two mollifier lengths as
+\begin{equation}\label{eq:Bui-box}
+ H\leq T^{4/7-\eps_B},\qquad
+ K\leq T^{1/4-\eps_B}.
+\end{equation}
+Then
+\begin{equation}\label{eq:Bui-fixed-Weil-exponent}
+ \frac32\left(\frac47-\eps_B\right)
+ +\left(\frac14-\eps_B\right)
+ =\frac{31}{28}-\frac52\eps_B.
+\end{equation}
+It is less than one precisely when
+\begin{equation}\label{eq:Bui-threshold}
+                              \eps_B>\frac{3}{70}.
+\end{equation}
+Thus \Cref{thm:main} already covers every Bui box with this strict margin.
+
+If the margin is suppressed and only the limiting exponents
+$(\theta_1,\theta_3)=(4/7,1/4)$ are compared, the nonzero-mode estimate is
+\begin{equation}\label{eq:Bui-limiting-budget}
+                    KH^{3/2}=T^{31/28+o(1)}.
+\end{equation}
+To reach an error $T^{1-\delta}$ through the same reduction would require an
+additional saving of
+\begin{equation}\label{eq:Bui-needed-saving}
+                              T^{3/28+\delta}
+\end{equation}
+in the limiting exponent budget.  The pointwise completed Weil bound in
+\Cref{lem:reciprocal-sum} does not provide it for two arbitrary coefficient
+sequences.
+
+An averaged reciprocal or Kloosterman-fraction estimate retaining both
+coefficient sequences could be a sufficient new input for the nonzero
+frequencies, but no such estimate is assumed or proved here.  Nor would it by
+itself settle every analytic detail at the corner: the endpoint-deletion and
+full-kernel estimates in \Cref{sec:endpoint} were proved and audited under
+\eqref{eq:main-range}, and their uniformity at the limiting corner has not
+been established.  It is therefore not valid to take a minimum over different
+Poisson orientations or to describe a single averaged estimate as the unique
+remaining dependency.
+
+Finally, the cubic product in \eqref{eq:I-def} is the ``twisted third
+moment'' appearing in Bui's mollifier cross term.  It is not the sixth moment
+$\int|\zeta(1/2+it)|^6\dd t$, and \Cref{thm:main} does not imply a sixth-moment
+asymptotic.

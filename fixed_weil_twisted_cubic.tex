@@ -1,0 +1,99 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[expansion=false]{microtype}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+
+\hypersetup{
+  pdftitle={A Bilinear Twisted Cubic Moment of the Riemann Zeta Function in the Fixed-Weil Range H to the 3/2 K <= T to the 1-eta},
+  pdfauthor={Anonymous},
+  pdfsubject={A shifted bilinear twisted cubic moment of the Riemann zeta function},
+  pdfkeywords={Riemann zeta function, twisted moment, Poisson summation, Weil bound}
+}
+
+\allowdisplaybreaks
+\raggedbottom
+\numberwithin{equation}{section}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\R}{\mathbb R}
+\newcommand{\e}{\mathrm e}
+\newcommand{\Res}{\mathop{\rm Res}}
+\newcommand{\supp}{\mathop{\rm supp}}
+\newcommand{\I}{\mathcal I}
+\newcommand{\V}{\mathscr V}
+\newcommand{\Pcal}{\mathcal P}
+\newcommand{\Eend}{\mathscr E_{\mathrm{end},T}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\asympT}{\asymp}
+\DeclareMathOperator{\lcm}{lcm}
+
+\title[A Bilinear Twisted Cubic Moment]{A Bilinear Twisted Cubic Moment of the Riemann Zeta Function in the Fixed-Weil Range $H^{3/2}K\leq T^{1-\eta}$}
+\author{Anonymous}
+\date{August 24, 2026}
+
+\subjclass[2020]{11M06, 11M26, 11L05, 11N37}
+\keywords{Riemann zeta function, twisted moment, mollifier, Poisson summation, Kloosterman sum, approximate functional equation}
+
+\begin{document}
+
+\begin{abstract}
+We evaluate a smoothed bilinear twist of a shifted cubic product of the
+Riemann zeta function.  For two independent divisor-bounded coefficient
+sequences supported on $h\leq H$ and $k\leq K$, we prove the expected
+three-term shifted main term, uniformly for shifts of size
+$O((\log T)^{-1})$, with
+error
+\[
+ O_{\eta,C,\eps}\!\left(T^\eps
+ \{KH^{3/2}+T^{1/2}(HK)^{1/2}\}\right)
+\]
+whenever $H^{3/2}K\leq T^{1-\eta}$.  The proof fixes one Poisson orientation
+throughout.  Its nonzero frequencies are controlled by finite completion and
+the Weil bound after exact extraction of $(h,km)$.  The zero frequency is
+evaluated with a coupled two-variable smoothing.  A full-kernel regulator and
+genuine branchwise Tonelli domains justify the beta integrals; the diagonal
+and zero-mode residues are assembled before analytic continuation or the
+final regulator move.  A local three-divisor argument proves joint
+holomorphy when the shifts collide.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\input{sections/01_introduction}
+\input{sections/02_statement}
+\input{sections/03_coupled_smoothing}
+\input{sections/04_poisson_setup}
+\input{sections/05_nonzero_frequencies}
+\input{sections/06_endpoint_bridge}
+\input{sections/07_beta_euler_gamma}
+\input{sections/08_residue_assembly}
+\input{sections/09_final_contours_collisions}
+\input{sections/10_bui_corner}
+\appendix
+\input{sections/appendix_audit}
+
+\bibliographystyle{amsplain}
+\bibliography{references}
+
+\end{document}

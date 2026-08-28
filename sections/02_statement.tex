@@ -1,0 +1,131 @@
+\section{Statement of the theorem}\label{sec:statement}
+
+Let $C,\eta>0$ be fixed and let $T$ be sufficiently large in terms of these
+parameters.  Put
+\[
+                         \Delta=\frac{T}{\log T}.
+\]
+Throughout, $w\in C_c^\infty(\R)$ is supported in $[T/4,2T]$ and satisfies
+\begin{equation}\label{eq:w-derivatives}
+                  w^{(j)}(t)\ll_j\Delta^{-j}
+                  \qquad (j\geq0).
+\end{equation}
+The implied constants below may depend on $\eta,C,\eps$, on the constants in
+the coefficient bounds, and on finitely many seminorms in
+\eqref{eq:w-derivatives}.
+
+For positive integers $h,k$ and complex $A,B,C_1$, define first in a region
+of absolute convergence
+\begin{equation}\label{eq:Z-series}
+ Z_{A,B,C_1}(h,k)
+ =\sum_{kab=hc}a^{-1/2-A}b^{-1/2-B}c^{-1/2-C_1}.
+\end{equation}
+The letters $a,b,c$ in this sum are local summation variables and are unrelated
+to the coefficient sequences in the theorem.  To make the continuation
+explicit, write $g=(h,k)$, $h=gh_0$, $k=gk_0$, and set
+\[
+                    q_Z=1+A+C_1,\qquad v_Z=1+B+C_1.
+\]
+Then
+\begin{align}
+ Z_{A,B,C_1}(h,k)
+ &=h_0^{1/2+C_1}k_0^{-1/2-C_1}
+   \zeta(q_Z)\zeta(v_Z) \notag\\
+ &\quad\times
+ \prod_{p^\nu\parallel h_0}
+ (1-p^{-q_Z})(1-p^{-v_Z})
+ \sum_{i+j\geq\nu}p^{-q_Zi-v_Zj}.
+ \label{eq:Z-euler}
+\end{align}
+We use the right side as the meromorphic continuation of
+\eqref{eq:Z-series}.  Its only shift poles are the two displayed zeta poles.
+
+The exact archimedean factor is
+\begin{equation}\label{eq:X-def}
+ X_{A,C_1}(t)=\pi^{A+C_1}
+ \frac{
+ \Gamma\bigl((\frac12-A-it)/2\bigr)
+ \Gamma\bigl((\frac12-C_1+it)/2\bigr)}{
+ \Gamma\bigl((\frac12+A+it)/2\bigr)
+ \Gamma\bigl((\frac12+C_1-it)/2\bigr)}.
+\end{equation}
+
+For two independent complex sequences $(a_h)$ and $(b_k)$, put
+\begin{align}
+ \I_{\alpha,\beta,\gamma}(a,b)
+ ={}&\sum_{h\leq H}\sum_{k\leq K}
+ \frac{a_h\overline{b_k}}{\sqrt{hk}}
+ \int_{\R}w(t)
+ \zeta\!\left(\tfrac12+\alpha+it\right)
+ \zeta\!\left(\tfrac12+\beta+it\right) \notag\\
+ &\hspace{34mm}\times
+ \zeta\!\left(\tfrac12+\gamma-it\right)
+ \left(\frac hk\right)^{it}\dd t.
+ \label{eq:I-def}
+\end{align}
+
+\begin{theorem}[Fixed-Weil bilinear twisted cubic moment]
+\label{thm:main}
+Suppose $H,K\geq1$ and
+\begin{equation}\label{eq:main-range}
+                         H^{3/2}K\leq T^{1-\eta}.
+\end{equation}
+Let
+\begin{equation}\label{eq:coeff-bounds}
+             |a_h|\ll_\eps h^\eps,\qquad
+             |b_k|\ll_\eps k^\eps
+\end{equation}
+for every $\eps>0$.  Uniformly for complex shifts satisfying
+\begin{equation}\label{eq:shift-range}
+              |\alpha|+|\beta|+|\gamma|\leq \frac{C}{\log T},
+\end{equation}
+one has
+\begin{align}
+ \I_{\alpha,\beta,\gamma}(a,b)
+ ={}&\sum_{h\leq H}\sum_{k\leq K}
+ \frac{a_h\overline{b_k}}{\sqrt{hk}}
+ \int_{\R}w(t)\bigl\{
+ Z_{\alpha,\beta,\gamma}(h,k) \notag\\
+ &\quad+X_{\alpha,\gamma}(t)
+ Z_{-\gamma,\beta,-\alpha}(h,k)
+ +X_{\beta,\gamma}(t)
+ Z_{\alpha,-\gamma,-\beta}(h,k)
+ \bigr\}\dd t \notag\\
+ &+O_{\eta,C,\eps}\!\left(
+ T^\eps\{KH^{3/2}+T^{1/2}(HK)^{1/2}\}\right).
+ \label{eq:main-asymptotic}
+\end{align}
+The expression in braces is its jointly holomorphic continuation across
+\[
+ \alpha+\gamma=0,\qquad \beta+\gamma=0,\qquad \alpha-\beta=0,
+\]
+including their common collision locus $\alpha=\beta=-\gamma$.
+\end{theorem}
+
+The theorem is formulated with exact gamma ratios.  Uniform Stirling
+asymptotics give
+\begin{equation}\label{eq:X-stirling}
+       X_{A,C_1}(t)=\left(\frac{t}{2\pi}\right)^{-A-C_1}
+                    \{1+O_C(T^{-1})\}
+\end{equation}
+on the support of $w$.  Consequently the two exact factors in
+\eqref{eq:main-asymptotic} may be replaced by the corresponding powers used
+in Bui's formulation.  The total replacement error is
+$O(T^\eps(HK)^{1/2})$.
+
+\begin{corollary}\label{cor:exponent-region}
+If $H\leq T^{\theta_1}$ and $K\leq T^{\theta_3}$ range over a compact subset
+of
+\[
+                         \frac32\theta_1+\theta_3<1,
+\]
+then \eqref{eq:main-asymptotic} has a power-saving error.  More precisely,
+under \eqref{eq:main-range}, choosing the harmless $T^\eps$ loss with
+$\eps<\eta/4$ gives an error $O(T^{1-\eta/4})$.
+\end{corollary}
+
+\begin{remark}\label{rem:independent}
+No relation between $(a_h)$ and $(b_k)$ is used.  Complex conjugation on
+$b_k$ is only notational; analytically the theorem is bilinear in two
+independent sequences.
+\end{remark}

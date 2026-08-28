@@ -1,0 +1,435 @@
+\section{\texorpdfstring{Fixed-$u$}{Fixed-u} residue assembly and quantitative continuation}
+\label{sec:assembly}
+
+For $\lambda=\alpha+u$, define the complete three-permutation expression
+\begin{align}
+ \Pcal_\lambda(h,k;t)
+ ={}&Z_{\lambda,\beta,\gamma}(h,k)
+ +X_{\lambda,\gamma}(t)Z_{-\gamma,\beta,-\lambda}(h,k)
+ \notag\\
+ &+X_{\beta,\gamma}(t)Z_{\lambda,-\gamma,-\beta}(h,k).
+ \label{eq:P-lambda}
+\end{align}
+The individual terms are meromorphic.  They will always be combined before a
+collision divisor is crossed.
+
+The direct and dual diagonal terms for fixed $h,k$ are
+\begin{align}
+ \mathcal D^+(h,k)
+ ={}&\int_{\R}w(t)\frac{1}{2\pi i}\int_{(c_u)}\Gamma(u)Y^u\notag\\
+ &\quad\times
+ \frac{1}{2\pi i}\int_{(c_s)}\frac{\mathcal G(s,u)}s
+ g_{\beta,\gamma}(s,t)
+ Z_{\lambda,\beta+s,\gamma+s}(h,k)\dd s\dd u\dd t,
+ \label{eq:D-plus}\\
+ \mathcal D^-(h,k)
+ ={}&\int_{\R}w(t)\frac{1}{2\pi i}\int_{(c_u)}\Gamma(u)Y^u
+ X_{\beta,\gamma}(t)\notag\\
+ &\quad\times
+ \frac{1}{2\pi i}\int_{(c_s)}\frac{\mathcal G(s,u)}s
+ g_{-\gamma,-\beta}(s,t)
+ Z_{\lambda,-\gamma+s,-\beta+s}(h,k)\dd s\dd u\dd t.
+ \label{eq:D-minus}
+\end{align}
+
+\subsection{The three residue cancellations}
+
+Reflect the dual diagonal and dual zero mode by $s\mapsto-s$.  Before any
+term is separated, the small arithmetic poles at fixed $u$ are
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+term & pole locations before reflection where indicated\\
+\midrule
+$\mathcal D^+$ & $s=-\lambda-\gamma$, $s=-(\beta+\gamma)/2$\\
+$\mathcal D^-$ & $s=\beta-\lambda$, $s=(\beta+\gamma)/2$\\
+zero mode & $s=-\lambda-\gamma$, $s=\lambda-\beta$\\
+\bottomrule
+\end{tabular}
+\end{center}
+The exact identities required at these poles are
+\begin{align}
+ X_{\beta,\gamma}(t)g_{-\gamma,-\beta}(-s,t)
+ &=g_{\beta,\gamma}(s,t)X_{\beta+s,\gamma+s}(t),
+ \label{eq:g-diagonal-reflection}\\
+ \Phi_{\lambda;\beta,\gamma}(-\lambda-\gamma,t)
+ &=g_{\beta,\gamma}(-\lambda-\gamma,t),
+ \label{eq:Phi-first-residue}\\
+ \Phi_{\lambda;\beta,\gamma}(\lambda-\beta,t)
+ &=g_{\beta,\gamma}(\lambda-\beta,t)
+ X_{\lambda,\gamma+\lambda-\beta}(t).
+ \label{eq:Phi-second-residue}
+\end{align}
+They follow from \eqref{eq:X-def}, \eqref{eq:Phi-def}, reflection and
+duplication.
+
+At $s=-\lambda-\gamma$, the direct diagonal and zero-mode arithmetic factors
+both equal
+\begin{equation}\label{eq:first-common-Z}
+              Z_{\lambda,\beta-\lambda-\gamma,-\lambda}(h,k),
+\end{equation}
+while their polar zeta arguments have derivatives $+1$ and $-1$.
+Equation \eqref{eq:Phi-first-residue} therefore cancels the residues.  After
+reflection, the second pair at $s=\lambda-\beta$ has common factor
+\begin{equation}\label{eq:second-common-Z}
+              Z_{-\gamma-\lambda+\beta,\lambda,-\lambda}(h,k),
+\end{equation}
+and \eqref{eq:Phi-second-residue} gives opposite residues.  Finally, at
+$s_0=-(\beta+\gamma)/2$, the two diagonal factors specialize to
+\begin{equation}\label{eq:third-common-Z}
+ Z_{\lambda,(\beta-\gamma)/2,(\gamma-\beta)/2}(h,k).
+\end{equation}
+Their polar arguments have derivatives $+2$ and $-2$, and
+$X_{(\beta-\gamma)/2,(\gamma-\beta)/2}(t)=1$.  Thus the third pair also
+cancels.  The equalities in \eqref{eq:first-common-Z}--\eqref{eq:third-common-Z}
+are equalities of the complete Euler products, not just their global zeta
+factors.
+
+Choose
+\begin{equation}\label{eq:sigma-s}
+ \sigma_s=-\frac12+\eps_s,\qquad
+ 0<\eps_s<\min\left(\frac14,\frac12-c_u\right),
+\end{equation}
+and let $C_*$ bound the scaled real parts of the shifts.  For large $T$, take
+\begin{equation}\label{eq:cs-geometry}
+ c_u+\frac{C_*}{\log T}<c_s<
+ \min\left(\frac12-\eps_s,
+            1-c_u-\frac{C_*}{\log T}\right).
+\end{equation}
+In the central strip $-c_s<\Re s<c_s$, the complete reflected integrand has
+only
+\begin{equation}\label{eq:central-divisors}
+ \begin{array}{c|c}
+ x=s+\lambda+\gamma=0&s=-\lambda-\gamma,\\
+ y=s-\lambda+\beta=0&s=\lambda-\beta,\\
+ z=2s+\beta+\gamma=x+y=0&s=-(\beta+\gamma)/2,\\
+ s=0&s=0.
+ \end{array}
+\end{equation}
+The $z=1$ locations lie outside by \eqref{eq:cs-geometry} and are zeros of
+$\mathcal G$ in any wider deformation.  By \Cref{lem:gamma-collapse}, all
+other archimedean poles have imaginary part comparable with $t$ and are
+Gaussian-small.
+
+Put
+\begin{equation}\label{eq:F0}
+ F_0(s)=\mathcal G(s,u)\Phi_{\lambda;\beta,\gamma}(s,t)
+ Z_{-\gamma-s,\beta+s,-\lambda}(h,k).
+\end{equation}
+Using \eqref{eq:Phi-reflection}, evenness of $\mathcal G$, and symmetry of
+$Z$ in its first two shifts, the dual zero mode becomes exactly
+\begin{equation}\label{eq:zero-contour-difference}
+                  -\frac{1}{2\pi i}\int_{(-c_s)}\frac{F_0(s)}s\dd s.
+\end{equation}
+The sign comes from $1/(-s)$; reversal of the parametrized contour introduces
+no second sign.  Thus the two zero modes form a contour difference, evaluated
+by the $x=0$, $y=0$, and $s=0$ residues, with no zero-mode boundary line.
+
+Move the direct diagonal from $(c_s)$ to $(\sigma_s)$ and the reflected dual
+diagonal from $(-c_s)$ to $(-\sigma_s)$.  The three nonzero residue pairs
+cancel as above.  The $s=0$ residues of the two diagonals and the zero mode
+are precisely the three terms in $Q(u)\Pcal_\lambda$.  Undoing the reflection
+on the final dual line leaves the full diagonal boundary
+\begin{align}
+ \mathcal R_{\mathrm{diag},Y}(h,k)
+ ={}&\int_{\R}w(t)\frac{1}{2\pi i}\int_{(c_u)}\Gamma(u)Y^u\notag\\
+ &\quad\times\bigg\{
+ \frac{1}{2\pi i}\int_{(\sigma_s)}\frac{\mathcal G(s,u)}s
+ g_{\beta,\gamma}(s,t)\notag\\
+ &\hspace{31mm}\times
+ Z_{\alpha+u,\beta+s,\gamma+s}(h,k)\dd s\notag\\
+ &\quad+X_{\beta,\gamma}(t)
+ \frac{1}{2\pi i}\int_{(\sigma_s)}\frac{\mathcal G(s,u)}s
+ g_{-\gamma,-\beta}(s,t)\notag\\
+ &\hspace{31mm}\times
+ Z_{\alpha+u,-\gamma+s,-\beta+s}(h,k)\dd s
+ \bigg\}\dd u\dd t.
+ \label{eq:diagonal-boundary-Y}
+\end{align}
+The two terms in \eqref{eq:diagonal-boundary-Y} are separated only after the
+joint cancellation at the three small divisors.
+
+Combining \Cref{prop:endpoint-deletion} with this fixed-$u$ residue
+calculation yields, on the good patch and after the outer coefficient sum,
+\begin{multline}
+ \mathcal D^++\mathcal D^-+\mathcal O_{0,Y}^+
+ +\mathcal O_{0,Y}^-\\
+ =\int_{\R}w(t)\frac{1}{2\pi i}\int_{(c_u)}
+ \Gamma(u)Y^uQ(u)\Pcal_{\alpha+u}(h,k;t)\dd u\dd t\\
+ {}+\mathcal R_{\mathrm{diag},Y}(h,k)+O_N(T^{-N})
+ \label{eq:good-patch-assembly}
+\end{multline}
+for every $N>0$.  As usual in an $h,k$ identity, the error in
+\eqref{eq:good-patch-assembly} is understood after summation with
+$a_h\overline{b_k}/\sqrt{hk}$.
+
+\subsection{Quantitative continuation of the assembled error}
+
+For external shifts $A,B,C_1$, let $\mathscr A_T(A,B,C_1)$ denote the
+complete source: both diagonals and both exact zero modes, with their endpoint
+cutoffs, common positive $u$-line, and outer coefficient sum.  Let
+\begin{align}
+ \mathscr R_T(A,B,C_1)
+ ={}&\sum_{h\leq H}\sum_{k\leq K}
+ \frac{a_h\overline{b_k}}{\sqrt{hk}}\notag\\
+ &\quad\times
+ \int_{\R}w(t)\frac{1}{2\pi i}\int_{(c_u)}
+ \Gamma(u)Y^uQ(u)\Pcal_{A+u}(h,k;t)\dd u\dd t,
+ \label{eq:R-T}\\
+ \mathscr D_T(A,B,C_1)
+ ={}&\sum_{h\leq H}\sum_{k\leq K}
+ \frac{a_h\overline{b_k}}{\sqrt{hk}}
+ \mathcal R_{\mathrm{diag},Y}(h,k).
+ \label{eq:D-T}
+\end{align}
+The shifts in every displayed kernel are changed from
+$(\alpha,\beta,\gamma)$ to $(A,B,C_1)$.
+
+\begin{lemma}[Rapid-decay propagation]\label{lem:two-constants}
+Let $\Omega\subset\C^n$ be a fixed connected domain, let
+$U\Subset\Omega$ be nonempty and open, and let $K_0\Subset\Omega$.  If
+$f_T$ is holomorphic on $\Omega$ and
+\begin{equation}\label{eq:two-constants-hyp}
+ \sup_\Omega|f_T|\leq T^{C_2},
+ \qquad
+ \sup_U|f_T|\ll_NT^{-N}\quad\text{for every }N,
+\end{equation}
+then, for every $D>0$,
+\begin{equation}\label{eq:two-constants-conclusion}
+                         \sup_{K_0}|f_T|\ll_{D,K_0}T^{-D}.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Join a ball compactly contained in $U$ to $K_0$ by finitely many overlapping
+balls in $\Omega$.  Repeated use of the three-ball, or two-constants,
+inequality gives
+\[
+ |f_T|\leq(T^{-N})^{\omega}(T^{C_2})^{1-\omega}
+\]
+on $K_0$, where $\omega>0$ depends only on the fixed geometry.  Take
+$N>(D+(1-\omega)C_2)/\omega$.
+\end{proof}
+
+\begin{proposition}[Full-kernel assembly continuation]
+\label{prop:full-kernel-continuation}
+Under \eqref{eq:main-range}, for every fixed $C_0,D>0$,
+\begin{equation}\label{eq:full-continuation-result}
+ \mathscr A_T(A,B,C_1)-\mathscr R_T(A,B,C_1)
+ -\mathscr D_T(A,B,C_1)=O_D(T^{-D})
+\end{equation}
+uniformly for
+\begin{equation}\label{eq:continuation-polydisc}
+                    |A|+|B|+|C_1|\leq C_0/\log T,
+\end{equation}
+including every shift collision.
+\end{proposition}
+
+\begin{proof}
+Put $L=\log T$ and use the scaled variables
+\begin{equation}\label{eq:scaled-shifts}
+                 (\mathsf a,\mathsf b,\mathsf c)=L(A,B,C_1).
+\end{equation}
+We first fix all geometry.  The admissible contour choices
+\begin{equation}\label{eq:majorant-contours}
+ c_u=\frac18,\qquad \eps_s=\frac18,\qquad
+ \sigma_s=-\frac38,\qquad c_s=\frac14
+\end{equation}
+satisfy \eqref{eq:cu-range}, \eqref{eq:sigma-s}, and, for sufficiently
+large $T$, \eqref{eq:cs-geometry}.  For the prescribed $C_0$, set
+\begin{align}
+ R_*&=C_0+6,\notag\\
+ \Omega&=\{(\mathsf a,\mathsf b,\mathsf c):
+       |\mathsf a|,|\mathsf b|,|\mathsf c|<R_*\},
+ \label{eq:majorant-domain}\\
+ \Omega^\sharp&=\{(\mathsf a,\mathsf b,\mathsf c):
+       |\mathsf a|,|\mathsf b|,|\mathsf c|<R_*+1\}.
+ \notag
+\end{align}
+The target compact set
+\begin{equation}\label{eq:majorant-target}
+ K_0=\{(\mathsf a,\mathsf b,\mathsf c):
+       |\mathsf a|+|\mathsf b|+|\mathsf c|\leq C_0\}
+\end{equation}
+has a fixed collar in $\Omega$.  We use the fixed open good-patch subset
+\begin{equation}\label{eq:majorant-good-set}
+ U=\left\{ |\mathsf a|<\frac18,
+       |\mathsf b-2|<\frac18,
+       |\mathsf c+2|<\frac18\right\}.
+\end{equation}
+Its closure lies in $\Omega$, and $U$ lies in \eqref{eq:good-patch} with
+$\kappa_0=1$ and $c_1=5$, since on $U$ one has
+$\Re\mathsf b>15/8$, $\Re\mathsf c<-15/8$, and
+$|\mathsf a|+|\mathsf b|+|\mathsf c|<35/8$.
+
+Take $T$ large enough that
+\begin{equation}\label{eq:majorant-T-threshold}
+                         L>64(R_*+1).
+\end{equation}
+On $\Omega^\sharp$ the two linear denominator factors in
+\eqref{eq:G-two-variable} then have modulus at least $7/8$, and hence their
+squares have modulus at least $49/64$.  With $C_*=2(R_*+1)$,
+\eqref{eq:majorant-contours} satisfies \eqref{eq:cs-geometry}.  These are
+fixed contours throughout $\Omega^\sharp$; the unused kernel divisors stay
+a fixed positive distance away.
+
+We now prove a polynomial majorant separately for each assembled object.
+All constants below may depend on $R_*,B_0,M$ and finitely many coefficient
+and weight seminorms, but not on $H,K,T$.  Choose the auxiliary divisor-bound
+exponent sufficiently small.  Once $M$ is fixed, all factors
+$L^{C_M}T^{O(\eps)}$ are absorbed into one additional power of $T$.
+
+For the exact-cutoff zero-mode part of $\mathscr A_T$, the mesh bound
+\eqref{eq:mesh-majorant} and the full-kernel product bound give
+\eqref{eq:source-product-majorant}.  Uniformly on $\Omega^\sharp$,
+\begin{align}
+ \int_{1/2}^{\infty}l^{-1/2-\Re A}(1+l/Y)^{-P}\dd l
+ &\ll_{R_*,B_0}Y^{1/2+(R_*+1)/L}\ll T^{B_0/2},
+ \label{eq:majorant-l}\\
+ &\sum_{m\geq1}m^{-1/2-\Re B}\bigg\{\notag\\[-2pt]
+ &\qquad\int_{1/2}^{\infty}n^{-1/2-\Re C_1}
+       (1+mn/T)^{-Q}\dd n\notag\\[-2pt]
+ &\qquad{}+(1+m/T)^{-Q}\bigg\}
+ \ll_{R_*}T^{1/2}L.
+ \label{eq:majorant-mn}
+\end{align}
+Here $P,Q$ are fixed sufficiently large product-decay orders.  To see the
+second estimate, split at $m=T$.  For $m\leq T$ the integral term is at most
+\[
+ T^{1/2-\Re C_1}
+ \sum_{m\leq T}m^{-1-\Re B+\Re C_1}
+ \ll_{R_*}T^{1/2}L,
+\]
+because
+$\sum_{m\leq T}m^{-1+2(R_*+1)/L}\ll e^{2(R_*+1)}L$; increasing $P,Q$
+gives arbitrary convergence for $m>T$.  This is an exact-cutoff source
+bound, not a claim of endpoint-deleted normal convergence in the opposite
+half-space.
+
+The outside coefficients cost at most
+\begin{equation}\label{eq:majorant-hk}
+ \sum_{h\leq H}\sum_{k\leq K}\frac{|a_hb_k|}{\sqrt{hk}}
+ \ll_\eps T^\eps(HK)^{1/2}\ll T^{1/2+\eps},
+\end{equation}
+where $HK\leq T^{1-\eta}$ follows from \eqref{eq:main-range} and $H\geq1$.
+Together with the $O(T)$ length of the $t$-integral,
+\eqref{eq:majorant-l}--\eqref{eq:majorant-hk} give
+$T^{B_0/2+2+o(1)}$ for each exact zero mode.  On the positive line
+$\Re s=c_s=1/4$, the two source diagonals are absolutely convergent and the
+Euler formula gives the deliberately cruder estimate
+\begin{equation}\label{eq:majorant-source-diagonal}
+ L^{C_M}T^{1+c_s+B_0c_u}
+ H^{1+c_s+\eps}K^{1/2+\eps}\ll T^{B_0/8+4}.
+\end{equation}
+The exact factors $X_{B,C_1}(t)$ are $O_{R_*}(1)$ on the scaled domain.
+The locally uniform exact-cutoff majorants prove holomorphy and
+\begin{equation}\label{eq:A-T-polynomial}
+                  \sup_{\Omega^\sharp}|\mathscr A_T|
+                  \ll T^{B_0/2+4}.
+\end{equation}
+
+For $\mathscr R_T$, retain the complete sum $\Pcal_{A+u}$ before taking
+absolute values.  On $\Re u=c_u=1/8$, the collision coordinates
+\[
+ x=A+u+C_1,\qquad y=-B-C_1,\qquad z=A+u-B=x+y
+\]
+satisfy $|x|,|z|\geq3/32$ on $\Omega^\sharp$ by
+\eqref{eq:majorant-T-threshold}.  Thus only $y=0$ can meet this integration
+line.  Away from a fixed scaled tube around $y=0$, the Euler formula
+\eqref{eq:Z-euler}, Stirling, and vertical-strip zeta bounds give
+\begin{equation}\label{eq:P-polynomial}
+ \Pcal_{A+u}(h,k;t)
+ \ll_{R_*,M,\eps}L^{C_M}(hk)^\eps h^{1/2+\eps}
+ (1+|\Im u|)^{C_M}.
+\end{equation}
+In the scaled tube $|Ly|<1/2$ we first use
+\Cref{prop:P-holomorphic}, which is the local
+three-divisor consequence of the already proved residue identities and does
+not use the present proposition.  More explicitly, fix $A,C_1,u,t$ and put
+\[
+ f(w)=\left.\Pcal_{A+u}(h,k;t)\right|_{B=-C_1-w/L}.
+\]
+The complete function $f$ is holomorphic for $|w|<1$ and the circle
+$|w|=1/2$ lies inside the fixed collar of $\Omega^\sharp$.  The maximum
+principle bounds every $f(w)$ with $|w|\leq1/2$ by the maximum on this
+circle.  There
+$|B+C_1|=1/(2L)$, so the individual Euler estimates cost only a fixed power
+of $L$, while $x$ and $z$ remain bounded away from zero.  A finite cover of
+$\overline\Omega$ proves \eqref{eq:P-polynomial} throughout the tube,
+including $y=0$, without separately estimating a meromorphic term at the
+collision.  The $u,t,h,k$ integrations now give
+\begin{equation}\label{eq:R-T-polynomial}
+ \sup_\Omega|\mathscr R_T|
+ \ll L^{C_M}T^{1+B_0/8}H^{1+\eps}K^{1/2+\eps}
+ \ll T^{B_0/8+4}.
+\end{equation}
+
+Finally consider $\mathscr D_T$.  This object is defined only after the
+direct diagonal, reflected dual diagonal, and zero mode have been assembled
+and the three small residues have cancelled.  On
+$\Re s=\sigma_s=-3/8$, the two pairs of Euler arguments have real parts
+\begin{equation}\label{eq:D-T-Euler-lines}
+ \begin{aligned}
+ \Re(1+A+u+C_1+s)&=3/4+O(R_*/L),\\
+ \Re(1+B+C_1+2s)&=1/4+O(R_*/L),\\
+ \Re(1+A+u-B+s)&=3/4+O(R_*/L),\\
+ \Re(1-B-C_1+2s)&=1/4+O(R_*/L).
+ \end{aligned}
+\end{equation}
+They stay a fixed distance from both zero and one.  The prime-power formula
+\eqref{eq:Bnu-form} and vertical-strip zeta bounds therefore give, for both
+Euler products on this line,
+\begin{equation}\label{eq:D-T-Z-bound}
+ Z\ll_{R_*,M,\eps}L^{C_M}(hk)^{1/2+\eps}
+ (1+|\Im u|+|\Im s|)^{C_M}.
+\end{equation}
+Stirling gives
+$g(s,t)\ll T^{-3/8}(1+|\Im s|)^{C_M}$; the factor $e^{s^2}$ is Gaussian
+and $\Gamma(u)$ has exponential decay.  Completing both vertical integrals
+and the $h,k$ sums yields
+\begin{equation}\label{eq:D-T-polynomial}
+ \sup_\Omega|\mathscr D_T|
+ \ll L^{C_M}T^{1-3/8+B_0/8}HK\,T^\eps
+ \ll T^{B_0/8+3}.
+\end{equation}
+This estimate is for the assembled boundary object; no individual
+meromorphic beta branch has been continued through a collision.
+
+It follows from \eqref{eq:A-T-polynomial}, \eqref{eq:R-T-polynomial}, and
+\eqref{eq:D-T-polynomial} that
+\begin{equation}\label{eq:end-error-polynomial}
+ F_T(\mathsf a,\mathsf b,\mathsf c)
+ :=\Eend(\mathsf a/L,\mathsf b/L,\mathsf c/L),
+ \qquad
+ \sup_\Omega|F_T|\ll T^{C_2},
+ \quad C_2=\frac{B_0}{2}+5.
+\end{equation}
+Thus the enlarged scaled domain, its collar, and the polynomial exponent are
+all fixed independently of $T$.  On $U$, the good-patch assembly
+\eqref{eq:good-patch-assembly} gives
+$\sup_U|F_T|\ll_NT^{-N}$ for every fixed $N$.
+
+The parameter order is acyclic.  First fix $B_0>2$, $C_0$, and the desired
+final saving $D$; this fixes $K_0\Subset\Omega$, $U\Subset\Omega$, and the
+propagation exponent $\omega=\omega(C_0)>0$.  Next choose one integer $M$
+such that, for $\sigma=M+1/2$,
+\begin{equation}\label{eq:M-before-N}
+                         (B_0-1)\sigma>D+B_0+20.
+\end{equation}
+This coarse condition also dominates the later permutation and
+diagonal-boundary left-line requirements.  With this $M$ fixed,
+$C_2=B_0/2+5$ is fixed; only the lower threshold for $T$ may depend on
+$M,C_0$.  Now choose
+\begin{equation}\label{eq:N-after-M}
+ N=\left\lceil\frac{D+(1-\omega)C_2}{\omega}\right\rceil+2
+\end{equation}
+and afterward the endpoint integration-by-parts and product-tail orders
+needed for the good-patch $O(T^{-N})$.  In particular $M$ is independent of
+$N$.  Applying \Cref{lem:two-constants} to $F_T$ on the fixed geometry
+$U\Subset\Omega$, with target $K_0$, proves
+\eqref{eq:full-continuation-result}.
+\end{proof}
+
+Only the difference in \eqref{eq:full-continuation-result} has been
+propagated.  In particular, no power-sized estimate for an individual
+diagonal boundary term has been continued by unique continuation.

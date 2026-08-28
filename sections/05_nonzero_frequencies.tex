@@ -1,0 +1,369 @@
+\section{The nonzero Poisson frequencies}
+\label{sec:nonzero}
+
+We prove the estimate that determines the range of \Cref{thm:main}.  The
+argument uses only finite completion and the classical Weil bound
+\cite{Weil1948}; it does not correlate the two coefficient sequences.
+
+For a dyadic block as in \Cref{sec:poisson}, the $t$-integral and the change
+of variables in \eqref{eq:poisson-jacobian} must be kept together.  Along
+$hn-klm=r$, the phase is $x/(x+r)$, and
+\begin{equation}\label{eq:phase-derivative}
+ x\frac{d}{dx}\left(t\log\frac{x}{x+r}\right)
+ \ll\frac{T|r|}{S}\ll T^\eps.
+\end{equation}
+Consequently the Poisson integral has size $TS$, with normalized derivatives
+bounded by $TS\,T^\eps$.  The factor $T$ here is essential.
+
+For $d=(h,km)$ as in \eqref{eq:gcd-decomposition}, integration by parts in
+the Poisson integral restricts a nonzero Fourier frequency to
+\begin{equation}\label{eq:a-range}
+ 0<|a|\leq A_d,\qquad
+ A_d\ll\frac{H_0K_0M_0}{dS}T^\eps
+      \asymp\frac{S}{dL_0N_0}T^\eps.
+\end{equation}
+Also
+\begin{equation}\label{eq:rho-range}
+                  0<|\rho|\ll \frac{R_0}{d},\qquad
+                  R_0=ST^{-1+\eps}.
+\end{equation}
+If either upper bound is less than one, the corresponding block is empty.
+
+\begin{lemma}[Incomplete reciprocal sum]\label{lem:reciprocal-sum}
+Let $q,c\geq1$, and let $F$ be supported in an interval of length $X$ with
+$F^{(j)}\ll_j ZX^{-j}$.  Then
+\begin{equation}\label{eq:reciprocal-sum}
+ \sum_{(u,q)=1}F(u)e\!\left(\frac{c\overline u}{q}\right)
+ \ll_\eps Zq^\eps
+ \left(Xq^{-1/2}+q^{1/2}\right)(c,q)^{1/2}.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:gcd-average}
+                  \sum_{q\asymp Q}(c,q)^{1/2}
+                  \ll_\eps Qc^\eps.
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+With the Fourier-transform convention compatible with $e(x)=e^{2\pi ix}$,
+finite completion gives
+\[
+ \sum_{(u,q)=1}F(u)e\!\left(\frac{c\overline u}{q}\right)
+ =\frac1q\sum_{n\in\mathbb Z}S(c,n;q)\widehat F(n/q),
+\]
+where
+\[
+ S(c,n;q)=\sum_{u\bmod q}^{*}
+ e\!\left(\frac{c\overline u+nu}{q}\right).
+\]
+For every fixed $A\geq2$, repeated integration by parts gives
+\[
+ |\widehat F(\xi)|\ll_A ZX(1+X|\xi|)^{-A},
+ \qquad
+ \sum_{n\in\mathbb Z}|\widehat F(n/q)|\ll_A Z(X+q).
+\]
+The Weil bound
+$|S(c,n;q)|\leq\tau(q)(c,n,q)^{1/2}q^{1/2}$ therefore proves
+\eqref{eq:reciprocal-sum}, uniformly for both $X\leq q$ and $X>q$; the
+term $n=0$ is the Ramanujan sum and obeys the same majorant.  Finally,
+$(c,q)^{1/2}\leq\sum_{e\mid(c,q)}e^{1/2}$ gives
+\[
+ \sum_{q\asymp Q}(c,q)^{1/2}
+ \leq\sum_{e\mid c}e^{1/2}\#\{q\asymp Q:e\mid q\}
+ \ll Q\sum_{e\mid c}e^{-1/2}\ll_\eps Qc^\eps,
+\]
+which is \eqref{eq:gcd-average}.
+\end{proof}
+
+For the coefficient block put
+\begin{equation}\label{eq:coefficient-block-norms}
+ \mathcal A_{H_0}=\max_{h\asymp H_0}|a_h|,
+ \qquad
+ \mathcal B_{K_0}=\sum_{k\asymp K_0}|b_k|.
+\end{equation}
+
+\begin{proposition}[A fixed-orientation block estimate]
+\label{prop:block-weil}
+The contribution of the nonzero frequencies obtained by Poisson summation in
+$l$ satisfies
+\begin{equation}\label{eq:block-weil}
+ E^{(l)}(H_0,K_0,L_0,M_0,N_0)
+ \ll_\eps T^\eps\mathcal A_{H_0}\mathcal B_{K_0}
+ H_0^{1/2}(H_0+M_0).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Choose the dyadic partition using fixed functions
+\[
+ \omega_H,\omega_K,\omega_L,\omega_M,\omega_N
+ \in C_c^\infty((1/2,3)).
+\]
+All their derivatives are bounded independently of the block parameters.
+We first expose the smooth weight to which
+\Cref{lem:reciprocal-sum} is applied.
+
+Fix $d,a,\rho$ and $k$, and write
+\begin{equation}\label{eq:d-k-split}
+ g=(d,k),\qquad d=g\delta,\qquad k=gk_1,\qquad m=\delta m_1.
+\end{equation}
+The equality $(d,k)=g$ implies $(\delta,k_1)=1$: for every prime $p$,
+the minimum of the $p$-adic valuations of $d/g$ and $k/g$ is zero.
+Since $d\mid km$, it follows that $\delta\mid m$, so $m_1$ is an integer.
+If $h=dq$, then
+\begin{equation}\label{eq:exact-coprimality}
+ (h,km)=d
+ \quad\Longleftrightarrow\quad
+ (q,k_1m_1)=1,
+ \qquad \frac{km}{d}=k_1m_1.
+\end{equation}
+All substitutions are uniquely determined by $d,h,k,m$; conversely the
+right side implies the original gcd condition.  Thus this is a bijective
+parametrization, with neither omission nor repeated counting.
+
+Put $r=d\rho$ and, after the change of variables $x=kml$ from
+\eqref{eq:poisson-jacobian}, set
+\begin{equation}\label{eq:completed-l-n-x}
+ \ell_x=\frac{x}{km},\qquad n_x=\frac{x+d\rho}{h}.
+\end{equation}
+For the direct AFE piece define the exact normalized amplitude
+\begin{align}
+ \mathscr W^+_{h,k,m,d\rho}(x,t)
+ ={}&
+ \frac{(H_0K_0L_0M_0N_0)^{1/2}H_0K_0M_0}
+ {hkm\,(hk\ell_xmn_x)^{1/2}}\notag\\
+ &\times\omega_H(h/H_0)\omega_K(k/K_0)
+ \omega_L(\ell_x/L_0)\notag\\
+ &\times\omega_M(m/M_0)\omega_N(n_x/N_0)
+ \ell_x^{-\alpha}m^{-\beta}n_x^{-\gamma}
+ w(t)\left(\frac{x+d\rho}{x}\right)^{it}
+ \notag\\
+ &\times
+ \V^+\!\left(\frac{x}{kmY},\frac{m(x+d\rho)}h,t\right).
+ \label{eq:completed-normalized-amplitude}
+\end{align}
+The cutoffs make the integrand zero unless $x>0$ and $x+d\rho>0$.
+The dual amplitude is obtained by the exact substitution
+\eqref{eq:dual-substitution}; its additional factor
+$X_{\beta,\gamma}(t)$ is independent of $m_1$ and is
+$T^{O(1/\log T)}$ on the support of $w$.
+
+For either AFE sign let
+\begin{equation}\label{eq:completed-actual-weight}
+ \mathfrak F_{d,a,\rho,q,k}^{\pm}(m_1)
+ =\frac1{TS}\int_{\mathbb R}\int_{\mathbb R}
+ \mathscr W^{\pm}_{dq,k,\delta m_1,d\rho}(x,t)
+ e\!\left(-\frac{ax}{qk\delta m_1}\right)\dd x\dd t.
+\end{equation}
+Combining \eqref{eq:direct-summand}, \eqref{eq:poisson-formula}, and
+\eqref{eq:poisson-jacobian}, the contribution for fixed
+$d,a,\rho,q,k,m_1$, before the reciprocal phase is summed, is exactly
+\begin{equation}\label{eq:completed-exact-factorization}
+ \frac{d\,TS}
+ {(H_0K_0L_0M_0N_0)^{1/2}H_0K_0M_0}
+ a_{dq}\overline{b_k}\,
+ \mathfrak F_{d,a,\rho,q,k}^{\pm}(m_1)
+ e\!\left(-\frac{a\rho\overline{k_1m_1}}q\right),
+\end{equation}
+up to the common sign convention for the two exponentials.  The factor $d$
+is precisely the numerator of the density $d/(hkm)$ and has not been hidden
+in the smooth weight.
+
+We now verify the completion hypotheses.  Fix an auxiliary
+$0<\eps_0<\eps$ and invoke the localization, frequency truncation, and
+divisor estimates in this proof with $\eps_0$ in place of $\eps$; its size
+will be fixed after the finite completion order is known.  The support is
+contained in a
+fixed multiple of an interval of length
+\begin{equation}\label{eq:completed-Xm}
+                  X_m=\frac{M_0}{\delta}=\frac{M_0g}{d}.
+\end{equation}
+If this interval contains an integer, then $X_m\gg1$; otherwise the sum is
+empty.  On the $x$-support one has
+$x\asymp K_0L_0M_0\asymp S$, where
+$S=H_0N_0+K_0L_0M_0$ is fixed throughout the block.  Put
+$D_x=x\partial_x$.  Since $|d\rho|/x\ll T^{-1+\eps_0}$, the identity
+\[
+ \log\frac{x}{x+d\rho}=-\int_0^{d\rho}\frac{\dd v}{x+v}
+\]
+gives, for every fixed $j\geq0$,
+\begin{equation}\label{eq:completed-phase-x-derivatives}
+ \left|D_x^j\left[t\log\frac{x}{x+d\rho}\right]\right|
+ \ll_j\frac{T|d\rho|}{S}\ll T^{\eps_0}.
+\end{equation}
+The segment $x+v$ remains comparable with $S$, also when $d\rho<0$.
+Repeated differentiation of the exponential therefore costs only
+$T^{O_j(\eps_0)}$.
+
+At fixed $x$ the $t$-oscillation is independent of $m_1$, while
+\begin{equation}\label{eq:completed-variable-derivatives}
+ m_1\partial_{m_1}\ell_x=-\ell_x,\qquad
+ m_1\partial_{m_1}n_x=0,\qquad
+ m_1\partial_{m_1}\left[t\log\frac{x}{x+d\rho}\right]=0.
+\end{equation}
+If the moving support is instead fixed by $x=k\delta m_1L_0y$, then
+\[
+ \left.m_1\partial_{m_1}\right|_y
+ =\left.m_1\partial_{m_1}\right|_x+D_x,
+\]
+so \eqref{eq:completed-phase-x-derivatives} gives the same conclusion.
+In particular, this change does not differentiate the fixed block-scale
+$S$.  For
+\[
+ \xi=\frac{x}{kmY},\qquad \chi=\frac{m(x+d\rho)}h,
+\]
+one has
+\begin{equation}\label{eq:completed-kernel-derivatives}
+ m_1\partial_{m_1}\xi=-\xi,\qquad
+ m_1\partial_{m_1}\chi=\chi.
+\end{equation}
+Thus \eqref{eq:double-weight-bound} controls every derivative falling on
+$\V^\pm$.  Derivatives of the dyadic cutoffs cost $X_m^{-1}$, and all
+algebraic powers have bounded logarithmic derivatives on their supports.
+Finally,
+\begin{equation}\label{eq:completed-inner-phase-bound}
+ \left|\frac{ax}{qkm}\right|
+ \ll \frac{|a|dS}{H_0K_0M_0}
+ \ll T^{\eps_0}
+\end{equation}
+by \eqref{eq:a-range}; hence every fixed number of derivatives of the inner
+Poisson Fourier phase is also $T^{O_j(\eps_0)}$.
+
+The $x$-support has length $O(S)$ and the $t$-support length $O(T)$.
+Differentiating under the integrals in
+\eqref{eq:completed-actual-weight} therefore yields, for every fixed
+$j\geq0$,
+\begin{equation}\label{eq:completed-weight-derivatives}
+ \left|(m_1\partial_{m_1})^j
+ \mathfrak F_{d,a,\rho,q,k}^{\pm}(m_1)\right|
+ \ll_jT^{O_j(\eps_0)},
+ \qquad
+ \left|\frac{d^j}{dm_1^j}\mathfrak F_{d,a,\rho,q,k}^{\pm}(m_1)\right|
+ \ll_jT^\eps X_m^{-j}.
+\end{equation}
+Here the localization loss $\eps_0$ is chosen sufficiently small in terms
+of the final $\eps$ and the fixed number of derivatives used in completion.
+No derivative order depends on $T$.
+
+Since $(q,k_1)=1$, the coefficient in the reciprocal phase may be taken as
+$c=\pm a\rho\overline{k_1}\pmod q$, for which
+$(c,q)=(a\rho,q)$.  Applying \Cref{lem:reciprocal-sum} to the actual weight
+gives
+\begin{align}
+ &\sum_{\substack{m_1\asymp M_0g/d\\(m_1,q)=1}}
+ \mathfrak F_{d,a,\rho,q,k}^{\pm}(m_1)
+ e\!\left(\frac{\pm a\rho\overline{k_1m_1}}q\right)\notag\\
+ &\qquad\ll T^\eps
+ \left(\frac{M_0g}{d}q^{-1/2}+q^{1/2}\right)(a\rho,q)^{1/2}.
+ \label{eq:m-reciprocal}
+\end{align}
+Put $Q_d=H_0/d$.  By \eqref{eq:gcd-average}, restriction to
+$(q,k_1)=1$ can only decrease the majorant, and
+\begin{align}
+ &\sum_{q\asymp Q_d}
+ \left(\frac{M_0g}{d}q^{-1/2}+q^{1/2}\right)
+ (a\rho,q)^{1/2}\notag\\
+ &\qquad\ll T^\eps
+ \left(\frac{M_0gH_0^{1/2}}{d^{3/2}}
+       +\frac{H_0^{3/2}}{d^{3/2}}\right).
+ \label{eq:completed-q-sum}
+\end{align}
+Indeed these are respectively $X_mQ_d^{1/2}$ and $Q_d^{3/2}$.
+The factor $(a\rho)^\eps$ is absorbable because all retained dyadic
+parameters are bounded by a fixed power of $T$; the auxiliary exponent is
+chosen before relabelling the total loss as $T^\eps$.
+
+Take the supremum norm of $a_{dq}$ and sum over $k$.  The sets
+$\{k:(d,k)=g\}$ partition the $k$-block.  The second term of
+\eqref{eq:completed-q-sum} is independent of $g$, and in the first we use
+only $g\leq d$.  Therefore
+\begin{align}
+ &\sum_{\substack{h\asymp H_0,\,k\asymp K_0,\,m\asymp M_0\\(h,km)=d}}
+ a_h\overline{b_k}\,
+ \mathfrak F_{d,a,\rho,h/d,k}^{\pm}(m/\delta)
+ e\!\left(\frac{\pm a\rho\overline{km/d}}{h/d}\right)
+ \notag\\
+ &\hspace{22mm}\ll
+ T^\eps\mathcal A_{H_0}\mathcal B_{K_0}
+ \left(\frac{H_0^{3/2}}{d^{3/2}}
+       +\frac{M_0H_0^{1/2}}{d^{1/2}}\right).
+ \label{eq:hkm-completion}
+\end{align}
+We finish by multiplying every scalar factor.  After the density numerator
+$d$ is removed from \eqref{eq:completed-exact-factorization}, the original
+Dirichlet normalization, the remaining progression density and Jacobian,
+and the actual $t,x$-integral size give
+\begin{equation}\label{eq:block-normalization}
+ \mathcal C_0=
+ \frac{TS}{(H_0K_0L_0M_0N_0)^{1/2}H_0K_0M_0}.
+\end{equation}
+More explicitly, the original normalization is
+$(H_0K_0L_0M_0N_0)^{-1/2}$, the progression density is $d/H_0$, the
+$x=kml$ Jacobian costs $(K_0M_0)^{-1}$, and the Poisson integral has size
+$TS$.  For fixed $d$, the density numerator, the number of frequencies,
+and the number of nonzero shifts contribute
+\begin{equation}\label{eq:d-frequency-count}
+ d\cdot\frac{A_0}{d}\cdot\frac{R_0}{d}
+ =\frac{A_0R_0}{d},\qquad
+ A_0=\frac{H_0K_0M_0}{S}T^{\eps_0},\quad
+ R_0=\frac ST T^{\eps_0}.
+\end{equation}
+Multiplying \eqref{eq:hkm-completion}--\eqref{eq:d-frequency-count} and
+extending the $d$-sum to all positive integers gives
+\begin{align}
+ E^{(l)}(H_0,K_0,L_0,M_0,N_0)
+ \ll{}&T^\eps\mathcal C_0A_0R_0
+ \mathcal A_{H_0}\mathcal B_{K_0}\notag\\
+ &\times\left(
+ H_0^{3/2}\sum_{d\geq1}d^{-5/2}
+ +M_0H_0^{1/2}\sum_{d\geq1}d^{-3/2}\right).
+ \label{eq:completed-d-series}
+\end{align}
+Both $d$-series converge.  Finally, by \eqref{eq:S-balance},
+\begin{equation}\label{eq:completed-scalar-cancellation}
+ \mathcal C_0A_0R_0
+ =\frac{S}{(H_0K_0L_0M_0N_0)^{1/2}}T^{O(\eps_0)}
+ \asymp T^{O(\eps_0)}.
+\end{equation}
+Choosing $\eps_0$ in terms of the final $\eps$ proves
+\eqref{eq:block-weil}.
+\end{proof}
+
+\begin{proposition}[Nonzero-frequency estimate]
+\label{prop:nonzero-global}
+With the fixed $l$-Poisson orientation,
+\begin{equation}\label{eq:nonzero-norm}
+ \mathcal R_{\neq0}^{(l)}
+ \ll_\eps T^\eps\lVert a\rVert_\infty H^{3/2}
+                    \sum_{k\leq K}|b_k|.
+\end{equation}
+In particular, under \eqref{eq:coeff-bounds},
+\begin{equation}\label{eq:nonzero-final}
+                       \mathcal R_{\neq0}^{(l)}
+                       \ll_\eps T^\eps KH^{3/2}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For a nonempty nonzero-frequency block, $r=d\rho\neq0$ and
+\eqref{eq:r-localization} imply
+\begin{equation}\label{eq:nonempty-S}
+                          S\gg dT^{1-\eps}.
+\end{equation}
+Since $N_0\asymp S/H_0$ and $M_0N_0\ll T^{1+\eps}$,
+\begin{equation}\label{eq:M-less-H}
+ M_0\ll\frac{H_0T^{1+\eps}}S
+      \ll\frac{H_0}{d}T^{2\eps}\leq H_0T^{2\eps}.
+\end{equation}
+Substitution in \eqref{eq:block-weil}, followed by the logarithmic dyadic
+sums and the two AFE pieces, gives \eqref{eq:nonzero-norm}.  The divisor
+bounds then give \eqref{eq:nonzero-final}.
+\end{proof}
+
+\begin{remark}\label{rem:no-minimum}
+Poisson summation in another variable gives a separately valid estimate for
+a different decomposition, but its zero frequency is different.  We do not
+take a minimum over Poisson orientations.  The fixed orientation used in
+\Cref{prop:nonzero-global} is exactly the one whose zero mode is evaluated in
+the following sections.
+\end{remark}

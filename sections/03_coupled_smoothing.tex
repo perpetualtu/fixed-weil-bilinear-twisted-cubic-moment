@@ -1,0 +1,181 @@
+\section{Coupled smoothing and the approximate functional equation}
+\label{sec:smoothing}
+
+Fix $B_0>2$ and put $Y=T^{B_0}$.  An integer $M\geq1$ will be chosen after
+the required final saving has been fixed.  Define
+\begin{equation}\label{eq:R-M}
+                         R_M(u)=\prod_{j=1}^{M}(1+u/j)
+\end{equation}
+and
+\begin{align}
+ \mathcal G(s,u)
+ ={}&e^{s^2}R_M(u)
+ \frac{\bigl((1-\alpha-\gamma-u)^2-s^2\bigr)
+       \bigl((1-\alpha+\beta-u)^2-s^2\bigr)}
+      {(1-\alpha-\gamma)^2(1-\alpha+\beta)^2},
+ \label{eq:G-two-variable}\\
+ G(s)={}&\mathcal G(s,0),\qquad Q(u)=\mathcal G(0,u).
+ \label{eq:G-Q}
+\end{align}
+Thus $G$ is even, $Q(0)=1$, and the four $s$-zeros are
+\begin{equation}\label{eq:zeta-one-zeros}
+ s=\pm(1-\alpha-\gamma-u),\qquad
+ s=\pm(1-\alpha+\beta-u).
+\end{equation}
+The kernel is invariant under
+$(\beta,\gamma)\mapsto(-\gamma,-\beta)$.  In particular, no denominator in
+\eqref{eq:G-two-variable} becomes small in the shift range
+\eqref{eq:shift-range}.
+
+For shifts $B,C_1$, set
+\begin{equation}\label{eq:g-def}
+ g_{B,C_1}(s,t)=\pi^{-s}
+ \frac{
+ \Gamma\bigl((\frac12+B+s+it)/2\bigr)
+ \Gamma\bigl((\frac12+C_1+s-it)/2\bigr)}{
+ \Gamma\bigl((\frac12+B+it)/2\bigr)
+ \Gamma\bigl((\frac12+C_1-it)/2\bigr)}.
+\end{equation}
+The factor $\pi^{-s}$ is included here, so the Mellin argument below is
+$mn$, rather than $\pi mn$.
+
+Define
+\begin{align}
+ V_u^+(x,t)&=\frac{1}{2\pi i}\int_{(2)}
+      \frac{\mathcal G(s,u)}{s}g_{\beta,\gamma}(s,t)x^{-s}\dd s,
+ \label{eq:V-plus}\\
+ V_u^-(x,t)&=\frac{1}{2\pi i}\int_{(2)}
+      \frac{\mathcal G(s,u)}{s}g_{-\gamma,-\beta}(s,t)x^{-s}\dd s.
+ \label{eq:V-minus}
+\end{align}
+
+\begin{lemma}[Unnormalized two-piece approximate functional equation]
+\label{lem:afe}
+For every $A_0>0$, uniformly for $t\in\supp w$, for the shifts in
+\eqref{eq:shift-range}, and for $|\Im u|\leq(\log T)^2$, one has
+\begin{align}
+ Q(u)&\zeta\!\left(\tfrac12+\beta+it\right)
+       \zeta\!\left(\tfrac12+\gamma-it\right) \notag\\
+ ={}&\sum_{m,n\geq1}\frac{(n/m)^{it}}
+  {m^{1/2+\beta}n^{1/2+\gamma}}V_u^+(mn,t) \notag\\
+ &+X_{\beta,\gamma}(t)
+ \sum_{m,n\geq1}\frac{(n/m)^{it}}
+  {m^{1/2-\gamma}n^{1/2-\beta}}V_u^-(mn,t)
+ +O_{A_0}(T^{-A_0}).
+ \label{eq:afe}
+\end{align}
+The error remains $O_{A_0}(T^{-A_0})$ after integration against
+$\Gamma(u)$ on any fixed vertical line.
+\end{lemma}
+
+\begin{proof}
+On $\Re s=2$, expand the two zeta functions in
+\[
+ \frac{1}{2\pi i}\int_{(2)}\frac{\mathcal G(s,u)}s
+ g_{\beta,\gamma}(s,t)
+ \zeta\!\left(\tfrac12+\beta+s+it\right)
+ \zeta\!\left(\tfrac12+\gamma+s-it\right)\dd s.
+\]
+Move the line to $\Re s=-2$, apply both functional equations, and replace
+$s$ by $-s$.  Evenness of $\mathcal G$ produces the dual sum, while the
+residue at $s=0$ is $Q(u)$ times the zeta product.
+
+There are also four completed-zeta poles,
+\[
+ \tfrac12-\beta-it,\quad-\tfrac12-\beta-it,
+ \quad\tfrac12-\gamma+it,\quad-\tfrac12-\gamma+it.
+\]
+Their imaginary parts have size $T$, and $e^{s^2}=\exp(-T^2+O(T))$ there.
+Their residues and the horizontal integrals are therefore smaller than every
+power of $T$.  This proves \eqref{eq:afe}.  Notice that no division by $Q(u)$
+has been made.
+\end{proof}
+
+The smoothed long zeta factor is initially defined on an absolutely
+convergent line by
+\begin{equation}\label{eq:zeta-star}
+ \zeta_\alpha^*\!\left(\tfrac12+it\right)
+ =\frac{1}{2\pi i}\int_{(1)}\Gamma(u)Q(u)Y^u
+ \zeta\!\left(\tfrac12+\alpha+u+it\right)\dd u.
+\end{equation}
+There are two distinct contour operations.  To produce a Dirichlet
+expansion, keep $\Re u=1$, insert \Cref{lem:afe}, and expand the three
+Dirichlet series there, with the AFE $s$-line initially at $2$.  For finite
+Dirichlet truncations move only the inverse-Mellin kernel to a fixed line
+\begin{equation}\label{eq:cu-range}
+                           0<c_u<\frac14.
+\end{equation}
+No pole is crossed.  The uniform product bounds in \Cref{lem:double-weight}
+then remove the truncations.  Thus the long zeta series is never expanded on
+the nonconvergent $c_u$-line.
+
+For comparison with the original zeta function, instead keep the zeta factor
+in \eqref{eq:zeta-star} unexpanded and move the collective $u$-line.  The
+identity
+\begin{equation}\label{eq:gamma-RM}
+                  \Gamma(u)R_M(u)=\frac{\Gamma(u+M+1)}{M!\,u}
+\end{equation}
+shows that the poles $-1,\ldots,-M$ are killed.  Its inverse Mellin weight is
+\begin{equation}\label{eq:WM}
+ W_M(x)=e^{-x}\sum_{j=0}^{M}\frac{x^j}{j!}
+       =1+O_M(x^{M+1})\qquad(x\longrightarrow0).
+\end{equation}
+The remaining polynomial factors in $Q/R_M$ act by a fixed polynomial in
+$-x\frac{d}{dx}$ and have value one at $u=0$.  Moving
+\eqref{eq:zeta-star} to $\Re u=-M-1/2$ therefore crosses only $u=0$ and the
+moving zeta pole $u=1/2-\alpha-it$.  The latter is exponentially small by
+Stirling.  Hence
+\begin{equation}\label{eq:zeta-star-recovery}
+ \zeta_\alpha^*\!\left(\tfrac12+it\right)
+ =\zeta\!\left(\tfrac12+\alpha+it\right)
+ +O_{M,C}\!\left((\log T)^{C_M}(T/Y)^{M+1/2}\right)+O(e^{-cT}).
+\end{equation}
+For fixed $B_0>2$, $M$ can make this error smaller than any prescribed power.
+
+Combining the two Mellin transforms, write
+\begin{equation}\label{eq:coupled-weight}
+ \V^\pm(\xi,x,t)=\frac{1}{(2\pi i)^2}
+ \int_{(c_u)}\int_{(2)}\Gamma(u)\frac{\mathcal G(s,u)}s
+ g_\pm(s,t)\xi^{-u}x^{-s}\dd s\dd u,
+\end{equation}
+where $g_+=g_{\beta,\gamma}$ and $g_-=g_{-\gamma,-\beta}$.
+
+\begin{lemma}[Full-contour double-weight bounds]\label{lem:double-weight}
+For nonnegative integers $i,j,r$ and every $A_0>0$,
+\begin{equation}\label{eq:double-weight-bound}
+ \xi^i x^j
+ \left|\partial_\xi^i\partial_x^j\partial_t^r
+ \V^\pm(\xi,x,t)\right|
+ \ll_{i,j,r,A_0,M}
+ (\log T)^{C_M}T^{-r}(1+\xi)^{-A_0}(1+x/T)^{-A_0}.
+\end{equation}
+Every contour used in this bound is a complete infinite vertical line.
+\end{lemma}
+
+\begin{proof}
+Stirling's formula gives
+\[
+ \partial_t^r g_\pm(s,t)
+ \ll T^{\Re s-r}(1+|s|)^{O(r)}.
+\]
+The factors $e^{s^2}$ and $\Gamma(u)$ give Gaussian and exponential decay in
+the respective imaginary directions.  Choose
+\[
+ 0<\delta_u<1,\qquad 0<\delta_s<\tfrac12-C/\log T.
+\]
+For $\xi\geq1$, move $u$ arbitrarily far right.  For $\xi\leq1$, move it to
+$\Re u=-\delta_u$; only $u=0$ is crossed.  Similarly, for $x/T\geq1$ move
+$s$ right, while for $x/T\leq1$ move it to
+$\Re s=-\delta_s$; only $s=0$ is crossed.  In the quadrant where both
+variables are small, retain both single residues and their common
+$(u,s)=(0,0)$ residue, which equals one.  In either mixed quadrant, put the
+residue from the small-variable move on the right-shifted contour of the large
+variable.  This gives
+\[
+                    \V^\pm(\xi,x,t)
+                    \ll_{A_0}(1+\xi)^{-A_0}(1+x/T)^{-A_0}.
+\]
+Normalized $\xi$- and $x$-derivatives insert polynomials in $u$ and $s$;
+$t$-derivatives give the stated $T^{-r}$.  Exponential decay justifies every
+move on full contours and avoids endpoint terms from hard height truncation.
+\end{proof}
