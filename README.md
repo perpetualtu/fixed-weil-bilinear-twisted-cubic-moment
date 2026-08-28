@@ -46,6 +46,14 @@ It records the $c=q$, $X=q^2$ omitted-factor scaling and checks that the two
 terms in the corrected estimate are both majorized by the same dyadic gcd
 average. It is a finite regression test, not a proof of the analytic lemma.
 
+The focused Proposition 6.4 beta-branch check is
+
+    python verification/check_regulator_bridge.py
+
+It samples points strictly inside all four Tonelli chambers and numerically
+checks (6.41)--(6.44). The compact-uniform domination and ordered-limit
+arguments remain analytic parts of Proposition 6.4.
+
 ## Integrity
 
 MANIFEST.sha256 covers every distributed payload file except the manifest

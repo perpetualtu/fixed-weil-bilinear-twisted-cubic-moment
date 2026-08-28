@@ -32,6 +32,21 @@ orientation, three main terms, and final error term were not changed.
 
 ## FIXED
 
+- Defined the finite-$R$, finite-$\kappa$, finite-$V$ source and destination
+  for each direct/dual and positive/negative branch.  At finite $V$ they now
+  satisfy the exact rectangle identity with the two horizontal $s$-edges;
+  equality of the complete vertical contours is asserted only after those
+  edges vanish as $V\to\infty$.
+- Added an $R,\kappa$-independent source majorant uniform on compact subsets
+  of the external $A$-strip, and a separate absolute majorant uniform on
+  compact subsets of each genuine Tonelli chamber.  Outside the Tonelli
+  chambers only source holomorphy and the one-variable identity theorem are
+  used.
+- Made the recovery order explicit: restore complete contours, take
+  $R\to\infty$, remove the Abel factor, evaluate the beta integral, recover
+  the $\rho$-series, recover the $m$/gcd-series, and only then apply the zeta
+  functional equation and finite Euler identity.
+
 - Rewrote Lemma 5.1 and its application in (5.20) so that the factor
   $(c,q)^{1/2}$ is displayed separately in both terms.  The source already
   factored it globally across the two terms, but the termwise form prevents

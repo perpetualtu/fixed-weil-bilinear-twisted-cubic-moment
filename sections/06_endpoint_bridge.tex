@@ -295,17 +295,93 @@ For the dual positive and negative branches, respectively, they are
  \max\{1-\Re(\lambda-B),\Re(\lambda+C_1)\}
  <\Re s<\frac12+\Re B.
 \end{equation}
-For each branch, the regulated source and destination agree exactly.  After
-the limits in \eqref{eq:four-branch-order}, this equality extends from the
-relevant Tonelli open set to \eqref{eq:external-A-strip} by the
-one-variable identity theorem in $A$, with $B,C_1$ fixed.  No continuation
-in the separate symbols $A+u$ and $s$ is used.
+For finite $R,\kappa,V$, the source and destination are the explicit objects
+defined in the proof and satisfy an exact rectangle identity, including its
+two horizontal $s$-edges.  After $V\to\infty$ those edges vanish and the
+complete regulated source and destination agree exactly.  After the remaining
+limits in \eqref{eq:four-branch-order}, this equality extends from the relevant
+Tonelli open set to \eqref{eq:external-A-strip} by the one-variable identity
+theorem in $A$, with $B,C_1$ fixed.  No continuation in the separate symbols
+$A+u$ and $s$ is used.
 \end{proposition}
 
 \begin{proof}
+We first define the two sides before taking any limit.  For
+$\epsilon\in\{{\rm d},{\rm q}\}$ put
+\begin{equation}\label{eq:branch-shift-data}
+ \begin{array}{c|ccc}
+ \epsilon&B_\epsilon&C_\epsilon&\mathcal X_\epsilon(t)\\ \hline
+ {\rm d}&B&C_1&1\\
+ {\rm q}&-C_1&-B&X_{B,C_1}(t).
+ \end{array}
+\end{equation}
+Thus $z_\epsilon=\lambda+C_\epsilon+s$ and
+$\nu_\epsilon=1-\lambda+B_\epsilon+s$.  For $\rho\geq1$ and
+$\mathfrak r=d\rho$, where $d=(h,km)$, define the physical variables
+\begin{equation}\label{eq:branch-physical-variables}
+ \begin{array}{c|cc}
+ \sigma&y_\sigma(v)&x_\sigma(v)\\ \hline
+ +&v&v+\mathfrak r\\
+ -&v+\mathfrak r&v
+ \end{array}
+ \qquad(v>0),\qquad
+ l_\sigma(v)=\frac{y_\sigma(v)}{km},\quad
+ n_\sigma(v)=\frac{x_\sigma(v)}h.
+\end{equation}
+Let $[a]_V$ denote the upward segment $a-iV$ to $a+iV$, and set
+\begin{equation}\label{eq:finite-physical-regulator}
+ E_{R,\kappa,\sigma}(m,\rho,v)
+ =\mathbf 1_{\{m,\rho\leq R\}}
+  \mathbf 1_{\{R^{-1}\leq l_\sigma(v),n_\sigma(v)\leq R\}}
+  e^{-\kappa\{m+\rho+l_\sigma(v)+n_\sigma(v)\}}.
+\end{equation}
+For $\lambda=A+u$, define
+\begin{align}
+ \mathfrak J_{\epsilon,\sigma}^{R,\kappa}
+ (s,u;t,m,\rho)
+ :={}&d\,h^{-1/2+C_\epsilon+s}k^{-1/2+\lambda}
+ Y^u\notag\\
+ &\times m^{-1+\lambda-B_\epsilon-s}
+ \int_0^\infty E_{R,\kappa,\sigma}(m,\rho,v)\notag\\
+ &\hspace{14mm}\times
+ y_\sigma(v)^{-1/2-\lambda-it}
+ x_\sigma(v)^{-1/2-C_\epsilon+it-s}\dd v.
+ \label{eq:finite-branch-physical-integral}
+\end{align}
+For fixed $h,k$, the finite source is
+\begin{align}
+ \mathscr S_{\epsilon,\sigma}^{R,\kappa,V}(A;h,k)
+ :={}&\int_{\R}w(t)\sum_{m\leq R}\sum_{\rho\leq R}
+ \frac1{(2\pi i)^2}\int_{[c_u]_V}\int_{[2]_V}
+ \Gamma(u)\frac{\mathcal G(s,u)}s\notag\\
+ &\hspace{13mm}\times\mathcal X_\epsilon(t)
+ g_{B_\epsilon,C_\epsilon}(s,t)
+ \mathfrak J_{\epsilon,\sigma}^{R,\kappa}
+ (s,u;t,m,\rho)\dd s\dd u\dd t.
+ \label{eq:finite-source-definition}
+\end{align}
+This is exactly the $\sigma$-branch of the endpoint-deleted zero mode after
+inserting the truncated coupled kernel \eqref{eq:coupled-weight}; all sums and
+physical integrals are finite, so their order is immaterial.  On a compact
+subset of the relevant Tonelli open set choose a single line
+$\Re s=\sigma_{\epsilon,\sigma}>0$ satisfying the corresponding strict
+inequalities in
+\eqref{eq:positive-direct-tonelli}--\eqref{eq:dual-tonelli}.  The finite
+destination is the same displayed expression with $[2]_V$ replaced by
+$[\sigma_{\epsilon,\sigma}]_V$:
+\begin{equation}\label{eq:finite-destination-definition}
+ \mathscr T_{\epsilon,\sigma}^{R,\kappa,V}(A;h,k)
+ :=\mathscr S_{\epsilon,\sigma}^{R,\kappa,V}(A;h,k)
+ \big|_{[2]_V\,\mapsto\,[\sigma_{\epsilon,\sigma}]_V}.
+\end{equation}
+No beta quotient or infinite arithmetic series is part of
+\eqref{eq:finite-destination-definition}.
+
 Write $\mathfrak r=d|\rho|>0$.  After the endpoint cutoffs have been deleted,
-the four continuous integrals determining branchwise convergence are as
-follows.  They are displayed separately because their zero endpoints differ.
+the following four unregulated continuous integrals determine the Tonelli
+conditions.  They are displayed separately because their zero endpoints
+differ; their beta evaluation is used only later, after all variable
+regulators have been removed.
 
 For the direct, positive-$\rho$ branch, $x=y+\mathfrak r$ and
 \begin{align}
@@ -413,32 +489,152 @@ denominators depend only on the external shifts and stay bounded away from
 zero on the good patch.  Because $m,|\rho|$ are finite at this stage, there
 is no arithmetic zeta function and hence no $z=1$ or $\nu=1$ pole.
 \end{enumerate}
-Thus the finite rectangles deform without a residue.  On a horizontal
-$s$-edge, $s=\sigma+iV$,
+Thus the finite rectangles deform without a residue.  Let
+$\mathcal I_{\epsilon,\sigma}^{R,\kappa}(s,u,t)$ denote the finite
+$m,\rho$ sum of the integrand in \eqref{eq:finite-source-definition}, with
+$w(t)$ and the differentials omitted.  Cauchy's theorem gives the exact
+finite-$V$ identity
+\begin{equation}\label{eq:finite-rectangle-identity}
+ \mathscr S_{\epsilon,\sigma}^{R,\kappa,V}
+ -\mathscr T_{\epsilon,\sigma}^{R,\kappa,V}
+ =\mathscr H_{\epsilon,\sigma}^{R,\kappa,V},
+\end{equation}
+where
+\begin{align}
+ \mathscr H_{\epsilon,\sigma}^{R,\kappa,V}
+ =-\int_{\R}w(t)\frac1{(2\pi i)^2}\int_{[c_u]_V}
+ \bigg\{&\int_{\sigma_{\epsilon,\sigma}-iV}^{2-iV}\notag\\
+ &\quad+\int_{2+iV}^{\sigma_{\epsilon,\sigma}+iV}\bigg\}
+ \mathcal I_{\epsilon,\sigma}^{R,\kappa}(s,u,t)
+ \dd s\dd u\dd t.
+ \label{eq:finite-horizontal-remainder}
+\end{align}
+The two horizontal integrals carry the displayed orientations.  On either
+horizontal $s$-edge, $s=\sigma+iV$,
 \[
                          |e^{s^2}|=e^{\sigma^2-V^2},
 \]
 while the gamma ratios and remaining factors have at most exponential times
-polynomial growth in $V$.  On a horizontal $u$-edge, the integrand is still
-the unreduced source integral, and Stirling gives
+polynomial growth in $V$.  Hence
+$\mathscr H_{\epsilon,\sigma}^{R,\kappa,V}\to0$ for fixed $R,\kappa$,
+locally uniformly in $A$.  No $u$-contour is moved in this proposition.
+After the complete $s$-lines have been restored, the vertical $u$-tails are
+controlled by Stirling:
 \[
  |\Gamma(c_u+iV)|\ll(1+V)^{c_u-1/2}e^{-\pi V/2}.
 \]
-All other $u$-dependence is polynomial at fixed $R,\kappa$.  Hence all
-horizontal sides and vertical tails tend to zero as $V\to\infty$, uniformly
-for the fixed regulators.  The complete vertical contours are thereby
-restored before a variable regulator is removed.
+All other $u$-dependence is polynomial at fixed $R,\kappa$.  Consequently,
+after $V\to\infty$ in \eqref{eq:finite-rectangle-identity}, the two complete
+regulated vertical-contour integrals agree exactly.  This is the first limit
+in \eqref{eq:four-branch-order}; no variable regulator has yet been removed.
 
-At a Tonelli destination, first let $R\to\infty$ with $\kappa>0$ fixed and
-then let $\kappa\to0^+$.  Absolute convergence in
-\eqref{eq:positive-direct-tonelli}--\eqref{eq:dual-tonelli} justifies both
-limits and, only after the second, the beta evaluations
-\eqref{eq:four-beta-dp}--\eqref{eq:four-beta-qm}.  In particular, no beta
-formula is asserted with the Abel factor still present.  At the source the
-same order is justified by \Cref{lem:source-normality}: the complete coupled
-kernel, exact mesh density, and product-tail majorant give bounds locally
-uniform in $A$ and independent of $R,\kappa$.  This proves the locally
-uniform holomorphic source limit in \eqref{eq:external-A-strip}.
+We now give the uniform dominators for the remaining two limits.  Let
+\begin{equation}\label{eq:source-compact-sets}
+ \mathscr K_A\Subset\{\Re A<\tfrac12-c_u/2\},\qquad
+ \mathscr K_g\Subset\Omega_g,
+\end{equation}
+and let $a^\pm$ be the supremum and infimum of $\Re A$.  On
+$\mathscr K_g$ put
+\begin{align*}
+ b_*&:=\inf\min\{\Re B,-\Re C_1\}>0,\\
+ c^+&:=\sup\max\{\Re C_1,-\Re B\},\\
+ c^-&:=\inf\min\{\Re C_1,-\Re B\}.
+\end{align*}
+These choices simultaneously cover the direct and dual substitutions.  Put
+\[
+ \omega_A(l)=
+ \begin{cases}l^{-1/2-a^+},&0<l\leq1,\\
+ l^{-1/2-a^-},&l>1,\end{cases}
+ \qquad
+ \omega_C(n)=
+ \begin{cases}n^{-1/2-c^+},&0<n\leq1,\\
+ n^{-1/2-c^-},&n>1.\end{cases}
+\]
+After the $t$-integral has been performed, choose $P,Q,J$ once, depending
+only on the distances of \eqref{eq:source-compact-sets} from their
+boundaries.  The four source branches and any prescribed finite number of
+$A$-derivatives are dominated, up to a fixed logarithmic power and the
+finite outer $h,k$ weights, by the single nonnegative function
+\begin{align}
+ \mathfrak M_{\rm src}(l,m,n)
+ :={}&T\,\omega_A(l)m^{-1/2-b_*}\omega_C(n)
+ \left(1+\frac lY\right)^{-P}
+ \left(1+\frac{mn}T\right)^{-Q}\notag\\
+ &\times\bigg\{
+ \mathbf 1_{\{l,n\geq1/2\}}
+ +\mathbf 1_{\{\min(l,n)<1\}}
+ \left(1+\Delta\left|\log\frac{hn}{klm}\right|\right)^{-J}
+ \bigg\}.
+ \label{eq:uniform-source-dominator}
+\end{align}
+Logarithms inserted by $A$-derivatives are absorbed by increasing $P,Q,J$.
+The mesh estimate \eqref{eq:mesh-majorant}, the product bound
+\eqref{eq:source-product-majorant}, and the endpoint estimates
+\eqref{eq:z-integral-bound}--\eqref{eq:far-m-exponent} show that the
+sum--integral of \eqref{eq:uniform-source-dominator} is finite, uniformly for
+$(A,B,C_1)\in\mathscr K_A\times\mathscr K_g$.  Since
+\[
+ \mathbf 1_{\{R^{-1}\leq l,n\leq R\}}
+ \mathbf 1_{\{m,\rho\leq R\}}
+ e^{-\kappa(m+\rho+l+n)}\leq1,
+\]
+this majorant is independent of $R$ and $\kappa$.  It gives dominated
+convergence at the source, first as $R\to\infty$ with $\kappa>0$ fixed and
+then as $\kappa\to0^+$, locally uniformly on the stated $A$-compact sets.
+
+For a destination, restrict temporarily to a compact subset
+$\mathscr K_{\rm Ton}$ of its branchwise Tonelli open set, and choose the
+line $\Re s=\sigma_{\epsilon,\sigma}$ with a common margin $\delta>0$ such
+that
+\begin{equation}\label{eq:tonelli-compact-margin}
+ \Re z_\epsilon\geq1+\delta,\qquad
+ \Re\nu_\epsilon\geq1+\delta,
+\end{equation}
+and the relevant zero-endpoint inequality in
+\eqref{eq:positive-direct-tonelli}--\eqref{eq:dual-tonelli} also has margin
+$\delta$.  After scaling $v$ by $\mathfrak r=d\rho$, define
+\begin{align*}
+ b_{\epsilon,+}(v)&=
+ \sup_{\mathscr K_{\rm Ton}}
+ v^{-1/2-\Re\lambda}
+ (1+v)^{-1/2-\Re C_\epsilon-\Re s},\\
+ b_{\epsilon,-}(v)&=
+ \sup_{\mathscr K_{\rm Ton}}
+ v^{-1/2-\Re C_\epsilon-\Re s}
+ (1+v)^{-1/2-\Re\lambda}.
+\end{align*}
+The endpoint margins give
+$\int_0^\infty b_{\epsilon,\sigma}(v)\dd v<\infty$.  Stirling and the
+Gaussian factor in $\mathcal G$ give, on the complete contours,
+\begin{equation}\label{eq:uniform-destination-dominator}
+ C_{\mathscr K_{\rm Ton}}
+ (1+|\tau_u|+|\tau_s|)^N
+ e^{-\pi|\tau_u|/3-\tau_s^2/2}
+ m^{-1-\delta}\rho^{-1-\delta}
+ b_{\epsilon,\sigma}(v),
+\end{equation}
+for some fixed $N$.  Indeed the gcd factor after scaling is
+$d^{1-\Re z_\epsilon}\leq1$.  Thus
+\eqref{eq:uniform-destination-dominator} is integrable in
+$(\tau_u,\tau_s,m,\rho,v)$ and is independent of $R,\kappa$.  It justifies
+the same ordered limits at every destination, uniformly on
+$\mathscr K_{\rm Ton}$.  Notice that destination domination is asserted only
+inside a Tonelli chamber; outside it, holomorphy comes from the source and
+the identity theorem, not from an unproved absolute majorant.
+
+The recovery order is now strict.  First restore the complete contours
+($V\to\infty$), then remove the geometric truncation ($R\to\infty$) while
+$\kappa>0$, and then remove the Abel factor ($\kappa\to0^+$).  Only after the
+last step are the unregulated beta integrals
+\eqref{eq:four-beta-dp}--\eqref{eq:four-beta-qm} evaluated.  Their powers
+$\mathfrak r^{-z_\epsilon}=d^{-z_\epsilon}\rho^{-z_\epsilon}$ then permit,
+by absolute convergence in the Tonelli chamber, first the $\rho$-sum
+$\sum_{\rho\geq1}\rho^{-z_\epsilon}=\zeta(z_\epsilon)$ and then the
+$m$- and gcd-sum giving $C_{h,k}$.  The zeta functional equation and the
+finite Euler identity of \Cref{lem:finite-euler} are applied only after these
+series have been recovered.  Thus no Abel-weighted integral is identified
+with a beta quotient, and no Abel-weighted arithmetic sum is identified with
+an Euler product.
 
 For completeness, singularities appearing only after the variable
 regulators have been removed must be recorded separately.  The direct
