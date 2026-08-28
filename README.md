@@ -19,6 +19,7 @@ asymptotic.
 
 `AUDIT_REPORT.md` summarizes the requested proof expansions and the final
 D1--D8 consistency audit. It also states the limits of that audit.
+`REVISION_NOTES.md` records the August 28 focused Lemma 5.1 re-audit.
 
 ## Build
 
@@ -36,6 +37,14 @@ verification/vendor/:
 A successful run ends with status=PASS. These finite checks cover two gamma
 identities and collision limits. The analytic contour and continuation
 arguments are proved in the paper.
+
+The focused Lemma 5.1 regression check is
+
+    python verification/check_reciprocal_lemma.py
+
+It records the $c=q$, $X=q^2$ omitted-factor scaling and checks that the two
+terms in the corrected estimate are both majorized by the same dyadic gcd
+average. It is a finite regression test, not a proof of the analytic lemma.
 
 ## Integrity
 

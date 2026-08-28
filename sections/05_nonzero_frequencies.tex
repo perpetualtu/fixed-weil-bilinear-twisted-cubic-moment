@@ -35,7 +35,10 @@ $F^{(j)}\ll_j ZX^{-j}$.  Then
 \begin{equation}\label{eq:reciprocal-sum}
  \sum_{(u,q)=1}F(u)e\!\left(\frac{c\overline u}{q}\right)
  \ll_\eps Zq^\eps
- \left(Xq^{-1/2}+q^{1/2}\right)(c,q)^{1/2}.
+ \left\{
+ Xq^{-1/2}(c,q)^{1/2}
+ +q^{1/2}(c,q)^{1/2}
+ \right\}.
 \end{equation}
 Moreover,
 \begin{equation}\label{eq:gcd-average}
@@ -63,9 +66,12 @@ For every fixed $A\geq2$, repeated integration by parts gives
  \sum_{n\in\mathbb Z}|\widehat F(n/q)|\ll_A Z(X+q).
 \]
 The Weil bound
-$|S(c,n;q)|\leq\tau(q)(c,n,q)^{1/2}q^{1/2}$ therefore proves
-\eqref{eq:reciprocal-sum}, uniformly for both $X\leq q$ and $X>q$; the
-term $n=0$ is the Ramanujan sum and obeys the same majorant.  Finally,
+$|S(c,n;q)|\leq\tau(q)(c,n,q)^{1/2}q^{1/2}$, together with
+$(c,n,q)^{1/2}\leq(c,q)^{1/2}$ for every $n$, therefore proves
+\eqref{eq:reciprocal-sum}, uniformly for both $X\leq q$ and $X>q$.
+Thus the factor $(c,q)^{1/2}$ occurs in both the $Xq^{-1/2}$ term and the
+$q^{1/2}$ term.  The term $n=0$ is the Ramanujan sum and obeys the same
+majorant.  Finally,
 $(c,q)^{1/2}\leq\sum_{e\mid(c,q)}e^{1/2}$ gives
 \[
  \sum_{q\asymp Q}(c,q)^{1/2}
@@ -254,11 +260,28 @@ gives
  \mathfrak F_{d,a,\rho,q,k}^{\pm}(m_1)
  e\!\left(\frac{\pm a\rho\overline{k_1m_1}}q\right)\notag\\
  &\qquad\ll T^\eps
- \left(\frac{M_0g}{d}q^{-1/2}+q^{1/2}\right)(a\rho,q)^{1/2}.
+ \left\{
+ \frac{M_0g}{d}q^{-1/2}(a\rho,q)^{1/2}
+ +q^{1/2}(a\rho,q)^{1/2}
+ \right\}.
  \label{eq:m-reciprocal}
 \end{align}
 Put $Q_d=H_0/d$.  By \eqref{eq:gcd-average}, restriction to
-$(q,k_1)=1$ can only decrease the majorant, and
+$(q,k_1)=1$ can only decrease the majorant.  Applying
+\eqref{eq:gcd-average} separately to the two terms in
+\eqref{eq:m-reciprocal} gives
+\[
+ \frac{M_0g}{d}Q_d^{-1/2}
+ \sum_{q\asymp Q_d}(a\rho,q)^{1/2}
+ \ll_\eps \frac{M_0g}{d}Q_d^{1/2}(a\rho)^\eps
+\]
+and
+\[
+ Q_d^{1/2}\sum_{q\asymp Q_d}(a\rho,q)^{1/2}
+ \ll_\eps Q_d^{3/2}(a\rho)^\eps.
+\]
+\begin{samepage}
+Consequently,
 \begin{align}
  &\sum_{q\asymp Q_d}
  \left(\frac{M_0g}{d}q^{-1/2}+q^{1/2}\right)
@@ -268,6 +291,7 @@ $(q,k_1)=1$ can only decrease the majorant, and
        +\frac{H_0^{3/2}}{d^{3/2}}\right).
  \label{eq:completed-q-sum}
 \end{align}
+\end{samepage}
 Indeed these are respectively $X_mQ_d^{1/2}$ and $Q_d^{3/2}$.
 The factor $(a\rho)^\eps$ is absorbable because all retained dyadic
 parameters are bounded by a fixed power of $T$; the auxiliary exponent is

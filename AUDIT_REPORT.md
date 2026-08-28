@@ -32,6 +32,16 @@ orientation, three main terms, and final error term were not changed.
 
 ## FIXED
 
+- Rewrote Lemma 5.1 and its application in (5.20) so that the factor
+  $(c,q)^{1/2}$ is displayed separately in both terms.  The source already
+  factored it globally across the two terms, but the termwise form prevents
+  the completed estimate from being misread as omitting the factor from the
+  $Xq^{-1/2}$ term.
+- Applied the dyadic gcd average (5.5) explicitly and separately to both
+  terms before (5.21).  This gives $X_mQ_d^{1/2}$ and $Q_d^{3/2}$, exactly
+  as in the prior calculation, so (5.21)--(5.25), Propositions 5.2 and 5.3,
+  and the main theorem retain their stated bounds.
+
 - Expanded the formerly compressed smooth-weight verification in the
   fixed-l nonzero-frequency estimate, including the exact completed weight,
   support length, derivative ledger, gcd equivalence, completion terms,
