@@ -73,6 +73,11 @@ orientation, three main terms, and final error term were not changed.
   depends only on the displayed permutation sum, Euler-factor identities,
   and the three-divisor lemma, and is logically prior to the quantitative
   continuation proposition despite its later expository placement.
+- Standardized the meaning of every harmless `T^epsilon`: auxiliary small
+  exponents are chosen below the final epsilon, intermediate constants may
+  depend on the fixed smoothing order and explicitly listed finite weight
+  seminorms, and no fixed positive power depending on `M` is hidden. The
+  separate coarse power used in Section 8 is only a continuation majorant.
 - Repaired the final permutation left-line estimate at beta+gamma=0: the
   complete holomorphic permutation sum is now retained before taking
   absolute values, and the collision tube is controlled by a scaled

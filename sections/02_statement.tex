@@ -10,9 +10,44 @@ Throughout, $w\in C_c^\infty(\R)$ is supported in $[T/4,2T]$ and satisfies
                   w^{(j)}(t)\ll_j\Delta^{-j}
                   \qquad (j\geq0).
 \end{equation}
-The implied constants below may depend on $\eta,C,\eps$, on the constants in
-the coefficient bounds, and on finitely many seminorms in
-\eqref{eq:w-derivatives}.
+We make the small-power and seminorm convention explicit.  For $r\geq0$ put
+\begin{align}
+ \|w\|_{r,\Delta}
+ &:={\max}_{0\leq j\leq r}\Delta^j\|w^{(j)}\|_\infty,
+ \label{eq:w-seminorm}\\
+ \|(U,\boldsymbol\omega)\|_r
+ &:={\max}_{0\leq j\leq r}\left\{
+   \|U^{(j)}\|_\infty,
+   {\max}_{\omega\in\boldsymbol\omega}\|\omega^{(j)}\|_\infty
+   \right\},
+ \label{eq:auxiliary-weight-seminorm}
+\end{align}
+where $U$ is the endpoint cutoff introduced in \Cref{sec:poisson} and
+$\boldsymbol\omega$ denotes the five fixed dyadic cutoffs used in
+\Cref{sec:nonzero}.  These auxiliary cutoffs are fixed once and are not
+additional data in the theorem.
+
+Whenever $T^\eps$ or $\ll_\eps$ occurs, $\eps>0$ denotes the final prescribed
+small exponent.  Auxiliary divisor, localization, and dyadic exponents are
+chosen sufficiently smaller in terms of this $\eps$, after the finite
+derivative orders have been fixed.  The implied constants and the lower
+threshold for $T$ may depend on $\eta,C,\eps$, on the fixed smoothing
+parameters $B_0,M$, on fixed contour and integration-by-parts orders, on the
+coefficient-bound constants at finitely many auxiliary exponents, and on
+\eqref{eq:w-seminorm}--\eqref{eq:auxiliary-weight-seminorm} for some finite
+$r$; they are uniform in $H,K,T$ and in the shifts in
+\eqref{eq:shift-range}.  The kernels $\mathcal G$ and $\V^\pm$ introduce no
+further independent seminorms, since their bounds are determined by
+$C,B_0,M$ and the displayed contours.  When an $O_D(T^{-D})$ remainder is
+requested, $M$ and the later integration-by-parts orders may depend on $D$ as
+specified in \Cref{sec:smoothing,sec:assembly}; for \Cref{thm:main} a
+sufficiently large $D$ is fixed in terms of the displayed theorem parameters
+before $T$ varies.  In the final theorem $B_0,M,U$ and
+$\boldsymbol\omega$ are proof-internal fixed choices and are suppressed from
+the $O_{\eta,C,\eps}$ notation; only finitely many scaled seminorms of the
+external weight $w$ remain.  In particular, a harmless $T^\eps$ may absorb
+$(\log T)^{C_M}$ for fixed $M$, but never a fixed positive power
+$T^{\delta(M)}$.
 
 For positive integers $h,k$ and complex $A,B,C_1$, define first in a region
 of absolute convergence
