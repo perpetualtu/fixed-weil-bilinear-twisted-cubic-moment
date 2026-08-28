@@ -140,13 +140,17 @@ including their common collision locus $\alpha=\beta=-\gamma$.
 The theorem is formulated with exact gamma ratios.  Uniform Stirling
 asymptotics give
 \begin{equation}\label{eq:X-stirling}
-       X_{A,C_1}(t)=\left(\frac{t}{2\pi}\right)^{-A-C_1}
-                    \{1+O_C(T^{-1})\}
+ X_{A,C_1}(t)=\left(\frac{t}{2\pi}\right)^{-A-C_1}
+                     \{1+O_C(T^{-1})\}
 \end{equation}
-on the support of $w$.  Consequently the two exact factors in
-\eqref{eq:main-asymptotic} may be replaced by the corresponding powers used
-in Bui's formulation.  The total replacement error is
-$O(T^\eps(HK)^{1/2})$.
+on the support of $w$.  The individual $Z$-terms are meromorphic at shift
+collisions, so this estimate is not applied term by term.  Instead,
+\Cref{prop:collision-safe-stirling} proves that the complete difference
+between the exact three-term expression and its power-factor analogue is
+jointly holomorphic and has total contribution
+$O(T^\eps(HK)^{1/2})$.  Thus the two exact factors in
+\eqref{eq:main-asymptotic} may indeed be replaced by the corresponding powers
+used in Bui's formulation, uniformly also at colliding shifts.
 
 \begin{corollary}\label{cor:exponent-region}
 If $H\leq T^{\theta_1}$ and $K\leq T^{\theta_3}$ range over a compact subset

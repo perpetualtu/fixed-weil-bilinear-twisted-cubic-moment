@@ -1,8 +1,9 @@
 """Finite regression checks for the four beta branches in Proposition 6.4.
 
 This script verifies representative points strictly inside all four Tonelli
-chambers.  It is a numerical check of (6.41)--(6.44), not a substitute for
-the compact-uniform domination and limiting arguments in the proof.
+chambers and the integrability of the model endpoint pullback used when the
+source regulator is removed.  These are finite numerical checks, not a
+substitute for compact-uniform domination and limiting arguments.
 """
 
 import sys
@@ -108,4 +109,70 @@ for case in cases:
     )
 
 assert max(errors) < mp.mpf("1e-35"), "a beta identity exceeded the regression threshold"
+
+# The repaired source argument integrates through the endpoint in the
+# physical variable.  It never takes the divergent supremum of
+# n^(-a) |log n|^(-J).  Under n=exp(-x), the relevant model integral is
+# exp(-(1-a)x)(1+x)^(-J) dx and is uniformly integrable for a<1.
+endpoint_exponent = mp.mpf("0.43")
+endpoint_log_order = 4
+
+
+def endpoint_pullback(cutoff):
+    upper = mp.log(cutoff)
+    return mp.quad(
+        lambda x: mp.exp(-(1 - endpoint_exponent) * x)
+        * mp.power(1 + x, -endpoint_log_order),
+        [0, upper],
+    )
+
+
+endpoint_limit = mp.quad(
+    lambda x: mp.exp(-(1 - endpoint_exponent) * x)
+    * mp.power(1 + x, -endpoint_log_order),
+    [0, mp.inf],
+)
+endpoint_values = [endpoint_pullback(mp.mpf(10) ** exponent) for exponent in (2, 4, 8)]
+assert endpoint_values == sorted(endpoint_values), "endpoint truncations are not monotone"
+assert endpoint_values[-1] < endpoint_limit
+assert endpoint_limit - endpoint_values[-1] < mp.mpf("1e-7")
+print(
+    "source_endpoint_model="
+    f"{mp.nstr(endpoint_values[-1], 10)} limit={mp.nstr(endpoint_limit, 10)}"
+)
+
+# The mesh-supremum term in (6.13) has scale T^(1/2-b), not log T.  A
+# truncated regression at fourfold scales checks that normalization.  The
+# cutoff 40*T is ample for Q=8; this remains a finite test, not an asymptotic
+# proof.
+mesh_b = 0.07
+mesh_q = 8
+mesh_scales = (200, 800, 3200)
+mesh_normalized = []
+for scale in mesh_scales:
+    raw = sum(
+        m ** (-0.5 - mesh_b) * (1 + m / scale) ** (-mesh_q)
+        for m in range(1, 40 * scale + 1)
+    )
+    mesh_normalized.append(raw / scale ** (0.5 - mesh_b))
+assert max(mesh_normalized) / min(mesh_normalized) < 1.25
+print(
+    "mesh_supremum_normalized="
+    + ",".join(f"{value:.8f}" for value in mesh_normalized)
+)
+
+# At the genuine l=0 crossing the worst corner exponent is exactly
+# -1-2*delta_A-delta_g, hence is strictly summable.
+a_plus = mp.mpf("0.30")
+b_minus = mp.mpf("0.12")
+c_plus = mp.mpf("-0.08")
+delta_a = HALF - a_plus
+delta_g = b_minus - c_plus
+corner_exponent = -2 + 2 * a_plus - b_minus + c_plus
+assert mp.almosteq(corner_exponent, -1 - 2 * delta_a - delta_g)
+assert corner_exponent < -1
+print(
+    "l_endpoint_corner_exponent="
+    f"{mp.nstr(corner_exponent, 8)}"
+)
 print("status=PASS")

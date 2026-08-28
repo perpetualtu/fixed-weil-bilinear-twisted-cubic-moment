@@ -18,7 +18,9 @@ A1 & The unnormalized AFE includes all four remote completed-zeta residues,
 and the long zeta series is expanded only on $\Re u=1$. &
 \Cref{lem:afe}, \eqref{eq:zeta-star}\\
 A2 & The coupled weight has simultaneous product decay on complete vertical
-contours in all four size quadrants. & \Cref{lem:double-weight}\\
+contours in all four size quadrants, with a central Stirling estimate and a
+Gaussian complementary region; the same bound is locally uniform on the
+external $A$-compact sets used in Section 6. & \Cref{lem:double-weight}\\
 A3 & Extracting $d=(h,km)$ gives a coprime inverse and exact Poisson density
 $d/h$. & \eqref{eq:gcd-decomposition}--\eqref{eq:poisson-density}\\
 A4 & The fixed-$l$ nonzero frequencies are
@@ -31,10 +33,29 @@ on the good half-space; the singular layer has exact gcd cancellation. &
 A6 & All four branches reach genuine Tonelli domains.  At finite height the
 source and destination satisfy the rectangle identity including both
 horizontal edges; compact-uniform dominators then justify, in order,
-$V\to\infty$, $R\to\infty$, and $\kappa\to0^+$. &
+$V\to\infty$, $R\to\infty$, and $\kappa\to0^+$.  The resulting branchwise
+continuations are recovered on a common $s$-contour by a simultaneous
+$A$-continuation and moving-line argument that keeps every small arithmetic
+divisor on the same side.  The path is split at remote crossings into
+pole-free pieces, with the crossings represented by rapidly decreasing
+successive residues. &
 \eqref{eq:finite-rectangle-identity},
-\eqref{eq:uniform-source-dominator},
-\eqref{eq:uniform-destination-dominator}\\
+\eqref{eq:source-as-pullback},
+ \eqref{eq:source-pullback-dominator},
+ \eqref{eq:uniform-destination-dominator},
+ \Cref{lem:common-contour-recovery}\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{center}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.06\textwidth}
+                >{\raggedright\arraybackslash}p{0.61\textwidth}
+                >{\raggedright\arraybackslash}p{0.21\textwidth}}
+\toprule
+ID & claim & location\\
+\midrule
 A7 & The beta integrals, finite Euler product, and archimedean reflection
 identities give the evaluated zero modes. & \Cref{sec:beta}\\
 A8 & Three pairs of fixed-$u$ small $s$-residues cancel before the diagonal
@@ -49,20 +70,24 @@ division by three linear factors. &
 \Cref{lem:three-divisor,prop:P-holomorphic}\\
 A12 & Combining the zero mode, nonzero mode and diagonal boundary gives the
 error stated in \Cref{thm:main}. & final paragraph of \Cref{sec:final}\\
+A13 & Replacing the exact gamma ratios by their power factors is performed on
+the complete permutation difference, whose three collision divisors are
+jointly removable; no meromorphic summand is estimated separately. &
+\Cref{prop:collision-safe-stirling}\\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The expository numbering does not reverse the proof dependency between A9
-and A11.  The collision statement A11 is proved directly from
+The ledger IDs are organizational rather than chronological.  The collision
+statement A11 is proved directly from
 \eqref{eq:P-lambda}, \eqref{eq:Z-euler}, \eqref{eq:X-def}, and local
-three-divisor division; it is then used in the polynomial majorant inside
-A9.  Thus the directed edge is $\mathrm{A11}\to\mathrm{A9}$, and there is no
-edge from A9 back to A11.
+three-divisor division and is placed before the continuation proposition
+that implements A9.  Thus the directed edge is
+$\mathrm{A11}\to\mathrm{A9}$, with no reverse edge.
 
 \subsection{Additional adversarial checks}
 
-We record eight stress tests applied to the quantitative and uniformity
+We record nine stress tests applied to the quantitative and uniformity
 claims used in the proof.
 
 \begin{enumerate}[label=\textup{D\arabic*.},leftmargin=10mm]
@@ -150,6 +175,18 @@ representation.  Cancellation therefore precedes every absolute-value
 estimate that crosses a collision.
 
 \item
+At the source side of \Cref{prop:four-branch-regulator-tonelli} the regulator is removed in the
+physical measure $\sum_{m,\rho}\dd v$.  The bulk part uses
+\eqref{eq:mesh-majorant}.  Before any integration or summation, however, the
+compact parameter supremum is bounded by the eight endpoint corners in
+\eqref{eq:source-corner-majorant}.  The genuine $n=0$ and $l=0$ crossings
+are then integrated in their physical variables by
+\eqref{eq:compact-n-end-integral} and
+\eqref{eq:compact-l-end-integral}; the two noncrossing endpoint pieces are
+summed separately.  No supremum in an independent endpoint variable is used.
+The false general sampling assertion has therefore been removed.
+
+\item
 The final error ledger contains both surviving contributions:
 \eqref{eq:nonzero-final} gives
 $T^\eps KH^{3/2}$, and \eqref{eq:boundary-zero-bound} gives
@@ -162,30 +199,40 @@ error decomposition.
 \end{enumerate}
 
 \emph{Scope of the audit.}
-No first unsupported inference was found in these eight internal checks.
-This is a line-by-line consistency audit, not a formal verification or an
-external peer-review certificate.  The finite numerical tests likewise
-check only explicit identities.  Independent expert review remains
-necessary, especially for the regulator--Tonelli bridge and the assembled
-continuation and residue arguments.
+No unsupported inference remains in these nine internal checks after the
+source supremum was replaced by its pointwise corner majorant and the power
+replacement was proved on the complete holomorphic difference.  Fresh-context
+specialist agents separately rechecked the source bridge, the contour/Gamma
+argument, and the global dependency graph.  The resulting classification is
+candidate complete, not formally verified and not an external human
+peer-review certificate.  The finite numerical tests likewise check only
+explicit identities.
 
 \subsection{Finite identity checks}
 
 The accompanying script \path{verification/check_zero_identities.py}
 uses arbitrary-precision arithmetic to test the two gamma identities and the
-linear approach to two collision divisors.  A reference run at 80 decimal
+linear approach to all three collision divisors and to their common triple
+intersection.  A reference run at 80 decimal
 digits produced relative errors between approximately $10^{-52}$ and
 $10^{-80}$ for the gamma identities.  In the collision tests, decreasing the
 displacement from $10^{-12}$ to $10^{-16}$ to $10^{-20}$ decreased the
 successive differences by a factor of $10^{-4}$ at each step.  These are
 finite consistency checks only; the contour deformations, Tonelli arguments,
 and continuation are proved analytically in the body of the paper.
+The same script now applies these collision tests to the complete exact-minus-
+power replacement difference and checks its first Stirling saving under
+$T\mapsto2T$.  The companion script
+\path{verification/check_regulator_bridge.py} checks the four beta identities
+and a truncated physical endpoint integral converging to its finite limit; it
+does not attempt to certify the compact-uniform analytic dominator.
 
 \subsection{Release integrity}
 
-The source archive distributed with this paper contains the complete
-manuscript source, bibliography, compiled PDF, numerical verification script,
-and its fixed-version arbitrary-precision dependency and license.  The file
-\path{MANIFEST.sha256} records a SHA256 digest for every other payload file in
-the archive.  The verification script uses explicit release thresholds and
-prints \texttt{status=PASS} only after all checks have completed.
+The source folder distributed with this paper contains the complete manuscript
+source, bibliography, compiled PDF, numerical verification scripts, and their
+fixed-version arbitrary-precision dependency and license.  A legacy
+\path{MANIFEST.sha256}, when retained with an imported baseline, records only
+that baseline; it is neither required nor presented as a digest of the revised
+folder.  Each verification script uses explicit release thresholds and prints
+\texttt{status=PASS} only after all of its checks have completed.

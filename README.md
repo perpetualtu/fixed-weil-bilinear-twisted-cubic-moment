@@ -18,8 +18,12 @@ limiting Bui corner \((4/7,1/4)\), and it does not assert a sixth-moment
 asymptotic.
 
 `AUDIT_REPORT.md` summarizes the requested proof expansions and the final
-D1--D8 consistency audit. It also states the limits of that audit.
+D1--D9 consistency audit. It also states the limits of that audit.
 `REVISION_NOTES.md` records the August 28 focused Lemma 5.1 re-audit.
+
+The current proof status is **candidate complete resolution** after a
+fresh-context, three-route internal cross-audit. This is not formal
+verification and should not be described as independent human peer review.
 
 ## Build
 
@@ -50,11 +54,15 @@ The focused Proposition 6.4 beta-branch check is
 
     python verification/check_regulator_bridge.py
 
-It samples points strictly inside all four Tonelli chambers and numerically
-checks (6.41)--(6.44). The compact-uniform domination and ordered-limit
-arguments remain analytic parts of Proposition 6.4.
+It samples points strictly inside all four Tonelli chambers, numerically
+checks the four displayed beta identities, and checks the integrable endpoint
+pullback model, corrected mesh-supremum scale, and worst endpoint-corner
+exponent used in the repaired source domination. The compact-uniform
+domination and ordered-limit arguments remain analytic parts of Proposition
+6.4.
 
-## Integrity
+## Baseline manifest
 
-MANIFEST.sha256 covers every distributed payload file except the manifest
-itself. Paths are relative to the archive root.
+A legacy `MANIFEST.sha256`, when retained with an imported baseline, records
+only that baseline. It is not required in the revised proof package and is not
+used by the proof or the verification scripts.

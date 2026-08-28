@@ -136,14 +136,17 @@ single endpoint-deleted branch.
 
 In this subsection use external shifts $A,B,C_1$ in place of
 $\alpha,\beta,\gamma$ in the kernel.  The continuation requires only one
-nonempty patch; for definiteness take $\kappa_0=1$, $c_1=5$, and put
+nonempty patch.  For definiteness take $\kappa_0=1$, $c_1=5$, and define the
+following domain in the two variables $(B,C_1)$:
 \begin{equation}\label{eq:good-patch}
  \Omega_g=\left\{
  \Re B>\frac{\kappa_0}{\log T},\quad
  \Re C_1<-\frac{\kappa_0}{\log T},\quad
- |A|+|B|+|C_1|<\frac{c_1}{\log T}\right\}.
+ |B|+|C_1|<\frac{c_1}{\log T}\right\}\subset\C^2.
 \end{equation}
-Fix $B,C_1$ there and let $A$ vary in the connected strip
+The initial three-variable good patch additionally has
+$|A|+|B|+|C_1|<c_1/\log T$.  After fixing $(B,C_1)\in\Omega_g$, however, we
+let $A$ vary independently in the connected strip
 \begin{equation}\label{eq:external-A-strip}
                        \Re A<\frac12-\frac{c_u}{2}.
 \end{equation}
@@ -179,8 +182,15 @@ This gives, before the finite outer sums, a fixed logarithmic power times
 \end{multline}
 where $a_0=\Re A$, $b_0=\Re B$, and $c_0=\Re C_1$.  On compact subsets of
 \eqref{eq:external-A-strip}, this is polynomial in $T$ and locally uniform;
-the residual $m$-sum is $O(\log T)$ on the good patch.  The same is true
-after the dual substitution $(B,C_1)\mapsto(-C_1,-B)$.
+the $m$-sum containing the $n$-integral is $O_{\mathscr K_g}(\log T)$ on a
+compact $\mathscr K_g\Subset\Omega_g$, whereas the mesh-supremum term is
+\begin{equation}\label{eq:mesh-supremum-m-sum}
+ \sum_{m\geq1}m^{-1/2-b_0}(1+m/T)^{-Q}
+ \ll_{Q,\mathscr K_g}T^{1/2-b_0}.
+\end{equation}
+Thus the complete expression is still of fixed polynomial size, which is
+all that is used here.  The same statements hold after the dual substitution
+$(B,C_1)\mapsto(-C_1,-B)$.
 
 For completeness, consider the worst $n=0$ discrepancy with
 $r=-d\rho$, $z=x/(d\rho)\leq1$, and restore the outside coefficient weight.
@@ -233,6 +243,299 @@ polynomial mass.  On far $m$-scales, the residual exponent is
 so the dyadic sum is uniform on the good patch.  The estimates remain valid
 after $A$-derivatives, which only insert logarithms.  This proves local
 normality and holomorphy.
+\end{proof}
+
+We now isolate the compact-uniform statement actually needed when the
+variable regulators are removed.  This is stronger than local uniform
+convergence of the assembled source and is therefore recorded separately.
+For $\epsilon\in\{{\rm d},{\rm q}\}$ put
+\begin{equation}\label{eq:branch-shift-data}
+ \begin{array}{c|ccc}
+ \epsilon&B_\epsilon&C_\epsilon&\mathcal X_\epsilon(t)\\ \hline
+ {\rm d}&B&C_1&1\\
+ {\rm q}&-C_1&-B&X_{B,C_1}(t).
+ \end{array}
+\end{equation}
+For $\rho\geq1$, $d=(h,km)$, and $\mathfrak r=d\rho$, define
+\begin{equation}\label{eq:branch-physical-variables}
+ \begin{array}{c|cc}
+ \sigma&y_\sigma(v)&x_\sigma(v)\\ \hline
+ +&v&v+\mathfrak r\\
+ -&v+\mathfrak r&v
+ \end{array}
+ \qquad(v>0),\qquad
+ l_\sigma(v)=\frac{y_\sigma(v)}{km},\quad
+ n_\sigma(v)=\frac{x_\sigma(v)}h.
+\end{equation}
+Let $\V_\epsilon$ denote the complete coupled weight
+\eqref{eq:coupled-weight} with gamma ratio
+$g_{B_\epsilon,C_\epsilon}$.  For fixed $h,k$ set
+\begin{align}
+ \mathfrak i_{\epsilon,\sigma}^{h,k}
+ &(A,B,C_1;m,\rho,v)\notag\\
+ :={}&d\,h^{-1/2+C_\epsilon}k^{-1/2+A}\notag\\
+ &\quad\times m^{-1+A-B_\epsilon}\notag\\
+ &\quad\times\int_{\R}w(t)\mathcal X_\epsilon(t)
+ y_\sigma(v)^{-1/2-A-it}\notag\\
+ &\qquad\times x_\sigma(v)^{-1/2-C_\epsilon+it}
+ \V_\epsilon\!\left(\frac{y_\sigma(v)}{kmY},
+                      \frac{mx_\sigma(v)}h,t\right)\dd t.
+ \label{eq:source-physical-density}
+\end{align}
+
+\paragraph{Compact-uniform source pullback domination.}
+Let
+\[
+ \mathscr K_A\Subset\{\Re A<\tfrac12-c_u/2\},\qquad
+ \mathscr K_g\Subset\Omega_g.
+\]
+For fixed $h,k$, every branch $(\epsilon,\sigma)$, and every fixed
+$j\geq0$, there is a nonnegative function
+$D_{\epsilon,\sigma,j}^{h,k}(m,\rho,v)$ such that
+\begin{align}
+ \sup_{\mathscr K_A\times\mathscr K_g}
+ \left|\partial_A^j\mathfrak i_{\epsilon,\sigma}^{h,k}
+ (A,B,C_1;m,\rho,v)\right|
+ &\leq D_{\epsilon,\sigma,j}^{h,k}(m,\rho,v),
+ \label{eq:compact-source-pointwise}\\
+ \sum_{m,\rho\geq1}\int_0^\infty
+ D_{\epsilon,\sigma,j}^{h,k}(m,\rho,v)\dd v&<\infty.
+ \label{eq:compact-source-L1}
+\end{align}
+The conclusion remains true after the finite coefficient-weighted sum over
+$h\leq H$, $k\leq K$.
+
+\begin{proof}
+Put
+\begin{align*}
+ a_-&=\inf_{\mathscr K_A}\Re A,&
+ a_+&=\sup_{\mathscr K_A}\Re A,\\
+ b_-&=\inf_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re B_\epsilon,&
+ b_+&=\sup_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re B_\epsilon,\\
+ c_-&=\inf_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re C_\epsilon,&
+ c_+&=\sup_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re C_\epsilon.
+\end{align*}
+The two positive margins used below are
+\begin{equation}\label{eq:source-compact-margins}
+ \delta_A=\frac12-a_+>\frac{c_u}{2},
+ \qquad
+ \delta_g=b_--c_+>0.
+\end{equation}
+The second inequality follows simultaneously for the direct and dual data
+from $\Re B>\kappa_0/\log T$ and
+$\Re C_1<-\kappa_0/\log T$.
+
+We use a branch-adapted disjoint partition.  In both signs let
+\[
+ \mathcal B_\sigma=\{l_\sigma,n_\sigma\geq1/2\}.
+\]
+For $\sigma=+$ put
+\[
+ \mathcal L_+=\{l_+<1/2\},\qquad
+ \mathcal N_+=\{l_+\geq1/2, n_+<1/2\},
+\]
+and for $\sigma=-$ put
+\[
+ \mathcal N_-=\{n_-<1/2\},\qquad
+ \mathcal L_-=\{n_-\geq1/2, l_-<1/2\}.
+\]
+These three sets are disjoint and cover the physical curve.  Define the
+majorant in \eqref{eq:compact-source-pointwise} explicitly by
+\begin{equation}\label{eq:source-three-piece-dominator}
+ D_{\epsilon,\sigma,j}^{h,k}
+ =\sum_{\mathcal R\in\{\mathcal B_\sigma,
+                         \mathcal N_\sigma,
+                         \mathcal L_\sigma\}}
+  {\bf1}_{\mathcal R}
+  \sup_{\mathscr K_A\times\mathscr K_g}
+ |\partial_A^j\mathfrak i_{\epsilon,\sigma}^{h,k}|.
+\end{equation}
+We first put the parameter supremum inside one common pointwise estimate.
+For $r>0$ and $\theta\in[\theta_-,\theta_+]$,
+\begin{equation}\label{eq:corner-power-majorant}
+ \sup_{\theta\in[\theta_-,\theta_+]}r^{-\theta}
+ \leq r^{-\theta_-}+r^{-\theta_+}.
+\end{equation}
+Since
+\[
+ d h^{-1/2+c}k^{-1/2+a}m^{-1+a-b}
+ y^{-1/2-a}x^{-1/2-c}
+ =\frac d{hk}m^{-3/2-b}l^{-1/2-a}n^{-1/2-c},
+\]
+and, in the dual branch, compact-uniform Stirling gives
+\[
+ |\partial_t^rX_{B,C_1}(t)|
+ \ll_{\mathscr K_g,r}T^{-r}T^{-\Re(B+C_1)}
+ \ll_{\mathscr K_g,r}T^{-r},
+\]
+the Fourier--conductor bound and \eqref{eq:corner-power-majorant} give,
+before any $m,\rho,v$ integration or summation,
+\begin{align}
+ &\sup_{\mathscr K_A\times\mathscr K_g}
+ |\partial_A^j\mathfrak i_{\epsilon,\sigma}^{h,k}|
+ \notag\\
+ &\quad\ll_{\mathscr K_A,\mathscr K_g,j}
+ T(\log T)^{C_{M,j}}\frac d{hk}m^{-3/2}
+ (1+|\log l|)^j
+ (1+l/Y)^{-P}(1+mn/T)^{-Q}\notag\\
+ &\qquad\quad\times
+ (1+\Delta|\log(x/y)|)^{-J}
+ \sum_{\substack{a\in\{a_-,a_+\}\\
+                   b\in\{b_-,b_+\}\\
+                   c\in\{c_-,c_+\}}}
+ m^{-b}l^{-1/2-a}n^{-1/2-c}.
+ \label{eq:source-corner-majorant}
+\end{align}
+Here differentiation of the algebraic $A$-factors gives
+$\log(km/y)=-\log l$; derivatives of $\mathcal G$ insert only fixed
+polynomials in the complete contour variables and are absorbed by the same
+complete-contour bound.  Thus only the eight displayed corners remain.
+It is now enough to prove integrability for each corner separately.
+
+On $\mathcal B_\sigma$ use the product bound
+\eqref{eq:double-weight-bound}.  Parameter supremums are absorbed by the
+piecewise powers
+\[
+ \omega_A(l)=
+ \begin{cases}l^{-1/2-a_+},&1/2\leq l\leq1,\\
+ l^{-1/2-a_-},&l>1,
+ \end{cases}
+ \quad
+ \omega_C(n)=
+ \begin{cases}n^{-1/2-c_+},&1/2\leq n\leq1,\\
+ n^{-1/2-c_-},&n>1.
+ \end{cases}
+\]
+The half-mesh estimate \eqref{eq:mesh-majorant}, applied to the decreasing
+$n$-product tails on each of the two ranges separated at $1$, gives, up to fixed
+$h,k$ powers and a logarithmic factor,
+\begin{align}
+ &T\int_{1/2}^\infty\omega_A(l)(1+l/Y)^{-P}\dd l
+ \sum_{m\geq1}m^{-1/2-b_-}\notag\\
+ &\qquad\times\left\{
+ \int_{1/2}^\infty\omega_C(n)(1+mn/T)^{-Q}\dd n
+ +(1+m/T)^{-Q}\right\}.
+ \label{eq:compact-bulk-majorant}
+\end{align}
+For $m\leq T$, the integral term is
+$\ll_{\mathscr K_g} (T/m)^{1/2-c_-}$, and for $m>T$ the order $Q$ may be
+chosen to give an arbitrary negative power.  Consequently its residual $m$-sum is
+\[
+ \ll_{\mathscr K_g}T^{1/2-c_-}
+ \sum_{m\leq T}m^{-1-(b_--c_-)}
+ \ll_{\mathscr K_g}T^{1/2-c_-},
+\]
+while the mesh-supremum term is
+$O_{Q,\mathscr K_g}(T^{1/2-b_-})$ by
+\eqref{eq:mesh-supremum-m-sum}.  The $l$-integral is finite because
+its lower end is bounded away from zero and $P$ is arbitrary at infinity.  This proves
+\eqref{eq:compact-source-L1} on the bulk.
+
+We next treat the genuine $n$-crossing, which occurs for $\sigma=-$.
+Write $x=d\rho z$ and $X=md\rho/(hT)$.  Uniformly for
+$c\in[c_-,c_+]$ and $0<z\leq1$, \eqref{eq:z-integral-bound} gives
+\begin{equation}\label{eq:compact-n-end-integral}
+ \int_0^1z^{-1/2-c}(1+Xz)^{-Q}
+ (1+|\log z|)^{-J}\dd z
+ \ll_{\mathscr K_g}(1+X)^{-1/2+c}
+ \{1+\log(2+X)\}^{-J}.
+\end{equation}
+For $X>1$, fix one of the eight corners and multiply
+\eqref{eq:compact-n-end-integral} by the full algebraic prefactor before
+summing.  The $\rho$-sum then cancels the $m$-dependent gcd $d=(h,km)$
+exactly as in \eqref{eq:mrho-bound}--\eqref{eq:d-cancellation}.  Summing the
+finitely many corners gives
+\begin{equation}\label{eq:compact-n-end-sum}
+ T^{1/2-c_-}Y^{1/2-a_-}
+ \sum_{m\geq1}m^{-1-\delta_g}<\infty.
+\end{equation}
+For $X\leq1$ one has $m\rho\leq hT/d$; hence there are only finitely many
+integer pairs, and \eqref{eq:compact-n-end-integral} integrates the endpoint
+uniformly.  On $z>1$, the condition $n_-<1/2$ gives
+$z<q/(2\rho)$ and
+$|\log(x/(x+d\rho))|\gg q^{-1}\geq H^{-1}$.
+In particular $\rho<q/2$ and $d\rho<x<h/2$, so the $\rho$- and $v$-ranges
+are finite for fixed $h,k$; moreover
+$(1+mx/(hT))^{-Q}\leq(1+md/(hT))^{-Q}$ sums every remaining compact-dependent
+polynomial in $m$ when $Q$ is sufficiently large.  Thus the whole
+$\mathcal N_-$ piece is integrable.  In the noncrossing set
+$\mathcal N_+$, the inequalities $l_+\geq1/2$ and $n_+<1/2$ imply
+$km<h$ and $\rho<q/2$; only finitely many $m,\rho$ occur, so the same product
+bounds suffice without a singular substitution.
+
+For the genuine $l$-crossing, $\sigma=+$, put $y=d\rho z$.  On $0<z\leq1$
+the Fourier factor supplies $(1+|\log z|)^{-J}$ and
+\begin{equation}\label{eq:compact-l-end-integral}
+ \int_0^1\sup_{a\in[a_-,a_+]}
+ z^{-1/2-a}(1+|\log z|)^{-J}\dd z
+ =\int_0^1z^{-1/2-a_+}(1+|\log z|)^{-J}\dd z
+ <\infty
+\end{equation}
+by $\delta_A>0$.  Dropping the additional long-variable decay and using the
+AFE conductor gives, for every corner and hence for their finite sum,
+\begin{align}
+ \sum_{\rho\geq1}\rho^{-a-c}
+ \left(1+\frac{md\rho}{hT}\right)^{-Q}
+ &\ll_{\mathscr K_A,\mathscr K_g}
+ \left(\frac{hT}{md}\right)^{1-a-c},
+ \label{eq:compact-l-rho-sum}\\
+ \sum_{m\geq1}m^{-2+2a-b+c}
+ &\leq\sum_{m\geq1}m^{-1-2\delta_A-\delta_g}<\infty.
+ \label{eq:compact-l-m-sum}
+\end{align}
+Here $a+c<1$ follows from \eqref{eq:source-compact-margins} and $c_+<0$.
+After the original prefactor is restored, the first line is explicitly
+\[
+ h^{1/2-a}k^{-1/2+a}T^{1-a-c}
+ \sum_{m\geq1}m^{-2+2a-b+c};
+\]
+in particular the gcd $d$ has cancelled before the $m$-sum is taken.
+For $z>1$, dyadically sum $z\asymp Z$.  The relations
+$d\rho Z\ll km$ and
+\[
+ \left|\log\frac{y}{y+d\rho}\right|\asymp Z^{-1},\qquad
+ \frac{m(y+d\rho)}{hT}\gg\frac{md\rho Z}{hT},
+\]
+give the two factors
+\[
+ (1+\Delta/Z)^{-J},\qquad
+ \left(1+\frac{md\rho Z}{hT}\right)^{-Q}.
+\]
+If $md\rho Z\leq hT$, then
+$m\rho Z\leq hT/d$, so only finitely many $m$, $\rho$, and dyadic $Z$ occur and
+their total algebraic mass is a fixed compact-dependent polynomial.  On the
+complement, choose $Q$ larger than that polynomial exponent plus $4$; the
+$m$-, $\rho$-, and $Z$-sums then converge absolutely.  This proves
+integrability on $\mathcal L_+$.  Finally, on the noncrossing set
+$\mathcal L_-$ one has
+$n_-\geq1/2$ and $y_-=x+d\rho>0$; there is no zero endpoint.  The inequality
+$l_-<1/2$ gives $d\rho<km/2$ and $h/2\leq x<km/2$.  Hence, for some fixed
+$C_{\mathscr K}$ containing the compact algebraic exponents, the absolute
+sum--integral is bounded by a constant times
+\[
+ \sum_{m\geq1}m^{C_{\mathscr K}}
+ \left(1+\frac{m}{2T}\right)^{-Q},
+\]
+after the polynomial number of $\rho$ values and the $v$-interval have been
+included in $C_{\mathscr K}$.  This converges when
+$Q>C_{\mathscr K}+2$.
+
+This proves \eqref{eq:compact-source-L1} for $j=0$.  As recorded in
+\eqref{eq:source-corner-majorant}, an $A$-derivative inserts a fixed
+polynomial in the complete contour variables and powers of $\log l$.  For
+any $\eta>0$, $|\log l|^j$ is bounded by $l^{-\eta}$ on $l\leq1$ and by
+$l^\eta$ on $l\geq1$.  Choose $\eta<\delta_A/4$ and then increase $P,Q,J$.
+All strict exponents
+above persist, proving the result for every fixed $j$.  The sum over
+$h\leq H$, $k\leq K$ is finite; with
+$|a_h|\ll_\eps h^\eps$, $|b_k|\ll_\eps k^\eps$, the displayed estimates
+give a fixed polynomial in $T,H,K$, and the arbitrary Fourier/conductor
+orders absorb it wherever a power saving is required.  This completes the
+proof.
 \end{proof}
 
 \subsection{Finite regulators and genuine Tonelli domains}
@@ -306,28 +609,11 @@ $A+u$ and $s$ is used.
 \end{proposition}
 
 \begin{proof}
-We first define the two sides before taking any limit.  For
-$\epsilon\in\{{\rm d},{\rm q}\}$ put
-\begin{equation}\label{eq:branch-shift-data}
- \begin{array}{c|ccc}
- \epsilon&B_\epsilon&C_\epsilon&\mathcal X_\epsilon(t)\\ \hline
- {\rm d}&B&C_1&1\\
- {\rm q}&-C_1&-B&X_{B,C_1}(t).
- \end{array}
-\end{equation}
-Thus $z_\epsilon=\lambda+C_\epsilon+s$ and
-$\nu_\epsilon=1-\lambda+B_\epsilon+s$.  For $\rho\geq1$ and
-$\mathfrak r=d\rho$, where $d=(h,km)$, define the physical variables
-\begin{equation}\label{eq:branch-physical-variables}
- \begin{array}{c|cc}
- \sigma&y_\sigma(v)&x_\sigma(v)\\ \hline
- +&v&v+\mathfrak r\\
- -&v+\mathfrak r&v
- \end{array}
- \qquad(v>0),\qquad
- l_\sigma(v)=\frac{y_\sigma(v)}{km},\quad
- n_\sigma(v)=\frac{x_\sigma(v)}h.
-\end{equation}
+We first define the two sides before taking any limit, using the branch data
+in \eqref{eq:branch-shift-data} and the physical variables in
+\eqref{eq:branch-physical-variables}.  Thus
+$z_\epsilon=\lambda+C_\epsilon+s$ and
+$\nu_\epsilon=1-\lambda+B_\epsilon+s$.
 Let $[a]_V$ denote the upward segment $a-iV$ to $a+iV$, and set
 \begin{equation}\label{eq:finite-physical-regulator}
  E_{R,\kappa,\sigma}(m,\rho,v)
@@ -531,56 +817,43 @@ in \eqref{eq:four-branch-order}; no variable regulator has yet been removed.
 We now give the uniform dominators for the remaining two limits.  Let
 \begin{equation}\label{eq:source-compact-sets}
  \mathscr K_A\Subset\{\Re A<\tfrac12-c_u/2\},\qquad
- \mathscr K_g\Subset\Omega_g,
+ \mathscr K_g\Subset\Omega_g.
 \end{equation}
-and let $a^\pm$ be the supremum and infimum of $\Re A$.  On
-$\mathscr K_g$ put
-\begin{align*}
- b_*&:=\inf\min\{\Re B,-\Re C_1\}>0,\\
- c^+&:=\sup\max\{\Re C_1,-\Re B\},\\
- c^-&:=\inf\min\{\Re C_1,-\Re B\}.
-\end{align*}
-These choices simultaneously cover the direct and dual substitutions.  Put
-\[
- \omega_A(l)=
- \begin{cases}l^{-1/2-a^+},&0<l\leq1,\\
- l^{-1/2-a^-},&l>1,\end{cases}
- \qquad
- \omega_C(n)=
- \begin{cases}n^{-1/2-c^+},&0<n\leq1,\\
- n^{-1/2-c^-},&n>1.\end{cases}
-\]
-After the $t$-integral has been performed, choose $P,Q,J$ once, depending
-only on the distances of \eqref{eq:source-compact-sets} from their
-boundaries.  The four source branches and any prescribed finite number of
-$A$-derivatives are dominated, up to a fixed logarithmic power and the
-finite outer $h,k$ weights, by the single nonnegative function
-\begin{align}
- \mathfrak M_{\rm src}(l,m,n)
- :={}&T\,\omega_A(l)m^{-1/2-b_*}\omega_C(n)
- \left(1+\frac lY\right)^{-P}
- \left(1+\frac{mn}T\right)^{-Q}\notag\\
- &\times\bigg\{
- \mathbf 1_{\{l,n\geq1/2\}}
- +\mathbf 1_{\{\min(l,n)<1\}}
- \left(1+\Delta\left|\log\frac{hn}{klm}\right|\right)^{-J}
- \bigg\}.
- \label{eq:uniform-source-dominator}
-\end{align}
-Logarithms inserted by $A$-derivatives are absorbed by increasing $P,Q,J$.
-The mesh estimate \eqref{eq:mesh-majorant}, the product bound
-\eqref{eq:source-product-majorant}, and the endpoint estimates
-\eqref{eq:z-integral-bound}--\eqref{eq:far-m-exponent} show that the
-sum--integral of \eqref{eq:uniform-source-dominator} is finite, uniformly for
-$(A,B,C_1)\in\mathscr K_A\times\mathscr K_g$.  Since
-\[
- \mathbf 1_{\{R^{-1}\leq l,n\leq R\}}
- \mathbf 1_{\{m,\rho\leq R\}}
- e^{-\kappa(m+\rho+l+n)}\leq1,
-\]
-this majorant is independent of $R$ and $\kappa$.  It gives dominated
-convergence at the source, first as $R\to\infty$ with $\kappa>0$ fixed and
-then as $\kappa\to0^+$, locally uniformly on the stated $A$-compact sets.
+For fixed $h,k$ and a branch $(\epsilon,\sigma)$, remove
+$E_{R,\kappa,\sigma}$ from \eqref{eq:finite-branch-physical-integral} and
+perform the complete $t$-, $s$-, and $u$-integrals on
+$\Re s=2$, $\Re u=c_u$.  Absolute convergence at fixed $(m,\rho,v)$ and
+the definition \eqref{eq:coupled-weight} identify the result with the density
+\eqref{eq:source-physical-density}.  Thus, after the already completed limit
+$V\to\infty$, the regulated source is exactly
+\begin{equation}\label{eq:source-as-pullback}
+ \mathscr S_{\epsilon,\sigma}^{R,\kappa}(A;h,k)
+ =\sum_{m,\rho\geq1}\int_0^\infty
+ E_{R,\kappa,\sigma}(m,\rho,v)
+ \mathfrak i_{\epsilon,\sigma}^{h,k}
+ (A,B,C_1;m,\rho,v)\dd v .
+\end{equation}
+This is a pullback to the physical curve
+$(l,n)=(l_\sigma(v),n_\sigma(v))$; no supremum over an independent endpoint
+variable is taken.
+
+Apply the compact-uniform source pullback statement proved above with $j=0$
+and write its explicit three-piece majorant
+\eqref{eq:source-three-piece-dominator} as
+$D_{\epsilon,\sigma,0}^{h,k}$.  Then
+\begin{equation}\label{eq:source-pullback-dominator}
+ \sum_{m,\rho\geq1}\int_0^\infty
+ D_{\epsilon,\sigma,0}^{h,k}(m,\rho,v)\dd v<\infty .
+\end{equation}
+Since $0\leq E_{R,\kappa,\sigma}\leq1$, the summable pullback majorant
+\eqref{eq:source-pullback-dominator} is independent of $R$ and $\kappa$.
+For every fixed $(m,\rho,v)$ the factor in
+\eqref{eq:finite-physical-regulator} tends first, as $R\to\infty$, to
+$e^{-\kappa(m+\rho+l_\sigma(v)+n_\sigma(v))}$ and then, as
+$\kappa\to0^+$, to $1$.  Dominated convergence in the measure
+$\sum_{m,\rho}\dd v$, applied also to the $A$-derivatives, now proves the two
+source limits in the asserted order and locally uniformly on the stated
+$A$-compact sets.
 
 For a destination, restrict temporarily to a compact subset
 $\mathscr K_{\rm Ton}$ of its branchwise Tonelli open set, and choose the

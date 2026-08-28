@@ -103,6 +103,24 @@ def permutation_sum(a, b, c, h, k, t):
     )
 
 
+def power_factor(a, c, t):
+    return mp.power(t / (2 * mp.pi), -a - c)
+
+
+def power_permutation_sum(a, b, c, h, k, t):
+    return (
+        z_factor(a, b, c, h, k)
+        + power_factor(a, c, t) * z_factor(-c, b, -a, h, k)
+        + power_factor(b, c, t) * z_factor(a, -c, -b, h, k)
+    )
+
+
+def replacement_difference(a, b, c, h, k, t):
+    return permutation_sum(a, b, c, h, k, t) - power_permutation_sum(
+        a, b, c, h, k, t
+    )
+
+
 cases = [
     (mp.mpc("0.013", "0.004"), mp.mpc("-0.009", "0.002"), mp.mpc("0.017", "-0.003"), mp.mpc("0.021", "0.007"), mp.mpf("37.25")),
     (mp.mpc("-0.027", "0.011"), mp.mpc("0.019", "-0.008"), mp.mpc("0.031", "0.005"), mp.mpc("-0.018", "0.013"), mp.mpf("103.75")),
@@ -123,11 +141,22 @@ for index, (a, b, c, z, t) in enumerate(cases, start=1):
 collision_data = [
     ("a_plus_c", lambda eps: (-mp.mpc("0.031", "0.005") + eps, mp.mpc("0.019", "-0.008"), mp.mpc("0.031", "0.005"))),
     ("a_minus_b", lambda eps: (mp.mpc("0.019", "-0.008") + eps, mp.mpc("0.019", "-0.008"), mp.mpc("0.031", "0.005"))),
+    ("b_plus_c", lambda eps: (mp.mpc("0.013", "0.004"), -mp.mpc("0.031", "0.005") + eps, mp.mpc("0.031", "0.005"))),
+    (
+        "triple_collision",
+        lambda eps: (
+            -mp.mpc("0.031", "0.005") + 5 * eps,
+            -mp.mpc("0.031", "0.005") + 2 * eps,
+            mp.mpc("0.031", "0.005"),
+        ),
+    ),
 ]
 
 for label, shifts in collision_data:
     previous = None
     differences = []
+    previous_replacement = None
+    replacement_differences = []
     for exponent in (8, 12, 16, 20):
         epsilon = mp.power(10, -exponent)
         a, b, c = shifts(epsilon)
@@ -141,6 +170,18 @@ for label, shifts in collision_data:
             )
         previous = current
 
+        current_replacement = replacement_difference(
+            a, b, c, 12, 35, mp.mpf("103.75")
+        )
+        if previous_replacement is not None:
+            replacement_step = abs(current_replacement - previous_replacement)
+            replacement_differences.append(replacement_step)
+            print(
+                f"replacement_collision={label} eps=1e-{exponent} "
+                f"successive_diff={mp.nstr(replacement_step, 8)}"
+            )
+        previous_replacement = current_replacement
+
     assert all(
         mp.mpf("0.5e-4") < right / left < mp.mpf("2e-4")
         for left, right in zip(differences, differences[1:])
@@ -148,6 +189,26 @@ for label, shifts in collision_data:
     assert differences[-1] < mp.mpf("1e-15"), (
         f"{label}: collision test did not reach the expected scale"
     )
+    assert all(
+        mp.mpf("0.5e-4") < right / left < mp.mpf("2e-4")
+        for left, right in zip(replacement_differences, replacement_differences[1:])
+    ), f"{label}: replacement difference is not holomorphic at the collision"
+    assert replacement_differences[-1] < mp.mpf("1e-15"), (
+        f"{label}: replacement collision test did not reach the expected scale"
+    )
+
+generic_shifts = (
+    mp.mpc("0.013", "0.004"),
+    mp.mpc("-0.009", "0.002"),
+    mp.mpc("0.017", "-0.003"),
+)
+replacement_small = abs(replacement_difference(*generic_shifts, 12, 35, mp.mpf("200")))
+replacement_large = abs(replacement_difference(*generic_shifts, 12, 35, mp.mpf("400")))
+replacement_ratio = replacement_large / replacement_small
+assert mp.mpf("0.3") < replacement_ratio < mp.mpf("0.7"), (
+    "the complete replacement difference does not display the expected first Stirling saving"
+)
+print(f"replacement_T_doubling_ratio={mp.nstr(replacement_ratio, 8)}")
 
 assert max(gamma_errors) < mp.mpf("1e-40"), (
     "gamma identity relative error exceeds the release threshold"

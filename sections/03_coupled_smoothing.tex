@@ -64,8 +64,13 @@ For every $A_0>0$, uniformly for $t\in\supp w$, for the shifts in
  +O_{A_0}(T^{-A_0}).
  \label{eq:afe}
 \end{align}
-The error remains $O_{A_0}(T^{-A_0})$ after integration against
-$\Gamma(u)$ on any fixed vertical line.
+ More precisely, on any fixed vertical line the error before the $u$-integral
+ is
+ \[
+  O_{A_0,M}\bigl(T^{-A_0}(1+|u|)^{2M+4}\bigr),
+ \]
+ and hence remains $O_{A_0}(T^{-A_0})$ after integration against
+ $\Gamma(u)$.
 \end{lemma}
 
 \begin{proof}
@@ -86,9 +91,18 @@ There are also four completed-zeta poles,
  \quad\tfrac12-\gamma+it,\quad-\tfrac12-\gamma+it.
 \]
 Their imaginary parts have size $T$, and $e^{s^2}=\exp(-T^2+O(T))$ there.
-Their residues and the horizontal integrals are therefore smaller than every
-power of $T$.  This proves \eqref{eq:afe}.  Notice that no division by $Q(u)$
-has been made.
+ Their residues and the horizontal integrals are therefore smaller than every
+ power of $T$.  The $u$-dependence of these errors is polynomial: the only
+ additional factor is the fixed-degree polynomial $\mathcal G(s,u)$.  Thus,
+ after enlarging $A_0$ if necessary, the error is
+ $O_{A_0,M}(T^{-A_0}(1+|u|)^{2M+4})$.  On
+ $|\Im u|\leq(\log T)^2$ this gives the stated pointwise uniformity, while on
+ the complementary part of any fixed vertical line Stirling's bound
+ \[
+  |\Gamma(c+i\tau)|\ll_c(1+|\tau|)^{c-1/2}e^{-\pi|\tau|/2}
+ \]
+ makes the polynomial error integrable.  This proves both assertions of the
+ lemma.  Notice that no division by $Q(u)$ has been made.
 \end{proof}
 
 The smoothed long zeta factor is initially defined on an absolutely
@@ -150,16 +164,56 @@ For nonnegative integers $i,j,r$ and every $A_0>0$,
  (\log T)^{C_M}T^{-r}(1+\xi)^{-A_0}(1+x/T)^{-A_0}.
 \end{equation}
 Every contour used in this bound is a complete infinite vertical line.
+The same estimate holds, locally uniformly, after replacing
+$(\alpha,\beta,\gamma)$ by external variables $(A,B,C_1)$ with
+\[
+ A\in\mathscr K_A\Subset\{\Re A<\tfrac12-c_u/2\},
+ \qquad (B,C_1)\in\mathscr K_g\Subset\Omega_g,
+\]
+where the two-variable good patch $\Omega_g$ is defined in
+\eqref{eq:good-patch},
+and also after the dual substitution $(B,C_1)\mapsto(-C_1,-B)$; the implied
+constant may depend on these two compact sets.
 \end{lemma}
 
 \begin{proof}
-Stirling's formula gives
+Write $s=\sigma+i\tau_s$.  The Stirling estimate needed here is made in two
+regions.  If $|\tau_s|\leq |t|/2$, then all four gamma arguments occurring in
+the two ratios defining $g_\pm$ have imaginary parts comparable with $T$.
+Uniform Stirling estimates for the ratios, followed by the corresponding
+polygamma estimates, give, for every fixed $r$ and every fixed $\sigma$ used
+below,
 \[
- \partial_t^r g_\pm(s,t)
- \ll T^{\Re s-r}(1+|s|)^{O(r)}.
+ |\partial_t^r g_\pm(\sigma+i\tau_s,t)|
+ \ll_{r,\sigma}T^{\sigma-r}(1+|\tau_s|)^{C_r}
+ \qquad (|\tau_s|\leq |t|/2).
 \]
-The factors $e^{s^2}$ and $\Gamma(u)$ give Gaussian and exponential decay in
-the respective imaginary directions.  Choose
+This is the only region in which a pointwise $T^{\sigma-r}$ estimate is
+used.  On the complementary region, uniform gamma and polygamma bounds away
+from their poles give the deliberately coarse estimate
+\[
+ |\partial_t^r g_\pm(\sigma+i\tau_s,t)|
+ \ll_{r,\sigma}(1+T+|\tau_s|)^{C_r}
+       \exp\{C_r(T+|\tau_s|)\}.
+\]
+The closed strips swept out below stay to the right of the numerator-gamma
+poles: for the only left move this follows from
+$\delta_s<1/2-C/\log T$, and the right-moving lines are farther right.
+Thus the preceding bound is uniform in the real parts occurring on both the
+vertical lines and their connecting horizontal edges.  Since
+$t\in[T/4,2T]$, on $|\tau_s|>|t|/2$ the Gaussian satisfies,
+after enlarging the constants,
+\[
+ e^{-\tau_s^2}
+ (1+T+|\tau_s|)^{C_r}e^{C_r(T+|\tau_s|)}
+ \ll_{r,A_0}T^{-r}e^{-\tau_s^2/2}.
+\]
+For bounded $T$ the same conclusion follows by enlarging the implied
+constant.  Consequently the complete $s$-contours, including the portions
+$\tau_s\asymp\pm t$, have an integrable majorant with the required
+$T^{-r}$ factor.  The factor $\Gamma(u)$ gives exponential decay in the
+other imaginary direction, uniformly after multiplication by the fixed
+polynomials in $s$ and $u$.  Choose
 \[
  0<\delta_u<1,\qquad 0<\delta_s<\tfrac12-C/\log T.
 \]
@@ -176,6 +230,17 @@ variable.  This gives
                     \ll_{A_0}(1+\xi)^{-A_0}(1+x/T)^{-A_0}.
 \]
 Normalized $\xi$- and $x$-derivatives insert polynomials in $u$ and $s$;
-$t$-derivatives give the stated $T^{-r}$.  Exponential decay justifies every
-move on full contours and avoids endpoint terms from hard height truncation.
+these are absorbed by the exponential--Gaussian majorant just obtained.
+The residues at $u=0$ and $s=0$ obey the same bounds (and the common residue
+is the constant one, whose positive $t$-derivatives vanish).  Thus
+$t$-derivatives give the stated $T^{-r}$ on every residue and remaining
+line.  The complete-contour majorants justify every move and avoid endpoint
+terms from hard height truncation.
+For the external-variable extension in the statement, $A$ enters only the
+fixed polynomial kernel $\mathcal G(s,u)$ and its two normalizing
+denominators.  On $\mathscr K_A\times\mathscr K_g$ the real parts of
+$1-A-C_1$ and $1-A+B$ are bounded away from zero, so those denominators have
+a compact-uniform positive lower bound.  The numerator-gamma geometry
+depends only on $B,C_1$ and is unchanged.  Thus the same contour proof and
+the same product tails hold with compact-dependent constants.
 \end{proof}

@@ -162,89 +162,6 @@ After the outer sum, choose $M$ so that
 \end{equation}
 Then \eqref{eq:permutation-new-line} is $O(T^{-D})$ after the outer sum.
 
-\subsection{Joint removability at shift collisions}
-
-The next lemma and proposition are grouped here because they describe the
-collision geometry used in the final contour moves.  Logically, however,
-they precede \Cref{prop:full-kernel-continuation}.  The lemma is formal local
-algebra.  The proposition uses only \eqref{eq:P-lambda}, Euler-factor
-symmetry, and $X_{-\gamma,\gamma}=1$; the separate fixed-$s$ application also
-uses the residue pairings \eqref{eq:first-common-Z}--\eqref{eq:third-common-Z}.
-None of these inputs imports quantitative continuation from
-\Cref{prop:full-kernel-continuation}.  This is the forward dependency
-recorded explicitly just before that proposition.
-
-\begin{lemma}[Three-divisor cancellation]\label{lem:three-divisor}
-Let $x,y$ be independent local holomorphic coordinates and put $z=x+y$.
-Suppose $a,b,c,H_0$ are holomorphic and
-\begin{equation}\label{eq:three-divisor-form}
- F=\frac{a}{xz}+\frac{b}{yz}+\frac{c}{xy}+H_0,\qquad
- a+c\in(x),\quad b+c\in(y),\quad a-b\in(z).
-\end{equation}
-Then $F$ is holomorphic across $xyz=0$.
-\end{lemma}
-
-\begin{proof}
-Over the common denominator, the numerator is
-\begin{equation}\label{eq:three-divisor-numerator}
-                              N=ay+bx+cz.
-\end{equation}
-Modulo $x$, use $z=y$ to obtain $N=(a+c)y$; modulo $y$, use $z=x$ to
-obtain $N=(b+c)x$; modulo $z$, use $y=-x$ to obtain $N=(b-a)x$.
-Thus each of the pairwise coprime linear factors $x,y,z$ divides $N$, and
-therefore $xyz\mid N$ in the local analytic ring.
-\end{proof}
-
-For the fixed-$s$ assembly, take the coordinates in
-\eqref{eq:central-divisors}.  After extracting the simple polar zeta factors,
-the direct diagonal, reflected dual diagonal, and zero mode have denominator
-patterns $xz$, $yz$, and $xy$.  The three residue cancellations in
-\eqref{eq:first-common-Z}--\eqref{eq:third-common-Z} give exactly the three
-divisibilities in \eqref{eq:three-divisor-form}.  Thus the complete fixed-$s$
-integrand is jointly holomorphic even at double or triple intersections.  Its
-separate $1/s$ factor remains, so the prescribed $s=0$ residue is retained.
-
-For the permutation sum, the collision pairs are
-\begin{center}
-\begin{tabular}{lll}
-\toprule
-hyperplane & first Euler product & matching Euler product\\
-\midrule
-$\lambda=-\gamma$
- &$Z_{-\gamma,\beta,\gamma}$
- &$Z_{-\gamma,\beta,\gamma}$, $X_{-\gamma,\gamma}=1$\\
-$\lambda=\beta$
- &$Z_{-\gamma,\beta,-\beta}$
- &$Z_{\beta,-\gamma,-\beta}$, equal by first-shift symmetry\\
-$\beta=-\gamma$
- &$Z_{\lambda,-\gamma,\gamma}$
- &$Z_{\lambda,-\gamma,\gamma}$, $X_{-\gamma,\gamma}=1$\\
-\bottomrule
-\end{tabular}
-\end{center}
-In each row the polar zeta arguments are opposite local coordinates, so the
-residues have opposite signs, including the finite factors at primes dividing
-$hk$.
-
-\begin{proposition}\label{prop:P-holomorphic}
-The complete expression $\Pcal_\lambda(h,k;t)$ in \eqref{eq:P-lambda} is
-jointly holomorphic across all shift-collision divisors.
-\end{proposition}
-
-\begin{proof}
-Apply \Cref{lem:three-divisor} with
-\begin{equation}\label{eq:P-collision-coordinates}
- x=\lambda+\gamma,\qquad
- y=-\beta-\gamma,\qquad
- z=\lambda-\beta=x+y.
-\end{equation}
-The middle, last, and first terms of \eqref{eq:P-lambda} supply the
-denominator patterns $xz$, $yz$, and $xy$, respectively.  The three rows of
-the preceding table are precisely the required divisibilities.  This also
-handles the common collision locus $\lambda=\beta=-\gamma$, rather than only
-generic points of the individual hyperplanes.
-\end{proof}
-
 \subsection{Proof of the main theorem}
 
 By \eqref{eq:zeta-star-recovery}, the coupled smoothed expansion differs from
@@ -263,7 +180,8 @@ nonzero frequencies are bounded by \eqref{eq:nonzero-final}.  We obtain
  &+O_{\eta,C,\eps}\!\left(
  T^\eps\{KH^{3/2}+T^{1/2}(HK)^{1/2}\}\right).
 \end{align*}
-By \Cref{prop:P-holomorphic}, the main term is jointly holomorphic at every
-shift collision.  This is \eqref{eq:main-asymptotic}.  The replacement
-\eqref{eq:X-stirling} follows uniformly from Stirling's formula, completing
-the proof.
+ By \Cref{prop:P-holomorphic}, the main term is jointly holomorphic at every
+ shift collision.  This is \eqref{eq:main-asymptotic}.  The replacement
+ \eqref{eq:X-stirling}, with its total uniform error, follows from
+ \Cref{prop:collision-safe-stirling}; in particular, no individual
+ meromorphic $Z$-term is estimated at a collision.  This completes the proof.
