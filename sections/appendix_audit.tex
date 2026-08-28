@@ -53,6 +53,13 @@ error stated in \Cref{thm:main}. & final paragraph of \Cref{sec:final}\\
 \end{tabular}
 \end{center}
 
+The expository numbering does not reverse the proof dependency between A9
+and A11.  The collision statement A11 is proved directly from
+\eqref{eq:P-lambda}, \eqref{eq:Z-euler}, \eqref{eq:X-def}, and local
+three-divisor division; it is then used in the polynomial majorant inside
+A9.  Thus the directed edge is $\mathrm{A11}\to\mathrm{A9}$, and there is no
+edge from A9 back to A11.
+
 \subsection{Additional adversarial checks}
 
 We record eight stress tests applied to the quantitative and uniformity

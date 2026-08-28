@@ -68,6 +68,11 @@ orientation, three main terms, and final error term were not changed.
 - Added a global polynomial majorant with fixed scaled domains, separate
   source/permutation/boundary estimates, collision-safe Cauchy bounds, and an
   acyclic parameter order.
+- Made the apparent Proposition 8.2--Proposition 9.3 forward reference
+  explicit in the proof ledger: the algebraic collision-removability result
+  depends only on the displayed permutation sum, Euler-factor identities,
+  and the three-divisor lemma, and is logically prior to the quantitative
+  continuation proposition despite its later expository placement.
 - Repaired the final permutation left-line estimate at beta+gamma=0: the
   complete holomorphic permutation sum is now retained before taking
   absolute values, and the collision tube is controlled by a scaled

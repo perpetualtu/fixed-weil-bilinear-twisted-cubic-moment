@@ -211,6 +211,29 @@ on $K_0$, where $\omega>0$ depends only on the fixed geometry.  Take
 $N>(D+(1-\omega)C_2)/\omega$.
 \end{proof}
 
+\paragraph{Dependency note (logical order).}
+The collision-removability result \Cref{prop:P-holomorphic}, although placed
+with the collision discussion in \Cref{sec:final}, is an algebraic input to
+the next proposition, not a consequence of it.  More precisely, its proof
+uses only the explicit three-term definition \eqref{eq:P-lambda}, the Euler
+product and archimedean identities \eqref{eq:Z-euler} and \eqref{eq:X-def},
+and the local division statement \Cref{lem:three-divisor}.  It uses neither
+\Cref{lem:two-constants} nor \Cref{prop:full-kernel-continuation}, and it uses
+no polynomial majorant or contour move proved below.  Thus the logical
+dependency chain is
+\[
+ \begin{gathered}
+ \eqref{eq:P-lambda},\ \eqref{eq:Z-euler},\ \eqref{eq:X-def}\\
+ \Downarrow\\
+ \Cref{lem:three-divisor}\\
+ \Downarrow\\
+ \Cref{prop:P-holomorphic}\\
+ \Downarrow\\
+ \Cref{prop:full-kernel-continuation}.
+ \end{gathered}
+\]
+the later placement of the middle two statements is expository only.
+
 \begin{proposition}[Full-kernel assembly continuation]
 \label{prop:full-kernel-continuation}
 Under \eqref{eq:main-range}, for every fixed $C_0,D>0$,
@@ -342,10 +365,9 @@ line.  Away from a fixed scaled tube around $y=0$, the Euler formula
  \ll_{R_*,M,\eps}L^{C_M}(hk)^\eps h^{1/2+\eps}
  (1+|\Im u|)^{C_M}.
 \end{equation}
-In the scaled tube $|Ly|<1/2$ we first use
-\Cref{prop:P-holomorphic}, which is the local
-three-divisor consequence of the already proved residue identities and does
-not use the present proposition.  More explicitly, fix $A,C_1,u,t$ and put
+In the scaled tube $|Ly|<1/2$ we first use the logically prior algebraic
+input \Cref{prop:P-holomorphic}, with the acyclic dependency recorded above.
+More explicitly, fix $A,C_1,u,t$ and put
 \[
  f(w)=\left.\Pcal_{A+u}(h,k;t)\right|_{B=-C_1-w/L}.
 \]

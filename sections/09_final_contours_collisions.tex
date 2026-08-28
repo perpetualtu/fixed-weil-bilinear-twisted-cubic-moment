@@ -119,8 +119,9 @@ size $T^{O((\log T)^{-1})}$.  Standard vertical-strip zeta bounds then give
 fixed power of $\log T$.
 
 In the remaining tube $|y|<1/(2\log T)$, apply the joint removability of the
-\emph{complete} permutation sum from \Cref{prop:P-holomorphic} below before
-taking absolute values.  With $\gamma$ fixed, write
+\emph{complete} permutation sum from the logically prior
+\Cref{prop:P-holomorphic} before taking absolute values.  With $\gamma$
+fixed, write
 $\beta=-\gamma-w/\log T$.  The maximum principle on $|w|\leq1/2$ bounds
 every value in the tube by the already established bound on $|w|=1/2$.
 That circle changes only the logarithmic factor, and $x,z$ remain uniformly
@@ -143,7 +144,7 @@ $\Pcal_\alpha$.
 $R_M(-j)=0$.
 \item The arithmetic collision locations $u=-\alpha-\gamma$ and
 $u=\beta-\alpha$ are removable in the complete $\Pcal$ by
-\Cref{prop:P-holomorphic} below.
+the logically prior \Cref{prop:P-holomorphic}.
 \item The poles $u=1/2+2n-\alpha-it$ of
 $X_{\alpha+u,\gamma}(t)$ lie to the right of $c_u$ and are not crossed.
 The $n=0$ pole encountered in the preliminary move from $\Re u=1$ to $c_u$
@@ -162,6 +163,16 @@ After the outer sum, choose $M$ so that
 Then \eqref{eq:permutation-new-line} is $O(T^{-D})$ after the outer sum.
 
 \subsection{Joint removability at shift collisions}
+
+The next lemma and proposition are grouped here because they describe the
+collision geometry used in the final contour moves.  Logically, however,
+they precede \Cref{prop:full-kernel-continuation}.  The lemma is formal local
+algebra.  The proposition uses only \eqref{eq:P-lambda}, Euler-factor
+symmetry, and $X_{-\gamma,\gamma}=1$; the separate fixed-$s$ application also
+uses the residue pairings \eqref{eq:first-common-Z}--\eqref{eq:third-common-Z}.
+None of these inputs imports quantitative continuation from
+\Cref{prop:full-kernel-continuation}.  This is the forward dependency
+recorded explicitly just before that proposition.
 
 \begin{lemma}[Three-divisor cancellation]\label{lem:three-divisor}
 Let $x,y$ be independent local holomorphic coordinates and put $z=x+y$.
