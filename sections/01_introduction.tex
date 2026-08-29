@@ -1,0 +1,97 @@
+\section{Introduction}
+
+Moments of the Riemann zeta function twisted by Dirichlet polynomials are a
+basic input to mollification and to the study of zeros on the critical line.
+The twisted second moment is classical \cite{BCHB1985}, while the fourth
+moment has been evaluated in substantial polynomial-length ranges
+\cite{HughesYoung2010,BBLR2020}.
+The present paper concerns a three-zeta analogue of the twisted second and
+fourth moments.  For smooth $w$ concentrated at height $T$, consider
+\begin{equation}\label{eq:intro-integral}
+ \sum_{h\leq H}\sum_{k\leq K}\frac{a_h\overline{b_k}}{\sqrt{hk}}
+ \int_{\R}w(t)
+ \zeta\!\left(\tfrac12+\alpha+it\right)
+ \zeta\!\left(\tfrac12+\beta+it\right)
+ \zeta\!\left(\tfrac12+\gamma-it\right)
+ \left(\frac hk\right)^{it}\dd t.
+\end{equation}
+Here $a_h$ and $b_k$ are independent divisor-bounded sequences and the three
+shifts are $O((\log T)^{-1})$.
+
+Bui introduced the corresponding twisted cubic moment in connection with a
+three-piece mollifier \cite{Bui2014}.  The formula in that note was left
+unproved, and its mollifier application uses two arithmetically different
+coefficient sequences.  We therefore formulate the bilinear problem with
+independent $a_h$ and $b_k$.  Our main result proves the expected three
+permutation terms in the fixed-Weil range
+\begin{equation}\label{eq:intro-range}
+                    H^{3/2}K\leq T^{1-\eta}.
+\end{equation}
+The exact statement, including a uniform error term and the interpretation at
+colliding shifts, is \Cref{thm:main}.  Its three terms agree with the shifted
+moment recipe of Conrey, Farmer, Keating, Rubinstein and Snaith
+\cite{CFKRS2005}.
+
+The closest established technology includes the twisted fourth moment of
+Hughes and Young \cite{HughesYoung2010}, the quadratic divisor theorem of
+Bettin, Bui, Li and Radziwi{\l}{\l} \cite{BBLR2020}, and the twisted second-moment
+work of Bettin, Chandee and Radziwi{\l}{\l} \cite{BCR2017}.  Those theorems have
+different zeta-factor or coefficient structures and do not specialize to
+\eqref{eq:intro-integral}.  In particular, polarization of a quadratic form
+with a common structured factor does not create two arbitrary coefficient
+sequences in the cubic integral.  The proof below instead retains the
+degenerate equation
+\[
+                         hn-klm=r
+\]
+coming from the cubic approximate functional equation.
+
+Pliego's asymptotic formulas for special mixed cubic moments
+\cite{Pliego2025} involve a fixed one-sided polynomial and likewise do not
+contain the two arbitrary, asymmetric coefficient sequences in
+\eqref{eq:intro-integral}.
+
+There are two independent analytic issues.  For $r\neq0$, Poisson summation
+must be carried out only after the common divisor $d=(h,km)$ is extracted;
+otherwise the modular inverse is not defined.  Keeping a single $l$-Poisson
+orientation, finite completion and the Weil bound give
+\[
+                 \mathcal R_{\neq0}^{(l)}
+                 \ll_\eps T^\eps KH^{3/2}.
+\]
+For the zero frequency, formal deletion of the continuous endpoint regions
+$0<l<1$ and $0<n<1$ leads to beta integrals outside a common absolute
+convergence chamber.  We resolve this with a coupled $(s,u)$ kernel.  Finite
+variable and Abel regulators are kept while finite contour rectangles are
+deformed; the rectangle heights tend to infinity before either regulator is
+removed.  Thus the source limit is controlled by the full two-variable
+kernel, whereas the destination limit is taken in genuine Tonelli domains.
+
+The diagonal and all four zero-mode branches must then be assembled at fixed
+$u$.  Three pairs of small $s$-residues cancel, including their finite Euler
+factors and exact gamma factors.  Quantitative holomorphic continuation is
+applied only to the complete endpoint error after subtracting the full
+diagonal boundary term.  The $u$-contours are moved afterward.  This ordering
+is what makes the result uniform at $\alpha=\beta=\gamma=0$.
+
+If $H\leq T^{\theta_1}$ and $K\leq T^{\theta_3}$, the proved open region is
+\[
+                         \frac32\theta_1+\theta_3<1.
+\]
+It includes Bui's boxes
+$H\leq T^{4/7-\eps_B}$, $K\leq T^{1/4-\eps_B}$ whenever
+$\eps_B>3/70$.  It does not include the limiting corner $(4/7,1/4)$; at that
+corner the pointwise Weil budget is $T^{31/28+o(1)}$.  We discuss this exact
+boundary, without using it in the proof, in \Cref{sec:bui-corner}.
+
+\subsection*{Organization}
+\Cref{sec:statement} states the theorem and records the Euler factors.
+\Cref{sec:smoothing} constructs the coupled smoothing and proves its
+full-contour bounds.  \Cref{sec:poisson} gives the exact gcd and Poisson
+decomposition, and \Cref{sec:nonzero} proves the nonzero-frequency estimate.
+The endpoint deletion and regulator bridge occupy \Cref{sec:endpoint}.
+The beta, Euler and archimedean identities are established in
+\Cref{sec:beta}.  The fixed-$u$ residue assembly and quantitative continuation
+are performed in \Cref{sec:assembly}.  The final $u$-moves and the collision
+argument appear in \Cref{sec:final}.  An audit and reproducibility ledger is
+given in \Cref{app:audit}.

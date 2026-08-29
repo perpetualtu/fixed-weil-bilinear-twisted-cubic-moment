@@ -1,0 +1,192 @@
+\section{Final contour moves, collisions, and completion of the proof}
+\label{sec:final}
+
+The two $u$-moves in this section are performed only after
+\Cref{prop:full-kernel-continuation}.  They are distinct: first we move the
+full diagonal boundary, and then the complete three-permutation expression.
+
+\subsection{The diagonal-boundary \texorpdfstring{$u$}{u}-move}
+
+The ordinary $u=0$ residue of \eqref{eq:diagonal-boundary-Y} is
+\begin{align}
+ \mathcal R_{\mathrm{diag},0}(h,k)
+ ={}&\int_{\R}w(t)\bigg\{
+ \frac{1}{2\pi i}\int_{(\sigma_s)}\frac{G(s)}s
+ g_{\beta,\gamma}(s,t)\notag\\
+ &\hspace{31mm}\times
+ Z_{\alpha,\beta+s,\gamma+s}(h,k)\dd s\notag\\
+ &\quad+X_{\beta,\gamma}(t)
+ \frac{1}{2\pi i}\int_{(\sigma_s)}\frac{G(s)}s
+ g_{-\gamma,-\beta}(s,t)\notag\\
+ &\hspace{31mm}\times
+ Z_{\alpha,-\gamma+s,-\beta+s}(h,k)\dd s
+ \bigg\}\dd t.
+ \label{eq:diagonal-boundary-zero}
+\end{align}
+Move each $u$-line in \eqref{eq:diagonal-boundary-Y} to
+\begin{equation}\label{eq:boundary-u-line}
+                  \Re u=-\sigma_u,\qquad \sigma_u=M+\frac12.
+\end{equation}
+On $\Re s=\sigma_s$, the only $u$-dependent arithmetic poles are
+\begin{equation}\label{eq:boundary-arithmetic-poles}
+                  u=-\alpha-\gamma-s,\qquad
+                  u=\beta-\alpha-s.
+\end{equation}
+Both have real part $1/2-\eps_s+O((\log T)^{-1})>c_u$, so they lie to the
+right of the original line.  The pole at $u=0$ gives
+\eqref{eq:diagonal-boundary-zero}; the potential poles
+$u=-1,\ldots,-M$ vanish by \eqref{eq:gamma-RM}.
+
+For the new-line estimate, the finite Euler factor in
+\eqref{eq:Z-euler} may be written
+\begin{equation}\label{eq:Bnu-form}
+ B_\nu(q,v)=X^\nu+(1-X)\sum_{j=0}^{\nu-1}X^jY_0^{\nu-j},
+ \qquad X=p^{-q},\quad Y_0=p^{-v}.
+\end{equation}
+This follows by summing the geometric tail in
+\[
+ (1-p^{-q})(1-p^{-v})\sum_{i+j\geq\nu}p^{-qi-vj}.
+\]
+On \eqref{eq:boundary-u-line}, \eqref{eq:Bnu-form} and vertical-strip zeta
+bounds give
+\begin{align}
+ Z_{\alpha+u,\beta+s,\gamma+s}(h,k),\quad
+ Z_{\alpha+u,-\gamma+s,-\beta+s}(h,k)
+ \ll_M{}&(\log T)^{C_M}(hk)^\eps
+ h^{\sigma_u+O(\eps_s)+\eps}
+ \notag\\
+ &\times(1+|u|+|s|)^{C_M}.
+ \label{eq:boundary-Z-bound}
+\end{align}
+Together with $g(s,t)\ll T^{\sigma_s}(1+|s|)^{C_M}$, the gamma decay in
+$u$, and the Gaussian decay in $s$, the new lines after the outer coefficient
+sum are
+\begin{equation}\label{eq:boundary-new-line}
+ \ll T^{1+\sigma_s+\eps}Y^{-\sigma_u}
+ H^{\sigma_u+O(\eps_s)+\eps}(HK)^{1/2}.
+\end{equation}
+Since $H\leq T^{2(1-\eta)/3}$ and $Y=T^{B_0}$ with $B_0>2$, $M$ can be
+chosen so that \eqref{eq:boundary-new-line} is $O_D(T^{-D})$.  At $u=0$ the
+Euler arguments on $\Re s=\sigma_s$ remain a fixed distance from their poles,
+and hence
+\begin{equation}\label{eq:boundary-zero-bound}
+ \sum_{h\leq H}\sum_{k\leq K}
+ \frac{|a_hb_k|}{\sqrt{hk}}
+ |\mathcal R_{\mathrm{diag},0}(h,k)|
+ \ll_\eps T^{1/2+\eps}(HK)^{1/2}.
+\end{equation}
+Consequently
+\begin{equation}\label{eq:boundary-move-result}
+ \mathscr D_T
+ =\sum_{h\leq H}\sum_{k\leq K}
+ \frac{a_h\overline{b_k}}{\sqrt{hk}}
+ \mathcal R_{\mathrm{diag},0}(h,k)+O_D(T^{-D}).
+\end{equation}
+
+\subsection{The permutation \texorpdfstring{$u$}{u}-move}
+
+\begin{lemma}[Left-line bound]\label{lem:P-left-line}
+For fixed $\sigma>0$ and
+$\Re\lambda=-\sigma+O((\log T)^{-1})$,
+\begin{equation}\label{eq:P-left-bound}
+ Q(u)\Pcal_\lambda(h,k;t)
+ \ll_{\sigma,M}(\log T)^{C_M}(hk)^\eps
+ (T^\sigma+h^\sigma)(1+|\Im u|)^{C_M}.
+\end{equation}
+After multiplication by $\Gamma(u)$, this is integrable on the complete
+vertical line.
+\end{lemma}
+
+\begin{proof}
+Retain the complete sum $\Pcal_\lambda$ before estimating it.  In the
+collision coordinates
+\[
+ x=\lambda+\gamma,\qquad y=-\beta-\gamma,
+ \qquad z=\lambda-\beta=x+y,
+\]
+the line $\Re\lambda=-\sigma+O((\log T)^{-1})$ keeps $x$ and $z$ a fixed
+positive distance from zero.  Thus only $y=0$ can meet this line.
+
+Away from $|y|<1/(2\log T)$, use \eqref{eq:Bnu-form} term by term.  If the
+first shift of $Z$ is $\lambda$ and its third shift is $\gamma$ or
+$-\beta$, the local product is at worst $h_0^{\sigma+\eps}$.  If the third
+shift is $-\lambda$, both Euler arguments have real part
+$1+\sigma+O((\log T)^{-1})$, and the local factor cancels the apparent
+exterior $h_0^{1/2+\sigma}$, leaving $h_0^{-1/2+\eps}$.  Stirling gives
+$X_{\lambda,\gamma}(t)\ll T^{\sigma+\eps}$; the other exact $X$ factor has
+size $T^{O((\log T)^{-1})}$.  Standard vertical-strip zeta bounds then give
+\eqref{eq:P-left-bound}, with the possible distance to $y=0$ absorbed by a
+fixed power of $\log T$.
+
+In the remaining tube $|y|<1/(2\log T)$, apply the joint removability of the
+\emph{complete} permutation sum from the logically prior
+\Cref{prop:P-holomorphic} before taking absolute values.  With $\gamma$
+fixed, write
+$\beta=-\gamma-w/\log T$.  The maximum principle on $|w|\leq1/2$ bounds
+every value in the tube by the already established bound on $|w|=1/2$.
+That circle changes only the logarithmic factor, and $x,z$ remain uniformly
+separated from zero.  This proves \eqref{eq:P-left-bound} throughout the
+tube, including the collision, without estimating either meromorphic
+summand there.  The vertical-strip zeta bounds and the uniform form of
+Stirling's formula used above hold for every $\Im u$; the complementary
+compact ranges of the gamma arguments are bounded directly.  Thus
+\eqref{eq:P-left-bound} holds on the complete vertical line, where
+$\Gamma(u)$ dominates the displayed polynomial in $|\Im u|$.
+\end{proof}
+
+Set $\sigma=M+1/2$ and move the common $u$-line in
+\eqref{eq:R-T} from $c_u$ to $-\sigma$.  The complete residue list is as
+follows.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=8mm]
+\item At $u=0$, $\Gamma(u)$ has residue one and $Q(0)=1$; this gives
+$\Pcal_\alpha$.
+\item The gamma residues at $u=-j$, $1\leq j\leq M$, vanish because
+$R_M(-j)=0$.
+\item The arithmetic collision locations $u=-\alpha-\gamma$ and
+$u=\beta-\alpha$ are removable in the complete $\Pcal$ by
+the logically prior \Cref{prop:P-holomorphic}.
+\item The poles $u=1/2+2n-\alpha-it$ of
+$X_{\alpha+u,\gamma}(t)$ lie to the right of $c_u$ and are not crossed.
+The earlier passage from $\Re u=1$ to $c_u$ in
+\eqref{eq:zeta-star} is instead the pole-free finite-truncation move of the
+inverse-Mellin kernel described after \eqref{eq:cu-range}; it is not a contour
+move of this collapsed $X$-factor.  Numerator-gamma poles crossed during the
+later branchwise continuation are the remote $u$-residues
+\eqref{eq:remote-u-poles}, already recorded there as exponentially small.
+Denominator gamma factors give zeros.
+\end{enumerate}
+There are no other poles between the two lines.  By
+\Cref{lem:P-left-line}, the new line for fixed $h,k$ is bounded by
+\begin{equation}\label{eq:permutation-new-line}
+ T(\log T)^{C_M}(hk)^\eps
+ \left\{(T/Y)^\sigma+(h/Y)^\sigma\right\}.
+\end{equation}
+After the outer sum, choose $M$ so that
+\begin{equation}\label{eq:M-choice}
+ (B_0-1)\sigma>\frac12(1-\eta)+D+1+2\eps.
+\end{equation}
+Then \eqref{eq:permutation-new-line} is $O(T^{-D})$ after the outer sum.
+
+\subsection{Proof of the main theorem}
+
+By \eqref{eq:zeta-star-recovery}, the coupled smoothed expansion differs from
+\eqref{eq:I-def} by an arbitrary negative power.  Its $r=0$ diagonals and
+fixed-orientation zero modes satisfy
+\eqref{eq:full-continuation-result}.  The diagonal boundary is reduced by
+\eqref{eq:boundary-move-result} and bounded by
+\eqref{eq:boundary-zero-bound}.  The complete permutation line contributes
+only its $u=0$ residue, by \eqref{eq:permutation-new-line}.  Finally, the
+nonzero frequencies are bounded by \eqref{eq:nonzero-final}.  We obtain
+\begin{align*}
+ \I_{\alpha,\beta,\gamma}(a,b)
+ ={}&\sum_{h\leq H}\sum_{k\leq K}
+ \frac{a_h\overline{b_k}}{\sqrt{hk}}
+ \int_{\R}w(t)\Pcal_\alpha(h,k;t)\dd t\\
+ &+O_{\eta,C,\eps}\!\left(
+ T^\eps\{KH^{3/2}+T^{1/2}(HK)^{1/2}\}\right).
+\end{align*}
+ By \Cref{prop:P-holomorphic}, the main term is jointly holomorphic at every
+ shift collision.  This is \eqref{eq:main-asymptotic}.  The replacement
+ \eqref{eq:X-stirling}, with its total uniform error, follows from
+ \Cref{prop:collision-safe-stirling}; in particular, no individual
+ meromorphic $Z$-term is estimated at a collision.  This completes the proof.

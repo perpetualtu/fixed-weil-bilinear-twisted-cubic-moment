@@ -1,0 +1,1031 @@
+\section{Endpoint deletion and the full-kernel bridge}
+\label{sec:endpoint}
+
+The zero mode \eqref{eq:exact-zero-mode} is initially a continuous integral
+with the discrete restrictions $l,n\geq1$ retained by $U$.  We first delete
+the artificial regions $0<l<1$ and $0<n<1$ on a genuine convergence patch.
+We then construct the exact continuation needed to reach all small shifts.
+
+\subsection{Fourier decay and the endpoint lemma}
+
+\begin{lemma}[Fourier--conductor bound]\label{lem:fourier-conductor}
+Uniformly for $x,y>0$, $x\neq y$, and every $A_0,J>0$,
+\begin{align}
+ &\left|\int_{\R}w(t)(x/y)^{it}
+ \V^\pm\!\left(\frac{y}{kmY},\frac{mx}{h},t\right)\dd t\right|
+ \notag\\
+ &\qquad\ll_{A_0,J}T(\log T)^{C_M}
+ \left(1+\frac{y}{kmY}\right)^{-A_0}\notag\\
+ &\hspace{35mm}\times
+ \left(1+\frac{mx}{hT}\right)^{-A_0}
+ \left(1+\Delta|\log(x/y)|\right)^{-J}.
+ \label{eq:fourier-conductor}
+\end{align}
+\end{lemma}
+
+\begin{proof}
+Integrate by parts $J$ times in $t$ and use
+\eqref{eq:w-derivatives} and \eqref{eq:double-weight-bound}.  Every
+derivative costs at most $\Delta^{-1}$, and the support of $w$ has length
+$O(T)$.
+\end{proof}
+
+\begin{proposition}[Endpoint deletion on the good half-space]
+\label{prop:endpoint-deletion}
+Assume \eqref{eq:main-range}.  For every $D>0$, after summing over
+$h\leq H$, $k\leq K$ with the outside coefficient weights, one has
+\begin{equation}\label{eq:endpoint-deletion}
+ \mathcal O^\pm_{0,Y}-\widetilde{\mathcal O}^\pm_{0,Y}
+ =O_D(T^{-D})
+\end{equation}
+when
+\begin{equation}\label{eq:endpoint-halfspace}
+ \Re(\beta-\gamma)\geq0,\qquad
+ |\Re\alpha|+|\Re\beta|+|\Re\gamma|\leq C/\log T.
+\end{equation}
+The source expressions retain the complete contours in
+\eqref{eq:coupled-weight}.
+\end{proposition}
+
+\begin{proof}
+It suffices to treat
+\begin{equation}\label{eq:endpoint-regions}
+             \mathcal E_l=\{y<km\},\qquad
+             \mathcal E_n=\{x<h\}.
+\end{equation}
+Put $\delta_0=\eta/4$ and $\eps_0=\eta/8$.  On $\mathcal E_l$, suppose
+simultaneously that
+\begin{equation}\label{eq:slow-small-assumption}
+ |\log(x/y)|\leq T^{-1+\delta_0},\qquad
+ \frac{mx}{hT}\leq T^{\eps_0}.
+\end{equation}
+Then $x\asymp y$, and, with $r=d\rho$, $h=dq$, $km=dv$,
+\begin{equation}\label{eq:scale-rho}
+ y\gg d|\rho|T^{1-\delta_0},\qquad
+ v\gg|\rho|T^{1-\delta_0},\qquad
+ m|\rho|\ll qT^{\delta_0+\eps_0}.
+\end{equation}
+Since $v\leq km$ and $q\leq h\leq H$, this forces
+\begin{equation}\label{eq:scale-contradiction}
+ HK\gg T^{1-2\delta_0-\eps_0}=T^{1-5\eta/8}.
+\end{equation}
+But \eqref{eq:main-range} and $H\geq1$ give $HK\leq T^{1-\eta}$, a
+contradiction for large $T$.  Every point of $\mathcal E_l$ therefore has
+either Fourier saving $|\log(x/y)|>T^{-1+\delta_0}$ or conductor saving
+$mx/(hT)>T^{\eps_0}$.  The orders $A_0,J$ in
+\eqref{eq:fourier-conductor} absorb every remaining polynomial factor.
+
+On $\mathcal E_n$, $0<x<h$ and $r=d\rho\neq0$ imply
+\begin{equation}\label{eq:n-endpoint-phase}
+ |\log(x/y)|\gg\min(1,|r|/h)\gg 1/H.
+\end{equation}
+The main range gives $H\leq T^{2(1-\eta)/3}$, and hence
+\begin{equation}\label{eq:n-endpoint-saving}
+ \Delta|\log(x/y)|\gg T^{(1+2\eta)/3}/\log T.
+\end{equation}
+Repeated integration by parts again gives an arbitrary power saving, once
+the endpoint mass is shown to be only polynomial.
+
+We record the singular-layer summation because it is where the gcd density is
+needed.  For fixed $m$ and a dyadic $l$-scale, the values
+\[
+                 n=\frac{kml+d\rho}{h}
+\]
+form a mesh of spacing $d/h$, exactly matching
+\eqref{eq:poisson-density}.  A boundary layer meeting $n=0$ has
+$kml\asymp d|\rho|$.  On writing $n=(d/h)x$ and $x=|\rho|z$, the square-root
+Jacobian is
+\begin{equation}\label{eq:square-root-jacobian}
+ |\rho|^{-1/2}\int_0^{O(|\rho|)}x^{-1/2}(\cdots)\dd x
+ =\int_0^{O(1)}z^{-1/2}(\cdots)\dd z.
+\end{equation}
+Thus no unrecorded sum over $\rho$ and no lost $|\rho|^{-1/2}$ occurs.
+
+For the potentially worst case $r<0$, $x<h$, partial summation in
+$r=d\rho$ and then in $m$ gives, up to $T^\eps$,
+\begin{align}
+ \sum_{\rho\geq1}y^{-1/2-\Re\alpha}
+ \left(1+\frac{y}{kmY}\right)^{-A_0}
+ &\ll d^{-1}(kmY)^{1/2-\Re\alpha},\label{eq:rho-endpoint-sum}\\
+ \sum_{m\geq1}m^{-1/2-\Re\beta}
+ \left(1+\frac{mx}{hT}\right)^{-A_0}
+ &\ll(hT/x)^{1/2-\Re\beta}.
+ \label{eq:m-endpoint-sum}
+\end{align}
+After multiplication by $x^{-1/2-\Re\gamma}$, the lower-end behavior is
+\begin{equation}\label{eq:endpoint-integrability}
+                          x^{-1+\Re(\beta-\gamma)}.
+\end{equation}
+It is integrable in \eqref{eq:endpoint-halfspace}; on the boundary, the last
+factor in \eqref{eq:fourier-conductor} makes the logarithmic endpoint
+integrable for $J>1$.  All remaining sums have fixed polynomial size and are
+absorbed by \eqref{eq:n-endpoint-saving}.  This proves
+\eqref{eq:endpoint-deletion}.
+\end{proof}
+
+The ordinary dominated-convergence proof stops at
+$\Re(\beta-\gamma)=0$: its far dyadic majorant has residual size
+\begin{equation}\label{eq:far-tail-obstruction}
+ M_1^{\Re(\gamma-\beta)}
+ \{1+\log(M_1/T)\}^{-J}\qquad(M_1\gg T).
+\end{equation}
+We therefore continue only the complete assembled error, rather than a
+single endpoint-deleted branch.
+
+\subsection{Source normality with the full kernel}
+
+In this subsection use external shifts $A,B,C_1$ in place of
+$\alpha,\beta,\gamma$ in the kernel.  The continuation requires only one
+nonempty patch.  For definiteness take $\kappa_0=1$, $c_1=5$, and define the
+following domain in the two variables $(B,C_1)$:
+\begin{equation}\label{eq:good-patch}
+ \Omega_g=\left\{
+ \Re B>\frac{\kappa_0}{\log T},\quad
+ \Re C_1<-\frac{\kappa_0}{\log T},\quad
+ |B|+|C_1|<\frac{c_1}{\log T}\right\}\subset\C^2.
+\end{equation}
+Uniformity on compact subsets of this shrinking patch always has the following
+scaled meaning.  Put
+\[
+ \widehat\Omega_g=\{\Re\mathsf b>\kappa_0,
+ \Re\mathsf c<-\kappa_0,\ |\mathsf b|+|\mathsf c|<c_1\}.
+\]
+Fix $\widehat{\mathscr K}_g\Subset\widehat\Omega_g$ with a positive collar and
+set
+\begin{equation}\label{eq:scaled-good-compact}
+ \mathscr K_g(T)=\{(B,C_1):(B\log T,C_1\log T)
+                         \in\widehat{\mathscr K}_g\}.
+\end{equation}
+Below, $\mathscr K_g\Subset\Omega_g$ abbreviates
+\eqref{eq:scaled-good-compact}; implied constants may depend on the fixed
+scaled compact and its collar, but not on $T$.  This is the same scaled-compact
+convention used in \Cref{sec:assembly}.
+The initial three-variable good patch additionally has
+$|A|+|B|+|C_1|<c_1/\log T$.  After fixing $(B,C_1)\in\Omega_g$, however, we
+let $A$ vary independently in the connected strip
+\begin{equation}\label{eq:external-A-strip}
+                       \Re A<\frac12-\frac{c_u}{2}.
+\end{equation}
+
+\begin{lemma}[Full-kernel source normality]\label{lem:source-normality}
+For each of the four pairs
+\[(\text{direct or dual AFE sign},\ \operatorname{sgn}\rho),\]
+the endpoint-deleted expressions, with the finite regulators introduced
+below, converge locally uniformly in the strip
+\eqref{eq:external-A-strip}, uniformly for $(B,C_1)$ on compact subsets of
+\eqref{eq:good-patch}.  Their limits are holomorphic in $A$, as are any fixed
+number of $A$-derivatives.
+\end{lemma}
+
+\begin{proof}
+Keep the complete kernel $\V(l/Y,mn,t)$ and do not freeze its $s$ variable.
+For the exact-cutoff source, $l,n\geq1/2$.  If $F(n)$ is the nonnegative
+product-tail majorant from \Cref{lem:double-weight}, then on either half-mesh
+of spacing $\delta=d/h$,
+\begin{equation}\label{eq:mesh-majorant}
+ \delta\sum_{\rho:n\geq1/2}F(n)
+ \ll\int_{1/2}^{\infty}F(v)\dd v
+     +\delta\sup_{v\geq1/2}F(v).
+\end{equation}
+This gives, before the finite outer sums, a fixed logarithmic power times
+\begin{multline}
+ T\int_{1/2}^{\infty}l^{-1/2-a_0}(1+l/Y)^{-P}\dd l
+ \sum_{m\geq1}m^{-1/2-b_0}\\
+ {}\times\left\{
+ \int_{1/2}^{\infty}n^{-1/2-c_0}(1+mn/T)^{-Q}\dd n
+ +(1+m/T)^{-Q}\right\}.
+ \label{eq:source-product-majorant}
+\end{multline}
+where $a_0=\Re A$, $b_0=\Re B$, and $c_0=\Re C_1$.  On compact subsets of
+\eqref{eq:external-A-strip}, this is polynomial in $T$ and locally uniform;
+the $m$-sum containing the $n$-integral is $O_{\mathscr K_g}(\log T)$ on a
+compact $\mathscr K_g\Subset\Omega_g$, whereas the mesh-supremum term is
+\begin{equation}\label{eq:mesh-supremum-m-sum}
+ \sum_{m\geq1}m^{-1/2-b_0}(1+m/T)^{-Q}
+ \ll_{Q,\mathscr K_g}T^{1/2-b_0}.
+\end{equation}
+Thus the complete expression is still of fixed polynomial size, which is
+all that is used here.  The same statements hold after the dual substitution
+$(B,C_1)\mapsto(-C_1,-B)$.
+
+For completeness, consider the worst $n=0$ discrepancy with
+$r=-d\rho$, $z=x/(d\rho)\leq1$, and restore the outside coefficient weight.
+Its full algebraic prefactor is
+\begin{multline}
+ |a_hb_k|d^{1-a_0-c_0}h^{-1+c_0}k^{-1+a_0}
+ m^{-1+a_0-b_0}\rho^{-a_0-c_0}\\
+ {}\times\int_0^1z^{-1/2-c_0}
+ \left(1+\frac{md\rho z}{hT}\right)^{-Q}
+ \left(1+\frac{d\rho}{kmY}\right)^{-P}
+ (1+|\log z|)^{-J}\dd z.
+ \label{eq:worst-layer-prefactor}
+\end{multline}
+For $X=md\rho/(hT)$,
+\begin{equation}\label{eq:z-integral-bound}
+ \int_0^1z^{-1/2-c_0}(1+Xz)^{-Q}(1+|\log z|)^{-J}\dd z
+ \ll(1+X)^{-1/2+c_0}\{1+\log(2+X)\}^{-J}.
+\end{equation}
+In the range $X>1$, summing $m$ and $\rho$ gives at most
+\begin{equation}\label{eq:mrho-bound}
+ \left(\frac{hT}{d}\right)^{1/2-c_0}
+ \left(\frac{kY}{d}\right)^{1/2-a_0}
+ \sum_{m\geq1}m^{-1-b_0+c_0}.
+\end{equation}
+The last sum is $O_{\kappa_0}(\log T)$.  Multiplication by the prefactor in
+\eqref{eq:worst-layer-prefactor} cancels every power of $d$ and leaves
+\begin{equation}\label{eq:d-cancellation}
+ |a_hb_k|(hk)^{-1/2}T^{1/2-c_0}Y^{1/2-a_0}
+ \sum_{m\geq1}m^{-1-b_0+c_0}.
+\end{equation}
+After the $h,k$ sums and the Fourier prefactor, the $X>1$ discrepancy is
+\begin{equation}\label{eq:full-worst-layer-bound}
+ \ll T\Delta^{-J}T^{1/2-c_0}Y^{1/2-a_0}
+ (HK)^{1/2}T^\eps\log T,
+\end{equation}
+and is $O_N(T^{-N})$ after increasing $J$.  This exact cancellation is
+uniform over all gcd blocks.  The range $X\leq1$
+has $m\rho\leq hT/d$ and therefore only polynomial mass on compact external
+$A$-strips.  For $z>1$, $x<h=dq$ gives
+\begin{equation}\label{eq:z-large-phase}
+ \left|\log\frac{x}{x+d\rho}\right|
+ =\log(1+z^{-1})\gg q^{-1}\geq H^{-1}.
+\end{equation}
+In both cases an arbitrarily high power in the Fourier bound absorbs the
+polynomial mass.  On far $m$-scales, the residual exponent is
+\begin{equation}\label{eq:far-m-exponent}
+ a_0-\Re(B-C_1)-\frac12
+ \leq-\frac{c_u}{2}-\Re(B-C_1),
+\end{equation}
+so the dyadic sum is uniform on the good patch.  The estimates remain valid
+after $A$-derivatives, which only insert logarithms.  This proves local
+normality and holomorphy.
+\end{proof}
+
+We now isolate the compact-uniform statement actually needed when the
+variable regulators are removed.  This is stronger than local uniform
+convergence of the assembled source and is therefore recorded separately.
+For $\epsilon\in\{{\rm d},{\rm q}\}$ put
+\begin{equation}\label{eq:branch-shift-data}
+ \begin{array}{c|ccc}
+ \epsilon&B_\epsilon&C_\epsilon&\mathcal X_\epsilon(t)\\ \hline
+ {\rm d}&B&C_1&1\\
+ {\rm q}&-C_1&-B&X_{B,C_1}(t).
+ \end{array}
+\end{equation}
+For $\rho\geq1$, $d=(h,km)$, and $\mathfrak r=d\rho$, define
+\begin{equation}\label{eq:branch-physical-variables}
+ \begin{array}{c|cc}
+ \sigma&y_\sigma(v)&x_\sigma(v)\\ \hline
+ +&v&v+\mathfrak r\\
+ -&v+\mathfrak r&v
+ \end{array}
+ \qquad(v>0),\qquad
+ l_\sigma(v)=\frac{y_\sigma(v)}{km},\quad
+ n_\sigma(v)=\frac{x_\sigma(v)}h.
+\end{equation}
+Let $\V_\epsilon$ denote the complete coupled weight
+\eqref{eq:coupled-weight} with gamma ratio
+$g_{B_\epsilon,C_\epsilon}$.  For fixed $h,k$ set
+\begin{align}
+ \mathfrak i_{\epsilon,\sigma}^{h,k}
+ &(A,B,C_1;m,\rho,v)\notag\\
+ :={}&d\,h^{-1/2+C_\epsilon}k^{-1/2+A}\notag\\
+ &\quad\times m^{-1+A-B_\epsilon}\notag\\
+ &\quad\times\int_{\R}w(t)\mathcal X_\epsilon(t)
+ y_\sigma(v)^{-1/2-A-it}\notag\\
+ &\qquad\times x_\sigma(v)^{-1/2-C_\epsilon+it}
+ \V_\epsilon\!\left(\frac{y_\sigma(v)}{kmY},
+                      \frac{mx_\sigma(v)}h,t\right)\dd t.
+ \label{eq:source-physical-density}
+\end{align}
+
+\paragraph{Compact-uniform source pullback domination.}
+Let
+\[
+ \mathscr K_A\Subset\{\Re A<\tfrac12-c_u/2\},\qquad
+ \mathscr K_g\Subset\Omega_g.
+\]
+For fixed $h,k$, every branch $(\epsilon,\sigma)$, and every fixed
+$j\geq0$, there is a nonnegative function
+$D_{\epsilon,\sigma,j}^{h,k}(m,\rho,v)$ such that
+\begin{align}
+ \sup_{\mathscr K_A\times\mathscr K_g}
+ \left|\partial_A^j\mathfrak i_{\epsilon,\sigma}^{h,k}
+ (A,B,C_1;m,\rho,v)\right|
+ &\leq D_{\epsilon,\sigma,j}^{h,k}(m,\rho,v),
+ \label{eq:compact-source-pointwise}\\
+ \sum_{m,\rho\geq1}\int_0^\infty
+ D_{\epsilon,\sigma,j}^{h,k}(m,\rho,v)\dd v&<\infty.
+ \label{eq:compact-source-L1}
+\end{align}
+The conclusion remains true after the finite coefficient-weighted sum over
+$h\leq H$, $k\leq K$.
+
+\begin{proof}
+Put
+\begin{align*}
+ a_-&=\inf_{\mathscr K_A}\Re A,&
+ a_+&=\sup_{\mathscr K_A}\Re A,\\
+ b_-&=\inf_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re B_\epsilon,&
+ b_+&=\sup_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re B_\epsilon,\\
+ c_-&=\inf_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re C_\epsilon,&
+ c_+&=\sup_{\substack{\mathscr K_g\\epsilon\in\{{\rm d},{\rm q}\}}}
+          \Re C_\epsilon.
+\end{align*}
+The two positive margins used below are
+\begin{equation}\label{eq:source-compact-margins}
+ \delta_A=\frac12-a_+>\frac{c_u}{2},
+ \qquad
+ \delta_g=b_--c_+>0.
+\end{equation}
+The second inequality follows simultaneously for the direct and dual data
+from $\Re B>\kappa_0/\log T$ and
+$\Re C_1<-\kappa_0/\log T$.
+
+We use a branch-adapted disjoint partition.  In both signs let
+\[
+ \mathcal B_\sigma=\{l_\sigma,n_\sigma\geq1/2\}.
+\]
+For $\sigma=+$ put
+\[
+ \mathcal L_+=\{l_+<1/2\},\qquad
+ \mathcal N_+=\{l_+\geq1/2, n_+<1/2\},
+\]
+and for $\sigma=-$ put
+\[
+ \mathcal N_-=\{n_-<1/2\},\qquad
+ \mathcal L_-=\{n_-\geq1/2, l_-<1/2\}.
+\]
+These three sets are disjoint and cover the physical curve.  Define the
+majorant in \eqref{eq:compact-source-pointwise} explicitly by
+\begin{equation}\label{eq:source-three-piece-dominator}
+ D_{\epsilon,\sigma,j}^{h,k}
+ =\sum_{\mathcal R\in\{\mathcal B_\sigma,
+                         \mathcal N_\sigma,
+                         \mathcal L_\sigma\}}
+  {\bf1}_{\mathcal R}
+  \sup_{\mathscr K_A\times\mathscr K_g}
+ |\partial_A^j\mathfrak i_{\epsilon,\sigma}^{h,k}|.
+\end{equation}
+We first put the parameter supremum inside one common pointwise estimate.
+For $r>0$ and $\theta\in[\theta_-,\theta_+]$,
+\begin{equation}\label{eq:corner-power-majorant}
+ \sup_{\theta\in[\theta_-,\theta_+]}r^{-\theta}
+ \leq r^{-\theta_-}+r^{-\theta_+}.
+\end{equation}
+Since
+\[
+ d h^{-1/2+c}k^{-1/2+a}m^{-1+a-b}
+ y^{-1/2-a}x^{-1/2-c}
+ =\frac d{hk}m^{-3/2-b}l^{-1/2-a}n^{-1/2-c},
+\]
+and, in the dual branch, compact-uniform Stirling gives
+\[
+ |\partial_t^rX_{B,C_1}(t)|
+ \ll_{\mathscr K_g,r}T^{-r}T^{-\Re(B+C_1)}
+ \ll_{\mathscr K_g,r}T^{-r},
+\]
+the Fourier--conductor bound and \eqref{eq:corner-power-majorant} give,
+before any $m,\rho,v$ integration or summation,
+\begin{align}
+ &\sup_{\mathscr K_A\times\mathscr K_g}
+ |\partial_A^j\mathfrak i_{\epsilon,\sigma}^{h,k}|
+ \notag\\
+ &\quad\ll_{\mathscr K_A,\mathscr K_g,j}
+ T(\log T)^{C_{M,j}}\frac d{hk}m^{-3/2}
+ (1+|\log l|)^j
+ (1+l/Y)^{-P}(1+mn/T)^{-Q}\notag\\
+ &\qquad\quad\times
+ (1+\Delta|\log(x/y)|)^{-J}
+ \sum_{\substack{a\in\{a_-,a_+\}\\
+                   b\in\{b_-,b_+\}\\
+                   c\in\{c_-,c_+\}}}
+ m^{-b}l^{-1/2-a}n^{-1/2-c}.
+ \label{eq:source-corner-majorant}
+\end{align}
+Here differentiation of the algebraic $A$-factors gives
+$\log(km/y)=-\log l$; derivatives of $\mathcal G$ insert only fixed
+polynomials in the complete contour variables and are absorbed by the same
+complete-contour bound.  Thus only the eight displayed corners remain.
+It is now enough to prove integrability for each corner separately.
+
+On $\mathcal B_\sigma$ use the product bound
+\eqref{eq:double-weight-bound}.  Parameter supremums are absorbed by the
+piecewise powers
+\[
+ \omega_A(l)=
+ \begin{cases}l^{-1/2-a_+},&1/2\leq l\leq1,\\
+ l^{-1/2-a_-},&l>1,
+ \end{cases}
+ \quad
+ \omega_C(n)=
+ \begin{cases}n^{-1/2-c_+},&1/2\leq n\leq1,\\
+ n^{-1/2-c_-},&n>1.
+ \end{cases}
+\]
+The half-mesh estimate \eqref{eq:mesh-majorant}, applied to the decreasing
+$n$-product tails on each of the two ranges separated at $1$, gives, up to fixed
+$h,k$ powers and a logarithmic factor,
+\begin{align}
+ &T\int_{1/2}^\infty\omega_A(l)(1+l/Y)^{-P}\dd l
+ \sum_{m\geq1}m^{-1/2-b_-}\notag\\
+ &\qquad\times\left\{
+ \int_{1/2}^\infty\omega_C(n)(1+mn/T)^{-Q}\dd n
+ +(1+m/T)^{-Q}\right\}.
+ \label{eq:compact-bulk-majorant}
+\end{align}
+For $m\leq T$, the integral term is
+$\ll_{\mathscr K_g} (T/m)^{1/2-c_-}$, and for $m>T$ the order $Q$ may be
+chosen to give an arbitrary negative power.  Consequently its residual $m$-sum is
+\[
+ \ll_{\mathscr K_g}T^{1/2-c_-}
+ \sum_{m\leq T}m^{-1-(b_--c_-)}
+ \ll_{\mathscr K_g}T^{1/2-c_-},
+\]
+while the mesh-supremum term is
+$O_{Q,\mathscr K_g}(T^{1/2-b_-})$ by
+\eqref{eq:mesh-supremum-m-sum}.  The $l$-integral is finite because
+its lower end is bounded away from zero and $P$ is arbitrary at infinity.  This proves
+\eqref{eq:compact-source-L1} on the bulk.
+
+We next treat the genuine $n$-crossing, which occurs for $\sigma=-$.
+Write $x=d\rho z$ and $X=md\rho/(hT)$.  Uniformly for
+$c\in[c_-,c_+]$ and $0<z\leq1$, \eqref{eq:z-integral-bound} gives
+\begin{equation}\label{eq:compact-n-end-integral}
+ \int_0^1z^{-1/2-c}(1+Xz)^{-Q}
+ (1+|\log z|)^{-J}\dd z
+ \ll_{\mathscr K_g}(1+X)^{-1/2+c}
+ \{1+\log(2+X)\}^{-J}.
+\end{equation}
+For $X>1$, fix one of the eight corners and multiply
+\eqref{eq:compact-n-end-integral} by the full algebraic prefactor before
+summing.  The $\rho$-sum then cancels the $m$-dependent gcd $d=(h,km)$.
+More explicitly, for a corner $(a,b,c)$ its contribution after the
+$\rho$-sum is bounded by
+\begin{equation}\label{eq:compact-n-corner-exponent}
+ \begin{aligned}
+ &|a_hb_k|(hk)^{-1/2}T^{1/2-c}Y^{1/2-a}
+     \sum_{m\geq1}m^{-1-b+c}\\
+ &\qquad\leq
+ |a_hb_k|(hk)^{-1/2}T^{1/2-c}Y^{1/2-a}
+     \sum_{m\geq1}m^{-1-\delta_g}.
+ \end{aligned}
+\end{equation}
+Thus the $d$-power has disappeared before the $m$-sum is taken, exactly as in
+\eqref{eq:mrho-bound}--\eqref{eq:d-cancellation}.  Summing the finitely many
+corners gives
+\begin{equation}\label{eq:compact-n-end-sum}
+ T^{1/2-c_-}Y^{1/2-a_-}
+ \sum_{m\geq1}m^{-1-\delta_g}<\infty.
+\end{equation}
+For $X\leq1$ one has $m\rho\leq hT/d$; hence there are only finitely many
+integer pairs, and \eqref{eq:compact-n-end-integral} integrates the endpoint
+uniformly.  On $z>1$, the condition $n_-<1/2$ gives
+$z<q/(2\rho)$ and
+$|\log(x/(x+d\rho))|\gg q^{-1}\geq H^{-1}$.
+In particular $\rho<q/2$ and $d\rho<x<h/2$, so the $\rho$- and $v$-ranges
+are finite for fixed $h,k$; moreover
+$(1+mx/(hT))^{-Q}\leq(1+md/(hT))^{-Q}$ sums every remaining compact-dependent
+polynomial in $m$ when $Q$ is sufficiently large.  Precisely, after absorbing
+the polynomial number of $\rho$ values and the $v$-length, there is a fixed
+$C_{\mathscr K}$ such that
+\begin{multline}\label{eq:compact-n-large-bound}
+ \sum_{m,\rho\geq1}\int_{\mathcal N_-\cap\{z>1\}}
+ D_{\epsilon,-,j}^{h,k}(m,\rho,v)\dd v\\
+ \ll_{\mathscr K,h,k}T^{C_{\mathscr K}}
+ \sum_{m\geq1}m^{C_{\mathscr K}}
+       \left(1+\frac{m}{hT}\right)^{-Q}<\infty
+\end{multline}
+once $Q>C_{\mathscr K}+2$.  Thus the whole
+$\mathcal N_-$ piece is integrable.  In the noncrossing set
+$\mathcal N_+$, the inequalities $l_+\geq1/2$ and $n_+<1/2$ imply
+$km<h$ and $\rho<q/2$; hence, for another fixed $C_{\mathscr K}$,
+\[
+ \sum_{m<h/k}\sum_{\rho<q/2}\int_{\mathcal N_+}
+ D_{\epsilon,+,j}^{h,k}(m,\rho,v)\dd v
+ \ll_{\mathscr K,h,k}T^{C_{\mathscr K}}.
+\]
+Thus the same product bounds suffice without a singular substitution.
+
+For the genuine $l$-crossing, $\sigma=+$, put $y=d\rho z$.  On $0<z\leq1$
+the Fourier factor supplies $(1+|\log z|)^{-J}$ and
+\begin{equation}\label{eq:compact-l-end-integral}
+ \int_0^1\sup_{a\in[a_-,a_+]}
+ z^{-1/2-a}(1+|\log z|)^{-J}\dd z
+ =\int_0^1z^{-1/2-a_+}(1+|\log z|)^{-J}\dd z
+ <\infty
+\end{equation}
+by $\delta_A>0$.  Dropping the additional long-variable decay and using the
+AFE conductor gives, for every corner and hence for their finite sum,
+\begin{align}
+ \sum_{\rho\geq1}\rho^{-a-c}
+ \left(1+\frac{md\rho}{hT}\right)^{-Q}
+ &\ll_{\mathscr K_A,\mathscr K_g}
+ \left(\frac{hT}{md}\right)^{1-a-c},
+ \label{eq:compact-l-rho-sum}\\
+ \sum_{m\geq1}m^{-2+2a-b+c}
+ &\leq\sum_{m\geq1}m^{-1-2\delta_A-\delta_g}<\infty.
+ \label{eq:compact-l-m-sum}
+\end{align}
+Here $a+c<1$ follows from \eqref{eq:source-compact-margins} and $c_+<0$.
+After the original prefactor is restored, the first line is explicitly
+\[
+ h^{1/2-a}k^{-1/2+a}T^{1-a-c}
+ \sum_{m\geq1}m^{-2+2a-b+c};
+\]
+in particular the gcd $d$ has cancelled before the $m$-sum is taken.
+For $z>1$, dyadically sum $z\asymp Z$.  The relations
+$d\rho Z\ll km$ and
+\[
+ \left|\log\frac{y}{y+d\rho}\right|\asymp Z^{-1},\qquad
+ \frac{m(y+d\rho)}{hT}\gg\frac{md\rho Z}{hT},
+\]
+give the two factors
+\[
+ (1+\Delta/Z)^{-J},\qquad
+ \left(1+\frac{md\rho Z}{hT}\right)^{-Q}.
+\]
+If $md\rho Z\leq hT$, then
+$m\rho Z\leq hT/d$, so only finitely many $m$, $\rho$, and dyadic $Z$ occur and
+their total algebraic mass is a fixed compact-dependent polynomial.  If
+$C_{\mathscr K}$ dominates all corner exponents and the polynomial measure
+losses, this statement and the complementary estimate may be recorded as
+\begin{multline}\label{eq:compact-l-large-bound}
+ \sum_{Z\ \text{\rm dyadic}}\sum_{m,\rho\geq1}
+ \int_{\mathcal L_+\cap\{z\asymp Z\}}
+ D_{\epsilon,+,j}^{h,k}(m,\rho,v)\dd v\\
+ \ll_{\mathscr K,h,k}T^{C_{\mathscr K}}\\
+ {}+\sum_{\substack{Z\ \text{\rm dyadic},\ m,\rho\geq1\\md\rho Z>hT}}
+ (m\rho Z)^{C_{\mathscr K}}
+ (1+\Delta/Z)^{-J}
+ \left(1+\frac{md\rho Z}{hT}\right)^{-Q}<\infty,
+\end{multline}
+provided first $J$ and then $Q>C_{\mathscr K}+4$ are fixed sufficiently
+large.  This proves
+integrability on $\mathcal L_+$.  Finally, on the noncrossing set
+$\mathcal L_-$ one has
+$n_-\geq1/2$ and $y_-=x+d\rho>0$; there is no zero endpoint.  The inequality
+$l_-<1/2$ gives $d\rho<km/2$ and $h/2\leq x<km/2$.  Hence, for some fixed
+$C_{\mathscr K}$ containing the compact algebraic exponents, the absolute
+sum--integral is bounded by a constant times
+\[
+ \sum_{m\geq1}m^{C_{\mathscr K}}
+ \left(1+\frac{m}{2T}\right)^{-Q},
+\]
+after the polynomial number of $\rho$ values and the $v$-interval have been
+included in $C_{\mathscr K}$.  This converges when
+$Q>C_{\mathscr K}+2$.
+
+This proves \eqref{eq:compact-source-L1} for $j=0$.  As recorded in
+\eqref{eq:source-corner-majorant}, an $A$-derivative inserts a fixed
+polynomial in the complete contour variables and powers of $\log l$.  For
+any $\eta>0$, $|\log l|^j$ is bounded by $l^{-\eta}$ on $l\leq1$ and by
+$l^\eta$ on $l\geq1$.  Choose $\eta<\delta_A/4$ and then increase $P,Q,J$.
+All strict exponents
+above persist, proving the result for every fixed $j$.  The sum over
+$h\leq H$, $k\leq K$ is finite; with
+$|a_h|\ll_\eps h^\eps$, $|b_k|\ll_\eps k^\eps$, the displayed estimates
+give a fixed polynomial in $T,H,K$, and the arbitrary Fourier/conductor
+orders absorb it wherever a power saving is required.  This completes the
+proof.
+\end{proof}
+
+\subsection{Finite regulators and genuine Tonelli domains}
+
+\begin{proposition}[Four-branch regulator--Tonelli bridge]
+\label{prop:four-branch-regulator-tonelli}
+Fix $(B,C_1)$ in a compact subset of \eqref{eq:good-patch}, keep
+$\Re u=c_u$, and put $\lambda=A+u$.  Define
+\begin{align}
+ z_{\rm d}&=\lambda+C_1+s,
+ &\nu_{\rm d}&=1-\lambda+B+s,
+ \label{eq:four-branch-direct-vars}\\
+ z_{\rm q}&=\lambda-B+s,
+ &\nu_{\rm q}&=1-\lambda-C_1+s.
+ \label{eq:four-branch-dual-vars}
+\end{align}
+Here ${\rm d}$ denotes the direct AFE piece and ${\rm q}$ the dual piece.
+In each of the four branches impose
+\begin{equation}\label{eq:finite-regulators}
+ \begin{gathered}
+ m,|\rho|\leq R,\qquad R^{-1}\leq l,n\leq R,\\
+ e^{-\kappa(m+|\rho|+l+n)},\qquad
+ R\geq2,\quad0<\kappa\leq1.
+ \end{gathered}
+\end{equation}
+Then the source limits obtained in the order
+\begin{equation}\label{eq:four-branch-order}
+ V\longrightarrow\infty,\qquad R\longrightarrow\infty,
+ \qquad\kappa\longrightarrow0^+
+\end{equation}
+exist locally uniformly in the connected strip
+\eqref{eq:external-A-strip} and are holomorphic in the original shift $A$.
+The corresponding destination limits are absolutely convergent in the
+following four nonempty domains.  The two negative branches use the common
+corridor
+\begin{equation}\label{eq:lambda-corridor}
+            \frac12<\Re\lambda
+            <\frac12+\Re(B-C_1).
+\end{equation}
+For the direct positive and negative branches, respectively, the remaining
+conditions are
+\begin{equation}\label{eq:positive-direct-tonelli}
+ \begin{aligned}
+ \Re\lambda&<\frac12,\\
+ \Re s&>\max\{1-\Re(\lambda+C_1),\Re(\lambda-B)\}.
+ \end{aligned}
+\end{equation}
+\begin{equation}\label{eq:direct-tonelli}
+ \max\{1-\Re(\lambda+C_1),\Re(\lambda-B)\}
+ <\Re s<\frac12-\Re C_1.
+\end{equation}
+For the dual positive and negative branches, respectively, they are
+\begin{equation}\label{eq:positive-dual-tonelli}
+ \begin{aligned}
+ \Re\lambda&<\frac12,\\
+ \Re s&>\max\{1-\Re(\lambda-B),\Re(\lambda+C_1)\}.
+ \end{aligned}
+\end{equation}
+\begin{equation}\label{eq:dual-tonelli}
+ \max\{1-\Re(\lambda-B),\Re(\lambda+C_1)\}
+ <\Re s<\frac12+\Re B.
+\end{equation}
+For finite $R,\kappa,V$, the source and destination are the explicit objects
+defined in the proof and satisfy an exact rectangle identity, including its
+two horizontal $s$-edges.  After $V\to\infty$ those edges vanish and the
+complete regulated source and destination agree exactly.  After the remaining
+limits in \eqref{eq:four-branch-order}, this equality extends from the relevant
+Tonelli open set to \eqref{eq:external-A-strip} by the one-variable identity
+theorem in $A$, with $B,C_1$ fixed.  No continuation in the separate symbols
+$A+u$ and $s$ is used.
+\end{proposition}
+
+\begin{proof}
+We first define the two sides before taking any limit, using the branch data
+in \eqref{eq:branch-shift-data} and the physical variables in
+\eqref{eq:branch-physical-variables}.  Thus
+$z_\epsilon=\lambda+C_\epsilon+s$ and
+$\nu_\epsilon=1-\lambda+B_\epsilon+s$.
+Let $[a]_V$ denote the upward segment $a-iV$ to $a+iV$, and set
+\begin{equation}\label{eq:finite-physical-regulator}
+ E_{R,\kappa,\sigma}(m,\rho,v)
+ =\mathbf 1_{\{m,\rho\leq R\}}
+  \mathbf 1_{\{R^{-1}\leq l_\sigma(v),n_\sigma(v)\leq R\}}
+  e^{-\kappa\{m+\rho+l_\sigma(v)+n_\sigma(v)\}}.
+\end{equation}
+For $\lambda=A+u$, define
+\begin{align}
+ \mathfrak J_{\epsilon,\sigma}^{R,\kappa}
+ (s,u;t,m,\rho)
+ :={}&d\,h^{-1/2+C_\epsilon+s}k^{-1/2+\lambda}
+ Y^u\notag\\
+ &\times m^{-1+\lambda-B_\epsilon-s}
+ \int_0^\infty E_{R,\kappa,\sigma}(m,\rho,v)\notag\\
+ &\hspace{14mm}\times
+ y_\sigma(v)^{-1/2-\lambda-it}
+ x_\sigma(v)^{-1/2-C_\epsilon+it-s}\dd v.
+ \label{eq:finite-branch-physical-integral}
+\end{align}
+For fixed $h,k$, the finite source is
+\begin{align}
+ \mathscr S_{\epsilon,\sigma}^{R,\kappa,V}(A;h,k)
+ :={}&\int_{\R}w(t)\sum_{m\leq R}\sum_{\rho\leq R}
+ \frac1{(2\pi i)^2}\int_{[c_u]_V}\int_{[2]_V}
+ \Gamma(u)\frac{\mathcal G(s,u)}s\notag\\
+ &\hspace{13mm}\times\mathcal X_\epsilon(t)
+ g_{B_\epsilon,C_\epsilon}(s,t)
+ \mathfrak J_{\epsilon,\sigma}^{R,\kappa}
+ (s,u;t,m,\rho)\dd s\dd u\dd t.
+ \label{eq:finite-source-definition}
+\end{align}
+This is exactly the $\sigma$-branch of the endpoint-deleted zero mode after
+inserting the truncated coupled kernel \eqref{eq:coupled-weight}; all sums and
+physical integrals are finite, so their order is immaterial.  On a compact
+subset of the relevant Tonelli open set choose a single line
+$\Re s=\sigma_{\epsilon,\sigma}>0$ satisfying the corresponding strict
+inequalities in
+\eqref{eq:positive-direct-tonelli}--\eqref{eq:dual-tonelli}.  The finite
+destination is the same displayed expression with $[2]_V$ replaced by
+$[\sigma_{\epsilon,\sigma}]_V$:
+\begin{equation}\label{eq:finite-destination-definition}
+ \mathscr T_{\epsilon,\sigma}^{R,\kappa,V}(A;h,k)
+ :=\mathscr S_{\epsilon,\sigma}^{R,\kappa,V}(A;h,k)
+ \big|_{[2]_V\,\mapsto\,[\sigma_{\epsilon,\sigma}]_V}.
+\end{equation}
+No beta quotient or infinite arithmetic series is part of
+\eqref{eq:finite-destination-definition}.
+
+Write $\mathfrak r=d|\rho|>0$.  After the endpoint cutoffs have been deleted,
+the following four unregulated continuous integrals determine the Tonelli
+conditions.  They are displayed separately because their zero endpoints
+differ; their beta evaluation is used only later, after all variable
+regulators have been removed.
+
+For the direct, positive-$\rho$ branch, $x=y+\mathfrak r$ and
+\begin{align}
+ I_{{\rm d},+}(\mathfrak r)
+ &:=\int_0^\infty y^{-1/2-\lambda-it}
+       (y+\mathfrak r)^{-1/2-C_1+it-s}\dd y\notag\\
+ &=\mathfrak r^{-z_{\rm d}}
+   \frac{\Gamma(\frac12-\lambda-it)\Gamma(z_{\rm d})}
+        {\Gamma(\frac12+C_1-it+s)}.
+ \label{eq:four-beta-dp}
+\end{align}
+At $y=0$ this requires $\Re\lambda<1/2$; at infinity it first requires
+$\Re z_{\rm d}>0$.  The subsequent $\rho$-sum strengthens the latter to
+$\Re z_{\rm d}>1$.  On that half-plane the gcd exponent
+$1-z_{\rm d}$ has negative real part, and the remaining $m$-sum is
+absolutely convergent when $\Re\nu_{\rm d}>1$.  These conditions are
+exactly \eqref{eq:positive-direct-tonelli}.
+
+For the direct, negative-$\rho$ branch, put $y=x+\mathfrak r$.  Then
+\begin{align}
+ I_{{\rm d},-}(\mathfrak r)
+ &:=\int_0^\infty(x+\mathfrak r)^{-1/2-\lambda-it}
+       x^{-1/2-C_1+it-s}\dd x\notag\\
+ &=\mathfrak r^{-z_{\rm d}}
+   \frac{\Gamma(\frac12-C_1+it-s)\Gamma(z_{\rm d})}
+        {\Gamma(\frac12+\lambda+it)}.
+ \label{eq:four-beta-dm}
+\end{align}
+The endpoint $x=0$ gives $\Re(C_1+s)<1/2$, while infinity, the
+$\rho$-sum, and the $m$-sum give respectively
+$\Re z_{\rm d}>0$, $\Re z_{\rm d}>1$, and
+$\Re\nu_{\rm d}>1$.  Hence
+\[
+ \max\{1-\Re(\lambda+C_1),\Re(\lambda-B)\}
+ <\Re s<\frac12-\Re C_1.
+\]
+The first lower bound is below the upper bound precisely when
+$\Re\lambda>1/2$; the second is below it precisely when
+$\Re\lambda<1/2+\Re(B-C_1)$.  This proves
+\eqref{eq:direct-tonelli}, including the necessity of its corridor.
+
+The dual AFE piece makes the substitution
+$(B,C_1)\mapsto(-C_1,-B)$ and has the fixed exterior factor
+$X_{B,C_1}(t)$.  Its positive-$\rho$ integral is, explicitly,
+\begin{align}
+ I_{{\rm q},+}(\mathfrak r)
+ &:=\int_0^\infty y^{-1/2-\lambda-it}
+       (y+\mathfrak r)^{-1/2+B+it-s}\dd y\notag\\
+ &=\mathfrak r^{-z_{\rm q}}
+   \frac{\Gamma(\frac12-\lambda-it)\Gamma(z_{\rm q})}
+        {\Gamma(\frac12-B-it+s)}.
+ \label{eq:four-beta-qp}
+\end{align}
+The $y=0$ condition is $\Re\lambda<1/2$; the infinity, $\rho$-, and
+$m$-conditions are respectively
+$\Re z_{\rm q}>0$, $\Re z_{\rm q}>1$, and
+$\Re\nu_{\rm q}>1$.  They give
+\eqref{eq:positive-dual-tonelli}.
+
+Finally, the dual, negative-$\rho$ branch is
+\begin{align}
+ I_{{\rm q},-}(\mathfrak r)
+ &:=\int_0^\infty(x+\mathfrak r)^{-1/2-\lambda-it}
+       x^{-1/2+B+it-s}\dd x\notag\\
+ &=\mathfrak r^{-z_{\rm q}}
+   \frac{\Gamma(\frac12+B+it-s)\Gamma(z_{\rm q})}
+        {\Gamma(\frac12+\lambda+it)}.
+ \label{eq:four-beta-qm}
+\end{align}
+Here $x=0$ requires $\Re s<1/2+\Re B$; infinity and the two sums require
+$\Re z_{\rm q}>1$ and $\Re\nu_{\rm q}>1$.  Therefore
+\[
+ \max\{1-\Re(\lambda-B),\Re(\lambda+C_1)\}
+ <\Re s<\frac12+\Re B.
+\]
+The two comparisons with the upper endpoint give separately
+$\Re\lambda>1/2$ and
+$\Re\lambda<1/2+\Re(B-C_1)$, proving
+\eqref{eq:dual-tonelli}.  Since $\Re(B-C_1)>0$ on the good patch, both
+negative intervals are nonempty.
+
+We next justify the contour operation before evaluating any beta integral.
+Keep $R,\kappa$ fixed and truncate the complete $s$- and $u$-lines at a
+common height $V$.  At this finite-regulator stage the possible
+singularities of the unreduced source Mellin integrand are as follows.
+\begin{enumerate}[label=\textup{(\alph*)},leftmargin=8mm]
+\item The pole $s=0$ comes from $1/s$.  Every source and destination
+$s$-line just used has positive real part, so it is not crossed.
+\item The poles $u=0,-1,-2,\ldots$ come from $\Gamma(u)$.  The line
+$\Re u=c_u>0$ is not moved, so none is crossed.
+\item The numerator-gamma poles of $g_{B,C_1}$ are
+\[
+ s=-\frac12-B-it-2j,\qquad s=-\frac12-C_1+it-2j
+ \quad(j\geq0),
+\]
+and those of $g_{-C_1,-B}$ are
+\[
+ s=-\frac12+C_1-it-2j,\qquad s=-\frac12+B+it-2j
+ \quad(j\geq0).
+\]
+For large $T$ their real parts lie to the left of every positive line used
+above.  Denominator gamma factors give zeros, not poles.
+\item The kernel $\mathcal G(s,u)$ is entire in $(s,u)$; its displayed
+denominators depend only on the external shifts and stay bounded away from
+zero on the good patch.  Because $m,|\rho|$ are finite at this stage, there
+is no arithmetic zeta function and hence no $z=1$ or $\nu=1$ pole.
+\end{enumerate}
+Thus the finite rectangles deform without a residue.  Let
+$\mathcal I_{\epsilon,\sigma}^{R,\kappa}(s,u,t)$ denote the finite
+$m,\rho$ sum of the integrand in \eqref{eq:finite-source-definition}, with
+$w(t)$ and the differentials omitted.  Cauchy's theorem gives the exact
+finite-$V$ identity
+\begin{equation}\label{eq:finite-rectangle-identity}
+ \mathscr S_{\epsilon,\sigma}^{R,\kappa,V}
+ -\mathscr T_{\epsilon,\sigma}^{R,\kappa,V}
+ =\mathscr H_{\epsilon,\sigma}^{R,\kappa,V},
+\end{equation}
+where
+\begin{align}
+ \mathscr H_{\epsilon,\sigma}^{R,\kappa,V}
+ =-\int_{\R}w(t)\frac1{(2\pi i)^2}\int_{[c_u]_V}
+ \bigg\{&\int_{\sigma_{\epsilon,\sigma}-iV}^{2-iV}\notag\\
+ &\quad+\int_{2+iV}^{\sigma_{\epsilon,\sigma}+iV}\bigg\}
+ \mathcal I_{\epsilon,\sigma}^{R,\kappa}(s,u,t)
+ \dd s\dd u\dd t.
+ \label{eq:finite-horizontal-remainder}
+\end{align}
+The two horizontal integrals carry the displayed orientations.  On either
+horizontal $s$-edge, $s=\sigma+iV$,
+\[
+                         |e^{s^2}|=e^{\sigma^2-V^2},
+\]
+while the gamma ratios and remaining factors have at most exponential times
+polynomial growth in $V$.  Hence
+$\mathscr H_{\epsilon,\sigma}^{R,\kappa,V}\to0$ for fixed $R,\kappa$,
+locally uniformly in $A$.  No $u$-contour is moved in this proposition.
+After the complete $s$-lines have been restored, the vertical $u$-tails are
+controlled by Stirling:
+\[
+ |\Gamma(c_u+iV)|\ll(1+V)^{c_u-1/2}e^{-\pi V/2}.
+\]
+All other $u$-dependence is polynomial at fixed $R,\kappa$.  Consequently,
+after $V\to\infty$ in \eqref{eq:finite-rectangle-identity}, the two complete
+regulated vertical-contour integrals agree exactly.  This is the first limit
+in \eqref{eq:four-branch-order}; no variable regulator has yet been removed.
+
+We now give the uniform dominators for the remaining two limits.  Let
+\begin{equation}\label{eq:source-compact-sets}
+ \mathscr K_A\Subset\{\Re A<\tfrac12-c_u/2\},\qquad
+ \mathscr K_g\Subset\Omega_g.
+\end{equation}
+For fixed $h,k$ and a branch $(\epsilon,\sigma)$, remove
+$E_{R,\kappa,\sigma}$ from \eqref{eq:finite-branch-physical-integral} and
+perform the complete $t$-, $s$-, and $u$-integrals on
+$\Re s=2$, $\Re u=c_u$.  Absolute convergence at fixed $(m,\rho,v)$ and
+the definition \eqref{eq:coupled-weight} identify the result with the density
+\eqref{eq:source-physical-density}.  Thus, after the already completed limit
+$V\to\infty$, the regulated source is exactly
+\begin{equation}\label{eq:source-as-pullback}
+ \mathscr S_{\epsilon,\sigma}^{R,\kappa}(A;h,k)
+ =\sum_{m,\rho\geq1}\int_0^\infty
+ E_{R,\kappa,\sigma}(m,\rho,v)
+ \mathfrak i_{\epsilon,\sigma}^{h,k}
+ (A,B,C_1;m,\rho,v)\dd v .
+\end{equation}
+This is a pullback to the physical curve
+$(l,n)=(l_\sigma(v),n_\sigma(v))$; no supremum over an independent endpoint
+variable is taken.
+
+Apply the compact-uniform source pullback statement proved above with $j=0$
+and write its explicit three-piece majorant
+\eqref{eq:source-three-piece-dominator} as
+$D_{\epsilon,\sigma,0}^{h,k}$.  Then
+\begin{equation}\label{eq:source-pullback-dominator}
+ \sum_{m,\rho\geq1}\int_0^\infty
+ D_{\epsilon,\sigma,0}^{h,k}(m,\rho,v)\dd v<\infty .
+\end{equation}
+Since $0\leq E_{R,\kappa,\sigma}\leq1$, the summable pullback majorant
+\eqref{eq:source-pullback-dominator} is independent of $R$ and $\kappa$.
+For every fixed $(m,\rho,v)$ the factor in
+\eqref{eq:finite-physical-regulator} tends first, as $R\to\infty$, to
+$e^{-\kappa(m+\rho+l_\sigma(v)+n_\sigma(v))}$ and then, as
+$\kappa\to0^+$, to $1$.  Dominated convergence in the measure
+$\sum_{m,\rho}\dd v$, applied also to the $A$-derivatives, now proves the two
+source limits in the asserted order and locally uniformly on the stated
+$A$-compact sets.
+
+For a destination, restrict temporarily to a compact subset
+$\mathscr K_{\rm Ton}$ of its branchwise Tonelli open set, and choose the
+line $\Re s=\sigma_{\epsilon,\sigma}$ with a common margin $\delta>0$ such
+that
+\begin{equation}\label{eq:tonelli-compact-margin}
+ \Re z_\epsilon\geq1+\delta,\qquad
+ \Re\nu_\epsilon\geq1+\delta,
+\end{equation}
+and the relevant zero-endpoint inequality in
+\eqref{eq:positive-direct-tonelli}--\eqref{eq:dual-tonelli} also has margin
+$\delta$.  After scaling $v$ by $\mathfrak r=d\rho$, define
+\begin{align*}
+ b_{\epsilon,+}(v)&=
+ \sup_{\mathscr K_{\rm Ton}}
+ v^{-1/2-\Re\lambda}
+ (1+v)^{-1/2-\Re C_\epsilon-\Re s},\\
+ b_{\epsilon,-}(v)&=
+ \sup_{\mathscr K_{\rm Ton}}
+ v^{-1/2-\Re C_\epsilon-\Re s}
+ (1+v)^{-1/2-\Re\lambda}.
+\end{align*}
+The endpoint margins give
+$\int_0^\infty b_{\epsilon,\sigma}(v)\dd v<\infty$.  Stirling and the
+Gaussian factor in $\mathcal G$ give, on the complete contours,
+\begin{equation}\label{eq:uniform-destination-dominator}
+ C_{\mathscr K_{\rm Ton}}
+ (1+|\tau_u|+|\tau_s|)^N
+ e^{-\pi|\tau_u|/3-\tau_s^2/2}
+ m^{-1-\delta}\rho^{-1-\delta}
+ b_{\epsilon,\sigma}(v),
+\end{equation}
+for some fixed $N$.  Indeed the gcd factor after scaling is
+$d^{1-\Re z_\epsilon}\leq1$.  Thus
+\eqref{eq:uniform-destination-dominator} is integrable in
+$(\tau_u,\tau_s,m,\rho,v)$ and is independent of $R,\kappa$.  It justifies
+the same ordered limits at every destination, uniformly on
+$\mathscr K_{\rm Ton}$.  Notice that destination domination is asserted only
+inside a Tonelli chamber; outside it, holomorphy comes from the source and
+the identity theorem, not from an unproved absolute majorant.
+
+The recovery order is now strict.  First restore the complete contours
+($V\to\infty$), then remove the geometric truncation ($R\to\infty$) while
+$\kappa>0$, and then remove the Abel factor ($\kappa\to0^+$).  Only after the
+last step are the unregulated beta integrals
+\eqref{eq:four-beta-dp}--\eqref{eq:four-beta-qm} evaluated.  Their powers
+$\mathfrak r^{-z_\epsilon}=d^{-z_\epsilon}\rho^{-z_\epsilon}$ then permit,
+by absolute convergence in the Tonelli chamber, first the $\rho$-sum
+$\sum_{\rho\geq1}\rho^{-z_\epsilon}=\zeta(z_\epsilon)$ and then the
+$m$- and gcd-sum giving $C_{h,k}$.  The zeta functional equation and the
+finite Euler identity of \Cref{lem:finite-euler} are applied only after these
+series have been recovered.  Thus no Abel-weighted integral is identified
+with a beta quotient, and no Abel-weighted arithmetic sum is identified with
+an Euler product.
+
+For completeness, singularities appearing only after the variable
+regulators have been removed must be recorded separately.  The direct
+branches produce $\zeta(z_{\rm d})$ and a gcd--$m$ factor with polar part
+$\zeta(\nu_{\rm d})$; the dual branches similarly produce
+$\zeta(z_{\rm q})$ and $\zeta(\nu_{\rm q})$.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=8mm]
+\item The direct pole $z_{\rm d}=1$ is cancelled by the kernel zero
+$s=1-\lambda-C_1$, and the dual pole $z_{\rm q}=1$ by the zero
+$s=1-\lambda+B$.
+\item After applying the zeta functional equation, the direct hyperplanes
+$z_{\rm d}=0$, $\nu_{\rm d}=1$, and the corresponding dual hyperplanes
+$z_{\rm q}=0$, $\nu_{\rm q}=1$ remain.  They are not discarded or crossed
+branchwise: these are the small arithmetic divisors cancelled only after
+the four branches and both diagonals are assembled.
+\item Before the positive- and negative-$\rho$ pieces are combined, the beta
+factors may have the following gamma poles, where $j\geq0$:
+\begin{align*}
+ ({\rm d},+):&\quad z_{\rm d}=-j,\quad
+   \lambda=\frac12+j-it;\\
+ ({\rm d},-):&\quad z_{\rm d}=-j,\quad
+   s=\frac12-C_1+it+j;\\
+ ({\rm q},+):&\quad z_{\rm q}=-j,\quad
+   \lambda=\frac12+j-it;\\
+ ({\rm q},-):&\quad z_{\rm q}=-j,\quad
+   s=\frac12+B+it+j.
+\end{align*}
+They lie outside the four Tonelli domains.  After combining the two
+$\rho$-signs, \Cref{lem:gamma-collapse} cancels every apparent near-real
+archimedean pole.  The remaining direct poles are
+\[
+ s=n-\frac12-C_1+it\ (n\geq1),\qquad
+ s=-\frac12-B-it-2j,\qquad s=-\frac12-C_1+it-2j,
+\]
+and the remaining dual poles are
+\[
+ s=n-\frac12+B+it\ (n\geq1),\qquad
+ s=-\frac12+C_1-it-2j,\qquad s=-\frac12+B+it-2j.
+\]
+All have imaginary height comparable with $T$.  If a later fixed-line
+deformation crosses one, $e^{s^2}$ makes its residue smaller than every
+power of $T$.  Reciprocal gamma factors again give zeros only.
+\end{enumerate}
+The poles $s=0$ and those of $\Gamma(u)$ have not moved during this bridge;
+they are treated in the subsequent fixed-$u$ assembly and final $u$-move.
+
+It remains to identify the selected continuation.  The positive branches
+agree with their destinations on the nonempty open set
+\[
+ \mathscr U_+=\{A:\Re A+c_u<1/2\}
+                \cap\{\Re A<1/2-c_u/2\},
+\]
+whereas the negative branches agree on
+\[
+ \mathscr U_-=\left\{A:\frac12<\Re A+c_u
+       <\frac12+\Re(B-C_1)\right\}
+                \cap\{\Re A<1/2-c_u/2\}.
+\]
+The latter is nonempty because $\Re(B-C_1)>0$; for large $T$ its width is
+$O(1/\log T)<c_u/2$, so it lies in the connected strip
+\eqref{eq:external-A-strip}.  Apply the one-variable identity theorem
+separately to each complete, already integrated branch as a function of
+$A$.  This extends an exact equality to the target $A$; it does not
+propagate the endpoint-deletion $O(T^{-N})$ error and does not treat
+$\lambda$ and $s$ as independent continuation variables.
+\end{proof}

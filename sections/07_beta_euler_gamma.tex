@@ -1,0 +1,365 @@
+\section{Beta integrals, Euler factors, and gamma identities}
+\label{sec:beta}
+
+We now evaluate the endpoint-deleted zero mode at the Tonelli destinations
+constructed in \Cref{sec:endpoint}.  Put
+\begin{equation}\label{eq:lambda-z-qv}
+ \lambda=\alpha+u,\qquad z=\lambda+\gamma+s,\qquad
+ q_1=1-z,\qquad v_1=1-\lambda+\beta+s.
+\end{equation}
+
+Every expression in this section is the fully unregulated destination limit
+of \Cref{prop:four-branch-regulator-tonelli}: the complete $s,u$ contours
+have already been restored, $R$ has gone to infinity, and the Abel parameter
+$\kappa$ has already gone to zero.  We first evaluate the ordinary beta
+integral, then recover the absolutely convergent $\rho$-series, and only then
+recover the $m$- and gcd-series.  Thus none of the beta or Euler identities
+below is applied to an Abel-weighted expression.
+
+For $r>0$, ordinary beta integration gives
+\begin{align}
+ &\int_0^\infty y^{-1/2-\lambda-it}
+ (y+r)^{-1/2-\gamma+it-s}\dd y \notag\\
+ &\qquad=r^{-z}
+ \frac{\Gamma(\frac12-\lambda-it)\Gamma(z)}
+      {\Gamma(\frac12+\gamma-it+s)}.
+ \label{eq:beta-positive}
+\end{align}
+A genuine absolute-convergence domain, including the subsequent $\rho$- and
+$m$-sums, is
+\begin{equation}\label{eq:beta-positive-domain}
+ \Re\lambda<\frac12,\qquad \Re z>1,\qquad \Re v_1>1.
+\end{equation}
+For $r=-R<0$, substitute $y=R+x$ to obtain
+\begin{align}
+ &\int_0^\infty(x+R)^{-1/2-\lambda-it}
+ x^{-1/2-\gamma+it-s}\dd x \notag\\
+ &\qquad=R^{-z}
+ \frac{\Gamma(\frac12-\gamma+it-s)\Gamma(z)}
+      {\Gamma(\frac12+\lambda+it)}.
+ \label{eq:beta-negative}
+\end{align}
+Here a genuine domain is
+\begin{equation}\label{eq:beta-negative-domain}
+ \Re(\gamma+s)<\frac12,\qquad \Re z>1,\qquad \Re v_1>1.
+\end{equation}
+The two signs need not have a common elementary chamber near the intended
+shifts; \Cref{sec:endpoint} proves the two identities separately and then
+selects their common meromorphic continuation by regulated exact equality.
+
+The sum over $\rho$ supplies $\zeta(z)$.  We use
+\begin{equation}\label{eq:chi-def}
+ \zeta(z)=\chi(z)\zeta(1-z),\qquad
+ \chi(z)=\pi^{z-1/2}\frac{\Gamma((1-z)/2)}{\Gamma(z/2)}.
+\end{equation}
+The remaining gcd sum is
+\begin{equation}\label{eq:C-hk}
+                   C_{h,k}(s,u)
+                   =\sum_{m\geq1}\frac{(h,km)^{q_1}}{m^{v_1}}.
+\end{equation}
+
+\begin{lemma}[Finite Euler factors]\label{lem:finite-euler}
+In the common meromorphic continuation,
+\begin{equation}\label{eq:finite-euler-identity}
+ h^{-1/2+\gamma+s}k^{-1/2+\lambda}
+ \zeta(1-z)C_{h,k}(s,u)
+ =Z_{-\gamma-s,\,\beta+s,\,-\lambda}(h,k).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Write $g=(h,k)$, $h=gh_0$, $k=gk_0$.  Since
+$(h,km)=g(h_0,m)$,
+\begin{equation}\label{eq:C-euler}
+ C_{h,k}=g^{q_1}\zeta(v_1)
+ \prod_{p^\nu\parallel h_0}(1-p^{-v_1})
+ \sum_{j\geq0}p^{q_1\min(j,\nu)-v_1j}.
+\end{equation}
+For $X=p^{-q_1}$ and $Y_0=p^{-v_1}$, splitting the sum at $j=\nu$ gives
+\begin{equation}\label{eq:local-euler-identity}
+ (1-Y_0)\sum_{j\geq0}X^{-\min(j,\nu)}Y_0^j
+ =X^{-\nu}(1-X)(1-Y_0)
+ \sum_{i+j\geq\nu}X^iY_0^j.
+\end{equation}
+This is exactly the local factor in \eqref{eq:Z-euler}, after the exterior
+powers in \eqref{eq:finite-euler-identity} are restored.
+\end{proof}
+
+Combine the two signs in the archimedean factor
+\begin{align}
+ \Phi_{\lambda;\beta,\gamma}(s,t)
+ ={}&\chi(z)\Gamma(z)g_{\beta,\gamma}(s,t)
+ \bigg\{
+ \frac{\Gamma(\frac12-\lambda-it)}
+      {\Gamma(\frac12+\gamma-it+s)} \notag\\
+ &\hspace{42mm}+
+ \frac{\Gamma(\frac12-\gamma+it-s)}
+      {\Gamma(\frac12+\lambda+it)}
+ \bigg\}.
+ \label{eq:Phi-def}
+\end{align}
+There is no additional $\pi^{-s}$ in \eqref{eq:Phi-def}, because it is
+already part of $g_{\beta,\gamma}$.
+
+\begin{lemma}[Archimedean pole collapse]\label{lem:gamma-collapse}
+Let $a_0=\frac12-\lambda-it$.  Then
+\begin{align}
+ &\chi(z)\Gamma(z)\left\{
+ \frac{\Gamma(a_0)}{\Gamma(a_0+z)}
+ +\frac{\Gamma(1-a_0-z)}{\Gamma(1-a_0)}\right\}
+ \notag\\
+ &\qquad=(2\pi)^z\frac{\Gamma(a_0)}{\Gamma(a_0+z)}
+ \frac{\sin\pi(a_0+z/2)}{\sin\pi(a_0+z)}.
+ \label{eq:gamma-collapse}
+\end{align}
+For $t\asymp T$ and $|\Im\lambda|+|\Im s|\leq(\log T)^2$, the left side
+has no pole near the real $s$-axis.  Its possible poles occur at
+\begin{equation}\label{eq:Phi-remote-poles}
+ s=n-\frac12-\gamma+it\quad(n\geq1),
+\end{equation}
+and the numerator gamma factors of $g$ add only
+\begin{equation}\label{eq:g-remote-poles}
+ s=-\frac12-\beta-it-2j,\qquad
+ s=-\frac12-\gamma+it-2j\quad(j\geq0).
+\end{equation}
+All are at imaginary height comparable with $T$.
+\end{lemma}
+
+\begin{proof}
+Duplication and reflection give
+\[
+ \chi(z)\Gamma(z)=\frac{(2\pi)^z}{2\cos(\pi z/2)}
+\]
+and
+\[
+ \frac{\Gamma(1-a_0-z)}{\Gamma(1-a_0)}
+ =\frac{\Gamma(a_0)}{\Gamma(a_0+z)}
+ \frac{\sin\pi a_0}{\sin\pi(a_0+z)}.
+\]
+Now use
+\[
+ \sin\pi(a_0+z)+\sin\pi a_0
+ =2\sin\pi(a_0+z/2)\cos(\pi z/2).
+\]
+This proves \eqref{eq:gamma-collapse}, including cancellation of the apparent
+odd-integer poles of $1/\cos(\pi z/2)$.  At nonpositive integral values of
+$a_0+z$, the reciprocal gamma zero cancels the sine denominator.  The
+remaining poles are \eqref{eq:Phi-remote-poles} and
+\eqref{eq:g-remote-poles}.  If such a pole is crossed between fixed vertical
+lines, the factor $e^{s^2}$ makes its residue $O_D(T^{-D})$.
+\end{proof}
+
+\begin{lemma}[Archimedean reflection]\label{lem:arch-reflection}
+As meromorphic identities,
+\begin{equation}\label{eq:Phi-at-zero}
+               \Phi_{\lambda;\beta,\gamma}(0,t)
+               =X_{\lambda,\gamma}(t),
+\end{equation}
+and
+\begin{equation}\label{eq:Phi-reflection}
+ X_{\beta,\gamma}(t)
+ \Phi_{\lambda;-\gamma,-\beta}(s,t)
+ =\Phi_{\lambda;\beta,\gamma}(-s,t).
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+Substitute \eqref{eq:X-def}, \eqref{eq:chi-def}, and
+\eqref{eq:Phi-def}.  Pair the full gamma factors by
+\[
+                  \Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin\pi z}
+\]
+and the half-arguments by
+\[
+ \Gamma(z)\Gamma(z+\tfrac12)=2^{1-2z}\sqrt\pi\,\Gamma(2z).
+\]
+For \eqref{eq:Phi-at-zero}, the two terms in braces combine by reflection
+and the remaining half-gamma factors form $X_{\lambda,\gamma}$.  For
+\eqref{eq:Phi-reflection}, first combine the $\beta,\gamma$ factors with
+$X_{\beta,\gamma}$ and then apply duplication.  The identities hold on a
+pole-free open set and hence everywhere by meromorphic continuation.
+\end{proof}
+
+We next record the contour step that turns the four branchwise destinations
+into the common contours used in the residue assembly.
+
+\begin{lemma}[Common-contour recovery]\label{lem:common-contour-recovery}
+Fix $\mathscr K_g\Subset\Omega_g$ and a compact set of target values
+$\mathscr K_A\Subset\{A:\Re A<1/2-c_u/2\}$.  Assume, throughout
+$\mathscr K_A\times\mathscr K_g$, that
+\begin{equation}\label{eq:common-contour-shift-bound}
+ \max\{|\Re(A+C_1)|,|\Re(A-B)|\}\leq \frac{C_*}{\log T}.
+\end{equation}
+Suppose
+\begin{equation}\label{eq:common-contour-window}
+ c_u+\frac{C_*}{\log T}<c_s<
+ \min\left\{\frac12,
+ 1-c_u-\frac{C_*}{\log T}\right\}.
+\end{equation}
+After the limits in \eqref{eq:four-branch-order}, pair the positive- and
+negative-$\rho$ destinations within each AFE sign.  Their continuations
+selected by \Cref{prop:four-branch-regulator-tonelli} are represented on the
+single line $\Re s=c_s$ by \eqref{eq:zero-plus-evaluated} and
+\eqref{eq:zero-minus-evaluated} below, with the explicit remote-pole
+remainders recorded there.  For every fixed $N$ their coefficient-weighted
+$h,k$-sum is $O_N(T^{-N})$, locally uniformly on
+$\mathscr K_A\times\mathscr K_g$.
+\end{lemma}
+
+\begin{proof}
+Start each branch in its own Tonelli chamber and on the line
+$\Re s=\sigma_{\epsilon,\sigma}$ used in
+\eqref{eq:finite-destination-definition}.  The four starting values of $A$
+and their paths to a given target in $\mathscr K_A$ are chosen branchwise;
+in particular, no common Tonelli starting point for the positive and negative
+branches is asserted.  Along each path continue only the external variable
+$A$ in \eqref{eq:external-A-strip}, as in the last paragraph of the proof of
+\Cref{prop:four-branch-regulator-tonelli}, and simultaneously deform the
+$s$-line continuously to $\Re s=c_s$.  The line can be chosen throughout the
+path so that, with a positive margin uniform on
+$\mathscr K_A\times\mathscr K_g$,
+\begin{align*}
+ \Re(-\lambda-C_1),\ \Re(\lambda-B)&<\Re s
+       &&\text{in the direct branches},\\
+ \Re(-\lambda+B),\ \Re(\lambda+C_1)&<\Re s
+       &&\text{in the dual branches}.
+\end{align*}
+At the Tonelli endpoint these inequalities follow from
+\eqref{eq:positive-direct-tonelli}--\eqref{eq:dual-tonelli}; at the target
+they follow from \eqref{eq:common-contour-shift-bound} and
+\eqref{eq:common-contour-window}.  A continuous choice is obtained,
+separately for each branch, by taking a continuous strict majorant of $0$
+and that branch's two displayed affine real parts, and then smoothing it
+inside the open margin.  Thus the arithmetic divisors
+$z_{\rm d}=0$, $\nu_{\rm d}=1$, $z_{\rm q}=0$, and $\nu_{\rm q}=1$ remain
+strictly to the left of the moving line.  The pole $s=0$ does also.  The
+potential poles $z_\epsilon=1$ are cancelled identically by the corresponding
+zeros of $\mathcal G(s,u)$.
+
+We spell out the complete-contour bound without asserting domination through
+a pole crossing.  First truncate both contours and perturb each branchwise
+ path and moving line into general position.  There are then only finitely many
+ remote crossings, and the deformation splits into finitely many closed
+ pole-free subpaths.  On each such subpath the integrand stays a positive
+ distance from its polar divisors.  Write $\mathfrak F_{\epsilon,\sigma}^{h,k}$
+ for the complete branch integrand, including the $u$- and $s$-kernels, but
+ before $\dd u\dd s$.  Uniform Stirling estimates on the central region and
+ the Gaussian $e^{s^2}$ together with $\Gamma(u)$ on its complement give,
+ for some fixed $c>0$ and $C_{\mathscr K}$,
+ \begin{equation}\label{eq:common-contour-L1-majorant}
+  \begin{aligned}
+  &|\mathfrak F_{\epsilon,\sigma}^{h,k}
+       (c_u+i\tau_u,\sigma(p)+i\tau_s;A)|\\
+  &\qquad\ll_{\mathscr K}(hk)^{C_{\mathscr K}}
+  (1+T+|\tau_u|+|\tau_s|)^{C_{\mathscr K}}
+  \exp\!\left(-\frac{\tau_s^2}{2}-c|\tau_u|\right).
+  \end{aligned}
+ \end{equation}
+ Here $p$ ranges over one closed pole-free subpath.  Its positive distance
+ from the polar divisors, together with the fixed collars of
+ $\mathscr K_A$ and the scaled compact \eqref{eq:scaled-good-compact}, makes
+ $c$, $C_{\mathscr K}$, and the implied constant uniform in $p$, $A$, and
+ $(B,C_1)$; a finite cover makes them uniform over the full deformation.
+ The right side of \eqref{eq:common-contour-L1-majorant} is integrable on
+ $\R^2$ and remains so after the finite coefficient-weighted $h,k$-sum.
+ In a small neighbourhood of a remote
+ crossing the contour is indented and the difference is recorded as its
+ residue; no dominating function across the singular parameter value is used.
+This justifies Cauchy's theorem on every truncated pole-free piece and then
+removal of the truncations.  The final $s$-line is itself pole-free: on the
+good patch the nearest pole in \eqref{eq:Phi-remote-poles} has real part
+$1/2-\Re C_\epsilon>1/2$, the poles in
+\eqref{eq:g-remote-poles} lie to the left, and
+\eqref{eq:common-contour-window} has $c_s<1/2$.  The final $u$-line is also
+pole-free by \eqref{eq:common-contour-shift-bound} and $c_u<1/4$.
+
+After the two $\rho$-signs are paired,
+\Cref{lem:gamma-collapse} leaves only the poles
+\eqref{eq:Phi-remote-poles}--\eqref{eq:g-remote-poles}; if the deformation
+crosses one, its imaginary part is comparable with $t\asymp T$ and the
+factor $e^{s^2}$ makes its total residue $O_N(T^{-N})$ for every fixed $N$.
+Moving $A$ may also move the numerator-gamma poles
+\begin{equation}\label{eq:remote-u-poles}
+ u=\frac12+j-A-it\qquad(j\geq0)
+\end{equation}
+through $\Re u=c_u$.  Only finitely many $j$ can be crossed on the compact
+deformation.  At $u_j=1/2+j-A-it$ one has $a_0=-j$.  Away from a simultaneous
+$s$-pole, the residue of the collapsed factor in
+\eqref{eq:gamma-collapse} is, up to a sign,
+\[
+ \frac{(2\pi)^{z_j}}
+ {2j!\,\Gamma(z_j-j)\cos(\pi z_j/2)},
+ \qquad z_j=\frac12+j+C_\epsilon+s-it,
+\]
+where $C_{\rm d}=C_1$ and $C_{\rm q}=-B$.  Stirling shows that the exponential
+parts of the reciprocal gamma and cosine factors cancel, leaving polynomial
+growth on a fixed $s$-line.  On the other hand,
+\[
+ |\Gamma(u_j)Y^{u_j}|
+ \ll_{j,\mathscr K_A}
+ Y^{1/2+j-\Re A}(1+T)^{j-\Re A}e^{-\pi T/16}.
+\]
+All remaining factors and the finite coefficient-weighted $h,k$-sum have at
+most polynomial growth, while the $s$-integral retains its Gaussian.
+Consequently every crossed $u$-residue is $O_N(T^{-N})$, uniformly on the
+stated compact sets.  Likewise a crossed pole from
+\eqref{eq:Phi-remote-poles}--\eqref{eq:g-remote-poles} has
+$|e^{s_*^2}|\leq e^{-T^2/50}$ for all sufficiently large $T$; its other
+factors have at most exponential-linear
+times polynomial growth, so its total residue is $O_N(T^{-N})$.
+
+For clarity about possible multiplicities, use the general-position
+perturbation just introduced.  The positive margin above keeps $0$ and all
+small arithmetic divisors on the same side, while remote $s$- and
+$u$-divisors are crossed one at a time.  Apply the one-variable residue
+theorem successively and then let the perturbation tend to zero.  If remote
+divisors meet in the limit, the resulting term is the corresponding iterated
+residue.  A mixed $s$--$u$ residue retains both the $e^{-T^2/50}$ Gaussian
+from the remote $s$-value and the $e^{-\pi T/16}$ factor from
+$\Gamma(u_j)$; a repeated pole only inserts a
+fixed polynomial factor.  Hence all such terms are still $O_N(T^{-N})$.
+Denominator gamma factors contribute zeros and can only lower these
+multiplicities.  Removing the contour truncations is justified by the
+complete-contour majorant above.  These $s$- and $u$-residues, including the
+iterated ones, are exactly the remote-pole remainders in the statement.  No
+small arithmetic residue is crossed or discarded.
+
+This moving-line argument represents the one-variable continuation in $A$
+already selected by \Cref{prop:four-branch-regulator-tonelli}; it is not a separate continuation in
+$\lambda$ and $s$.  Finally, adding the two beta quotients in each AFE sign
+gives \eqref{eq:Phi-def}, while \Cref{lem:finite-euler} gives the displayed
+$Z$-factor.  This proves the two common-contour formulas.
+\end{proof}
+
+The endpoint-deleted direct and dual zero modes are therefore
+\begin{align}
+ \widetilde{\mathcal O}_{0,Y}^+(h,k)
+ ={}&\int_{\R}w(t)\frac{1}{2\pi i}\int_{(c_u)}\Gamma(u)Y^u
+ \frac{1}{2\pi i}\int_{(c_s)}\frac{\mathcal G(s,u)}s
+ \Phi_{\lambda;\beta,\gamma}(s,t)\notag\\
+ &\hspace{37mm}\times
+ Z_{-\gamma-s,\beta+s,-\lambda}(h,k)\dd s\dd u\dd t\notag\\
+ &\quad+\mathscr E_{\rm rem}^+(h,k),
+ \label{eq:zero-plus-evaluated}\\
+ \widetilde{\mathcal O}_{0,Y}^-(h,k)
+ ={}&\int_{\R}w(t)\frac{1}{2\pi i}\int_{(c_u)}\Gamma(u)Y^u
+ \frac{1}{2\pi i}\int_{(c_s)}\frac{\mathcal G(s,u)}s
+ X_{\beta,\gamma}(t)
+ \Phi_{\lambda;-\gamma,-\beta}(s,t)\notag\\
+ &\hspace{37mm}\times
+ Z_{\beta-s,-\gamma+s,-\lambda}(h,k)\dd s\dd u\dd t\notag\\
+ &\quad+\mathscr E_{\rm rem}^-(h,k).
+ \label{eq:zero-minus-evaluated}
+\end{align}
+For every fixed $N$, locally uniformly on the compact shift sets in
+\Cref{lem:common-contour-recovery},
+\begin{equation}\label{eq:remote-remainder-bound}
+ \sum_{h\leq H}\sum_{k\leq K}
+ \frac{|a_hb_k|}{\sqrt{hk}}
+ \bigl(|\mathscr E_{\rm rem}^+(h,k)|
+      +|\mathscr E_{\rm rem}^-(h,k)|\bigr)
+ \ll_N T^{-N}.
+\end{equation}
+The branchwise beta and Euler calculations are made before this common line
+is introduced.  In particular, neither formula is obtained by moving a
+negative branch at fixed $A$ across a small arithmetic divisor.
