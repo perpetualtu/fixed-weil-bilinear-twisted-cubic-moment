@@ -115,7 +115,20 @@ orientation, three main terms, and final error term were not changed.
   complete holomorphic permutation sum is now retained before taking
   absolute values, and the collision tube is controlled by a scaled
   one-variable maximum/Cauchy argument.
-- Added a publication-facing D1-D8 audit ledger and release-integrity checks.
+- Added a publication-facing D1-D9 audit ledger and release-integrity checks.
+
+- Made the final post-audit clarifications explicit: the source $n=0$
+  crossing now displays the gcd cancellation and residual
+  `m^(-1-delta_g)` exponent; the endpoint and noncrossing pieces have
+  displayed polynomial/conductor dominators; and common-contour recovery has
+  a compact-uniform, integrable double-vertical-line majorant.
+- Distinguished the pole-free inverse-Mellin finite-truncation move in
+  Section 3 from the remote numerator-gamma crossings in the later branchwise
+  continuation.  The latter remain recorded as exponentially small remote
+  residues.
+- Standardized compact-uniformity in Sections 6--8 by fixing compact sets and
+  collars after scaling the shifts by `log T`, and made the suppressed
+  coefficient and weight-seminorm dependence of `O_(eta,C,epsilon)` explicit.
 
 This is an internal line-by-line consistency audit, not a formal proof
 certificate or an external peer-review report.

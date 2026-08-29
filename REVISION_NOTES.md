@@ -113,3 +113,21 @@ review of the revised regulator bridge and collision-safe Stirling lemma.
 
 Result class: candidate complete resolution after independent internal
 cross-audit; not a formal proof certificate or external human review.
+
+## August 29 post-audit minor revision
+
+- Added an explicit compact-uniform double-contour majorant in the
+  common-contour recovery lemma.
+- Displayed the gcd cancellation and residual `m^(-1-delta_g)` exponent in
+  the genuine source `n=0` crossing, together with bounds for the large-endpoint
+  and noncrossing pieces.
+- Distinguished the pole-free inverse-Mellin truncation move from the later
+  remote numerator-gamma crossings.
+- Defined all Section 6 compact-uniform statements through fixed compact sets
+  and collars in the shifts scaled by `log T`.
+- Made the suppressed coefficient and weight-seminorm dependence of the
+  theorem's `O_(eta,C,epsilon)` explicit, completed the verification-script
+  ledger, and corrected two documentation typos.
+
+These changes are expository proof closures only.  No proposition, theorem,
+main term, range, or error term has changed.
